@@ -1,0 +1,22 @@
+{
+  "verdict": "Keep",
+  "experiment_path": "experiments/2026-07-02-extraction-gate-prototype",
+  "source_repo": "manuelruiferreira-byte/jules-playground",
+  "target_repo": "manuelruiferreira-byte/Jester-Intelligence",
+  "evidence": [
+    "gate.mjs implements schema validation driven by canon/schemas/aced-extraction-verdict.schema.json",
+    "doctrine rules enforced independently of schema conditionals",
+    "test.mjs: 8/8 assertions pass including Red-privacy block and pre-approval rejection"
+  ],
+  "tests_run": ["node test.mjs (8 assertions)"],
+  "tests_passed": true,
+  "risk_class": "Green",
+  "privacy_class": "Green",
+  "dependency_review": "zero dependencies; node:fs, node:path, node:url only",
+  "doctrine_conflicts": [],
+  "promotion_recommendation": "Promote gate.mjs + test.mjs to Jester-Intelligence (suggested: apps/mission-control/scripts/extraction-gate.mjs or packages/engines/agentic/) after independent review; wire into Mission Control as the Extraction Gate Agent's deterministic core.",
+  "required_rewrites": [],
+  "reviewer": "Claude Fable 5 (twin mode, playground)",
+  "human_approval": false,
+  "ledger_entry_id": "playground-egp-20260702-001"
+}
