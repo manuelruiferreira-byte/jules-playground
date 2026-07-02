@@ -14,7 +14,8 @@ Per `canon/docs/agents/promotion-packet-v0.1.md`.
 - **tests_run:** `node test.mjs` — 8/8 pass (schema required/enum/type checks, Red-privacy Keep block, missing-tests cap, pre-approval rejection, Rewrite completeness)
 - **rollback_plan:** delete promoted file; experiment remains in playground as reference
 - **Mission Control record:** to be captured on approval (suggest artifact + inbox entry, idempotency key `promotion-egp-20260702`)
-- **human_approval:** PENDING — Manuel
+- **human_approval:** PENDING — Manuel (promotion PR opened 2026-07-03:
+  https://github.com/manuelruiferreira-byte/Jester-Intelligence/pull/16)
 - **independent_review_verdict:** PENDING — gate self-verdict is `Keep` (see `verdict.json`), which per doctrine is a recommendation, not a promotion
 
 ## Suggested promotion target
