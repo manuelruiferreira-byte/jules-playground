@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACED Extraction Verdict",
+  "type": "object",
+  "required": [
+    "verdict",
+    "experiment_path",
+    "source_repo",
+    "target_repo",
+    "evidence",
+    "tests_run",
+    "tests_passed",
+    "risk_class",
+    "privacy_class",
+    "promotion_recommendation",
+    "reviewer",
+    "human_approval",
+    "ledger_entry_id"
+  ],
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": ["Keep", "Rewrite", "Archive", "Reject"]
+    },
+    "experiment_path": {
+      "type": "string"
+    },
+    "source_repo": {
+      "type": "string"
+    },
+    "target_repo": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tests_run": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tests_passed": {
+      "type": "boolean"
+    },
+    "risk_class": {
+      "type": "string",
+      "enum": ["Green", "Amber", "Red"]
+    },
+    "privacy_class": {
+      "type": "string",
+      "enum": ["Green", "Amber", "Red"]
+    },
+    "dependency_review": {
+      "type": "string"
+    },
+    "doctrine_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "promotion_recommendation": {
+      "type": "string"
+    },
+    "required_rewrites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "human_approval": {
+      "type": "boolean"
+    },
+    "ledger_entry_id": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "privacy_class": { "const": "Red" } }
+      },
+      "then": {
+        "properties": { "verdict": { "enum": ["Rewrite", "Archive", "Reject"] } }
+      }
+    }
+  ]
+}
