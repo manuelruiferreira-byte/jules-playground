@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:profile",
+  "title": "Jester Intelligence Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profileId",
+    "profileVersion",
+    "displayIdentity",
+    "enabledSystems",
+    "preferences",
+    "permissions",
+    "engineSettings"
+  ],
+  "properties": {
+    "profileId": { "type": "string", "minLength": 1, "description": "Synthetic or user-owned profile identifier; supports multi-user profiles." },
+    "profileVersion": { "type": "string", "minLength": 1 },
+    "displayIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "avatarRef": { "type": "string" }
+      }
+    },
+    "enabledSystems": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timezone": { "type": "string" },
+        "locale": { "type": "string" },
+        "appPreferences": {
+          "type": "object",
+          "description": "App-scoped preference namespaces keyed by lowercase kebab-case app ID.",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z0-9]*(-[a-z0-9]+)*$": { "type": "object" }
+          }
+        }
+      }
+    },
+    "permissions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "engineSettings": { "type": "object", "additionalProperties": { "type": "object" } },
+    "name": { "type": "string", "description": "Optional profile name; not required for multi-user support." },
+    "birth": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional birth data; sensitive when complete or exact.",
+      "properties": {
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "timePrecision": { "type": "string", "enum": ["unknown", "date-only", "approximate", "exact"] },
+        "locationRef": { "type": "string" }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional profile location fields; coordinates are sensitive.",
+      "properties": {
+        "label": { "type": "string" },
+        "timezone": { "type": "string" },
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "currentTimezone": { "type": "string", "description": "Current timezone where permission allows it." },
+    "currentLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Current location where permission allows it; not permanent identity.",
+      "properties": {
+        "label": { "type": "string" },
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    }
+  }
+}

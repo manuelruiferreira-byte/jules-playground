@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:signal",
+  "title": "Jester Intelligence Signal Transport State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "signalId",
+    "schemaVersion",
+    "packetRef",
+    "transportState",
+    "channel",
+    "deliveryAttempt",
+    "observedAt",
+    "acceptedAppState"
+  ],
+  "properties": {
+    "signalId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "packetRef": { "type": "string", "minLength": 1, "description": "Reference to the packet envelope being transported." },
+    "transportState": { "type": "string", "enum": ["queued", "dispatched", "delivered", "acknowledged", "expired", "failed"] },
+    "channel": { "type": "string", "enum": ["browser", "broadcast-channel", "durable-mailbox", "native-bridge", "test-fixture"] },
+    "deliveryAttempt": { "type": "integer", "minimum": 0 },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "acceptedAppState": { "const": false, "description": "A signal records transport state only and never represents accepted app state." },
+    "failureReason": { "type": "string" }
+  }
+}

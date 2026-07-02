@@ -1,0 +1,10 @@
+{
+  "signalId": "sig-synthetic-001",
+  "schemaVersion": "v1",
+  "packetRef": "pkt-synthetic-001",
+  "transportState": "queued",
+  "channel": "test-fixture",
+  "deliveryAttempt": 0,
+  "observedAt": "2026-06-08T00:00:00Z",
+  "acceptedAppState": false
+}

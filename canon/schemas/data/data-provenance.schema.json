@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:data-provenance",
+  "title": "Jester Intelligence Data Provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provenanceId",
+    "schemaVersion",
+    "source",
+    "version",
+    "licence",
+    "retrievalDate",
+    "integrityHash",
+    "authority",
+    "updateMethod",
+    "reviewOrExpiryDate",
+    "permittedUse",
+    "affectedEngines"
+  ],
+  "properties": {
+    "provenanceId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "version": { "type": "string" },
+    "licence": { "type": "string" },
+    "retrievalDate": { "type": "string", "format": "date" },
+    "integrityHash": { "type": "string", "description": "Synthetic or real integrity hash reference; not a secret." },
+    "authority": { "type": "string" },
+    "updateMethod": { "type": "string" },
+    "reviewOrExpiryDate": { "type": "string", "format": "date" },
+    "permittedUse": { "type": "string" },
+    "affectedEngines": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+  }
+}

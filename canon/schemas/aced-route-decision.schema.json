@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACED Route Decision",
+  "type": "object",
+  "required": [
+    "selected_lane",
+    "selected_target",
+    "reason",
+    "blocked_targets",
+    "requires_user_approval",
+    "estimated_cost_class",
+    "privacy_result",
+    "required_handoff",
+    "ledger_entry_id"
+  ],
+  "properties": {
+    "selected_lane": {
+      "type": "string"
+    },
+    "selected_target": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "blocked_targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires_user_approval": {
+      "type": "boolean"
+    },
+    "estimated_cost_class": {
+      "enum": [
+        "zero",
+        "free_or_byok",
+        "premium"
+      ]
+    },
+    "privacy_result": {
+      "type": "string"
+    },
+    "required_handoff": {
+      "type": "string"
+    },
+    "ledger_entry_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

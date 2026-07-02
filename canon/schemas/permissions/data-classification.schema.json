@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:data-classification",
+  "title": "Jester Intelligence Data Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "classificationId",
+    "schemaVersion",
+    "class",
+    "storageConstraint",
+    "subjectRef",
+    "assignedBy",
+    "assignedAt",
+    "rationale",
+    "handlingRules"
+  ],
+  "properties": {
+    "classificationId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "class": { "type": "string", "enum": ["public", "internal", "personal", "sensitive", "secret"] },
+    "storageConstraint": { "type": "string", "enum": ["unrestricted", "app-private", "local-only", "secure-native-only", "no-persistence"], "description": "Required storage boundary for the classified data; secret values must use secure-native-only or no-persistence." },
+    "subjectRef": { "type": "string", "minLength": 1 },
+    "assignedBy": { "type": "string" },
+    "assignedAt": { "type": "string", "format": "date-time" },
+    "rationale": { "type": "string" },
+    "handlingRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exportAllowed", "loggingAllowed", "requiresConsent"],
+      "properties": {
+        "exportAllowed": { "type": "boolean" },
+        "loggingAllowed": { "type": "boolean", "description": "Secret values must never be logged even when audit metadata is allowed." },
+        "requiresConsent": { "type": "boolean" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "class": { "const": "secret" } }, "required": ["class"] },
+      "then": { "properties": { "storageConstraint": { "enum": ["secure-native-only", "no-persistence"] } } }
+    }
+  ]
+}

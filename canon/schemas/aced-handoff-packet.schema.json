@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aced.local/schemas/aced-handoff-packet.schema.json",
+  "title": "ACED Handoff Packet",
+  "type": "object",
+  "required": [
+    "source",
+    "created_at",
+    "project",
+    "privacy_class",
+    "cost_class",
+    "visible_context",
+    "target_model_or_agent",
+    "required_output",
+    "write_back_target",
+    "user_approval_required",
+    "route_decision_id",
+    "ledger_entry_id"
+  ],
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "privacy_class": {
+      "enum": [
+        "green",
+        "amber",
+        "red"
+      ]
+    },
+    "cost_class": {
+      "enum": [
+        "zero",
+        "free_or_byok",
+        "premium"
+      ]
+    },
+    "visible_context": {
+      "type": "string"
+    },
+    "hidden_context_summary": {
+      "type": "string"
+    },
+    "forbidden_context": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_model_or_agent": {
+      "type": "string"
+    },
+    "required_output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "write_back_target": {
+      "type": "string"
+    },
+    "user_approval_required": {
+      "type": "boolean"
+    },
+    "route_decision_id": {
+      "type": "string"
+    },
+    "ledger_entry_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:permission-grant",
+  "title": "Jester Intelligence Permission Grant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "grantId",
+    "schemaVersion",
+    "subject",
+    "resource",
+    "purpose",
+    "access",
+    "classification",
+    "scopes",
+    "grantedBy",
+    "grantedAt",
+    "revocable",
+    "localOnly",
+    "humanReviewRequired"
+  ],
+  "properties": {
+    "grantId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "subject": { "type": "string", "description": "App, engine, agent, or user receiving scoped access." },
+    "resource": { "type": "string", "description": "Data, packet, store, or capability being accessed." },
+    "purpose": { "type": "string", "minLength": 1 },
+    "access": { "type": "string", "enum": ["read", "write", "read-write"] },
+    "classification": { "type": "string", "enum": ["public", "internal", "personal", "sensitive", "secret"] },
+    "scopes": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "grantedBy": { "type": "string" },
+    "grantedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "revocable": { "type": "boolean" },
+    "revokedAt": { "type": ["string", "null"], "format": "date-time" },
+    "localOnly": { "type": "boolean" },
+    "humanReviewRequired": { "type": "boolean" }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:engine-result",
+  "title": "Jester Intelligence Engine Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "resultId",
+    "schemaVersion",
+    "engineId",
+    "engineVersion",
+    "authorityClass",
+    "resultPayload",
+    "traceRefs",
+    "warnings",
+    "conflicts",
+    "missingInputs",
+    "generatedAt"
+  ],
+  "properties": {
+    "resultId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "engineId": { "type": "string", "minLength": 1 },
+    "engineVersion": { "type": "string", "minLength": 1 },
+    "authorityClass": { "type": "string", "enum": ["deterministic", "experimental"] },
+    "resultPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Immutable result payload wrapper; data is interpreted through schemaRef and must not be mutated after generation.",
+      "required": ["schemaRef", "data"],
+      "properties": {
+        "schemaRef": { "type": "string" },
+        "data": { "description": "Result data validated by the declared schema." }
+      }
+    },
+    "traceRefs": { "type": "array", "items": { "type": "string" }, "description": "Calculation or evaluation trace references.", "uniqueItems": true },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "missingInputs": { "type": "array", "items": { "type": "string" } },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  }
+}

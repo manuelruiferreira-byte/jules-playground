@@ -1,0 +1,27 @@
+{
+  "manifestVersion": "v1",
+  "engineId": "synthetic-engine",
+  "name": "Synthetic Fixture Engine",
+  "version": "0.0.0",
+  "status": "scaffold",
+  "authorityClass": "deterministic",
+  "inputSchemaRefs": [
+    "urn:jester-intelligence:schema:v1:engine-request"
+  ],
+  "outputSchemaRefs": [
+    "urn:jester-intelligence:schema:v1:engine-result"
+  ],
+  "dependencies": [],
+  "dataDependencies": [],
+  "offlineCapability": true,
+  "traceSupport": true,
+  "profileRequirements": [],
+  "compatibility": {
+    "coreContracts": "v1"
+  },
+  "cachePolicy": {
+    "enabled": true,
+    "authoritative": false,
+    "expiry": "PT1H"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:packet-envelope",
+  "title": "Jester Intelligence Packet Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packetId",
+    "schemaVersion",
+    "packetType",
+    "source",
+    "createdAt",
+    "governanceState",
+    "authorityClass",
+    "deliveryMode",
+    "payload"
+  ],
+  "properties": {
+    "packetId": { "type": "string", "minLength": 1, "format": "uuid" },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "packetType": { "type": "string", "enum": ["event", "request", "response", "proposal", "alert", "acknowledgement", "engine-request", "engine-result", "patch-proposal"] },
+    "source": { "$ref": "#/$defs/endpoint" },
+    "target": { "$ref": "#/$defs/endpoint" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "governanceState": { "type": "string", "enum": ["unreviewed", "governed", "accepted", "rejected", "quarantined"] },
+    "authorityClass": { "type": "string", "enum": ["user", "app", "deterministic", "experimental", "agent", "system"], "description": "Authority class attached to this packet; it does not grant acceptance into app state." },
+    "deliveryMode": { "type": "string", "enum": ["ephemeral", "durable"], "description": "Durable packets must be written to the governed mailbox before delivery." },
+    "profileId": { "type": "string" },
+    "correlationId": { "type": "string", "format": "uuid" },
+    "parentPacketId": { "type": "string", "format": "uuid" },
+    "deduplicationKey": { "type": "string" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "permissionRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "lineageRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "acknowledgement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "acknowledgedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaRef", "data"],
+      "properties": {
+        "schemaRef": { "type": "string", "description": "Schema URI or URN for the payload object." },
+        "data": { "description": "Payload data validated by the declared payload schema." }
+      }
+    }
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["app", "engine", "agent", "system", "user"] },
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" }
+      }
+    }
+  }
+}

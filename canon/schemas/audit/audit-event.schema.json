@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:audit-event",
+  "title": "Jester Intelligence Audit Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "auditEventId",
+    "schemaVersion",
+    "eventType",
+    "occurredAt",
+    "actor",
+    "objectRef",
+    "action",
+    "lineageMode",
+    "lineageRefs"
+  ],
+  "properties": {
+    "auditEventId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "eventType": { "type": "string", "minLength": 1 },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "actor": { "type": "string", "description": "Attributable actor without recording secret values." },
+    "objectRef": { "type": "string" },
+    "action": { "type": "string" },
+    "lineageMode": { "const": "logical-append-only", "description": "Append-only and non-destructive by contract; this does not claim physical immutability." },
+    "lineageRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "previousEventId": { "type": "string" },
+    "redactions": { "type": "array", "items": { "type": "string" }, "description": "References to redacted fields; values are not logged." }
+  }
+}

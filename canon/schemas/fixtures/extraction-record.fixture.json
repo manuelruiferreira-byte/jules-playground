@@ -1,0 +1,20 @@
+{
+  "extractionRecordId": "extract-synthetic-001",
+  "schemaVersion": "v1",
+  "sourceRepository": "synthetic/example-source",
+  "sourceCommit": "0000000000000000000000000000000000000000",
+  "sourcePath": "legacy/synthetic-module.js",
+  "sourceLineOrSymbol": "syntheticFunction",
+  "extractedObjectType": "rule",
+  "extractedObjectSubtype": "calculation-rule",
+  "targetPackage": "packages/engines/esoteric/",
+  "originalBehaviour": "Synthetic fixture behavior used only to validate the extraction record schema.",
+  "dependencies": [],
+  "userSpecificAssumptions": [],
+  "knownDefects": [],
+  "regressionFixtureRef": "fixtures/synthetic-regression.json",
+  "provenanceStatus": "accepted",
+  "reviewer": "synthetic-reviewer",
+  "extractionDate": "2026-06-08",
+  "rollbackOrSourceReference": "Return to the pinned synthetic source reference."
+}

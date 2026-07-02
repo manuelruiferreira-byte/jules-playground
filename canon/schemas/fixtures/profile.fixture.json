@@ -1,0 +1,23 @@
+{
+  "profileId": "profile-synthetic-001",
+  "profileVersion": "v1",
+  "displayIdentity": {
+    "label": "Synthetic Profile"
+  },
+  "enabledSystems": [
+    "synthetic-system"
+  ],
+  "preferences": {
+    "timezone": "UTC",
+    "locale": "en-US",
+    "appPreferences": {
+      "synthetic-app": {
+        "fixtureSetting": true
+      }
+    }
+  },
+  "permissions": [],
+  "engineSettings": {
+    "synthetic-engine": {}
+  }
+}

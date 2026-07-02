@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACED Agent Job",
+  "type": "object",
+  "required": [
+    "job_id",
+    "project",
+    "task_type",
+    "privacy_class",
+    "risk_level",
+    "needs_code_edit",
+    "needs_live_web",
+    "needs_desktop",
+    "preferred_cost",
+    "allowed_lanes",
+    "blocked_lanes",
+    "handoff_targets",
+    "required_output"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "privacy_class": {
+      "enum": [
+        "green",
+        "amber",
+        "red"
+      ]
+    },
+    "risk_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9
+    },
+    "repo_target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "needs_code_edit": {
+      "type": "boolean"
+    },
+    "needs_live_web": {
+      "type": "boolean"
+    },
+    "needs_desktop": {
+      "type": "boolean"
+    },
+    "needs_long_context": {
+      "type": "boolean"
+    },
+    "preferred_cost": {
+      "enum": [
+        "zero",
+        "free",
+        "low",
+        "premium"
+      ]
+    },
+    "allowed_lanes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocked_lanes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoff_targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

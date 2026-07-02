@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACED Ledger Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "packet",
+    "route_decision",
+    "target",
+    "status",
+    "idempotency_key"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "packet": {
+      "type": "object"
+    },
+    "hidden_context_summary": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "route_decision": {
+      "type": "object"
+    },
+    "response": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "accepted_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rejected_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mission_control_write_result": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

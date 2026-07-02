@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:engine-request",
+  "title": "Jester Intelligence Engine Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requestId",
+    "schemaVersion",
+    "engineId",
+    "engineVersionRequirement",
+    "inputPayload",
+    "requestContext",
+    "traceRequest",
+    "createdAt"
+  ],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "engineId": { "type": "string", "minLength": 1 },
+    "engineVersionRequirement": { "type": "string", "description": "Version or range required by the caller." },
+    "profileRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Profile reference where the engine contract requires profile context.",
+      "required": ["profileId"],
+      "properties": {
+        "profileId": { "type": "string" },
+        "profileVersion": { "type": "string" }
+      }
+    },
+    "inputPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaRef", "data"],
+      "properties": {
+        "schemaRef": { "type": "string" },
+        "data": { "description": "Input object validated by the declared schema." }
+      }
+    },
+    "requestContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requestedBy", "purpose"],
+      "properties": {
+        "requestedBy": { "type": "string" },
+        "purpose": { "type": "string" },
+        "permissionRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "traceRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "level": { "type": "string", "enum": ["none", "summary", "full"] }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

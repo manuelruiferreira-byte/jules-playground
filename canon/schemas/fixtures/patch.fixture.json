@@ -1,0 +1,19 @@
+{
+  "patchId": "patch-synthetic-001",
+  "schemaVersion": "v1",
+  "lifecycleState": "requested",
+  "classification": {
+    "changeClass": "configuration",
+    "riskLevel": "low",
+    "requiresHumanApproval": true
+  },
+  "requestedBy": "synthetic-requester",
+  "createdAt": "2026-06-08T00:00:00Z",
+  "summary": "Synthetic patch fixture for schema validation only.",
+  "targets": [
+    "docs/example.md"
+  ],
+  "validationRefs": [],
+  "approvalRefs": [],
+  "rollbackPlan": "Discard the synthetic fixture patch."
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:patch",
+  "title": "Jester Intelligence Patch Lifecycle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "patchId",
+    "schemaVersion",
+    "lifecycleState",
+    "classification",
+    "requestedBy",
+    "createdAt",
+    "summary",
+    "targets",
+    "validationRefs",
+    "approvalRefs",
+    "rollbackPlan"
+  ],
+  "properties": {
+    "patchId": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "lifecycleState": { "type": "string", "enum": ["requested", "classified", "validated", "sandboxed", "approved", "staged", "active", "observed", "revised", "rolled_back", "quarantined"] },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Result of the patch 'classified' lifecycle stage; distinct from personal-data classification.",
+      "required": ["changeClass", "riskLevel", "requiresHumanApproval"],
+      "properties": {
+        "changeClass": { "type": "string", "enum": ["configuration", "data", "capability", "structural", "security"] },
+        "riskLevel": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "requiresHumanApproval": { "type": "boolean" }
+      }
+    },
+    "requestedBy": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string", "minLength": 1 },
+    "targets": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "validationRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "approvalRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "rollbackPlan": { "type": "string", "description": "Rollback reference or procedure required before staged activation." }
+  }
+}

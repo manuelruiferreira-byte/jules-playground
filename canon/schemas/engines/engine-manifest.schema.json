@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jester-intelligence:schema:v1:engine-manifest",
+  "title": "Jester Intelligence Engine Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestVersion",
+    "engineId",
+    "name",
+    "version",
+    "status",
+    "authorityClass",
+    "inputSchemaRefs",
+    "outputSchemaRefs",
+    "dependencies",
+    "dataDependencies",
+    "offlineCapability",
+    "traceSupport",
+    "profileRequirements",
+    "compatibility",
+    "cachePolicy"
+  ],
+  "properties": {
+    "manifestVersion": { "type": "string" },
+    "engineId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["scaffold", "planned", "active", "deprecated", "quarantined"] },
+    "authorityClass": { "type": "string", "enum": ["deterministic", "experimental"], "description": "Deterministic engines compute declared results; experimental engines emit suggestion-only results." },
+    "inputSchemaRefs": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "outputSchemaRefs": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+    "dependencies": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "dataDependencies": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "offlineCapability": { "type": "boolean" },
+    "traceSupport": { "type": "boolean", "description": "Whether the engine can produce calculation or evaluation trace references." },
+    "profileRequirements": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coreContracts"],
+      "properties": {
+        "coreContracts": { "type": "string" }
+      }
+    },
+    "cachePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "authoritative"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "authoritative": { "const": false, "description": "Engine caches are never authoritative accepted state." },
+        "expiry": { "type": "string", "description": "Expiry declaration required when cache is enabled unless invalidation is declared." },
+        "invalidation": { "type": "string", "description": "Invalidation declaration required when cache is enabled unless expiry is declared." }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "enabled": { "const": true } }, "required": ["enabled"] },
+          "then": { "anyOf": [ { "required": ["expiry"] }, { "required": ["invalidation"] } ] }
+        }
+      ]
+    }
+  }
+}

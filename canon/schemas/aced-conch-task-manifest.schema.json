@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACED Conch Task Manifest",
+  "type": "object",
+  "required": [
+    "task_id",
+    "name",
+    "description",
+    "allowed_args",
+    "requires_confirmation",
+    "risk_level",
+    "forbidden_patterns"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "allowed_args": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires_confirmation": {
+      "type": "boolean"
+    },
+    "risk_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9
+    },
+    "forbidden_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
