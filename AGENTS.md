@@ -15,7 +15,7 @@ and nothing here is canon until a human promotes it.
 
 ## Preflight (log at the start of every session)
 
-Per the [Free Agent Test Bench](docs/free-agent-test-bench-v0.1.md):
+Per the [Free Agent Test Bench](canon/docs/agents/free-agent-test-bench-v0.1.md):
 
 - Tool/Agent name and model name
 - Auto-Edit mode: enabled or disabled
@@ -29,7 +29,10 @@ Per the [Free Agent Test Bench](docs/free-agent-test-bench-v0.1.md):
   with placeholder values instead.
 - Never add paid-service dependencies. This is a Lane 2 (free/BYOK) environment
   under the ACED Model Budget Governor: stay at cost 0.
-- Do not delete or rewrite the `docs/` folder or this file.
+- Never edit anything under `canon/`. It is a receive-only mirror of the
+  canon doctrine (contracts, schemas, agent protocols), overwritten
+  automatically on every canon push — treat it as read-only reference.
+- Do not delete or rewrite this file.
 
 ## Working structure
 
@@ -48,7 +51,7 @@ no cross-experiment imports.
 
 Nothing self-promotes. When an experiment is worth keeping, finish it with a
 `PROMOTION_PACKET.md` in the experiment folder following
-[Promotion Packet v0.1](docs/promotion-packet-v0.1.md): source repo, changed
+[Promotion Packet v0.1](canon/docs/agents/promotion-packet-v0.1.md): source repo, changed
 files, risk class, privacy class, tests run, rollback plan. A human reviews the
 packet and ports the work into a canon repo. Per doctrine:
 

@@ -6,8 +6,11 @@ it is structurally isolated from the canon repos, which agents connected here
 cannot see or touch.
 
 - Agent rules: [AGENTS.md](AGENTS.md)
-- Safety protocol: [docs/free-agent-test-bench-v0.1.md](docs/free-agent-test-bench-v0.1.md)
-- How work graduates to canon repos: [docs/promotion-packet-v0.1.md](docs/promotion-packet-v0.1.md)
+- Canon doctrine mirror (receive-only, auto-synced): [canon/](canon/) — contracts,
+  schemas, and agent protocols pushed here automatically from Jester-Intelligence
+  `main` by the `sync-playground-canon` workflow. One-way; never edited here.
+- Safety protocol: [canon/docs/agents/free-agent-test-bench-v0.1.md](canon/docs/agents/free-agent-test-bench-v0.1.md)
+- How work graduates to canon repos: [canon/docs/agents/promotion-packet-v0.1.md](canon/docs/agents/promotion-packet-v0.1.md)
 
 ## Layout
 
