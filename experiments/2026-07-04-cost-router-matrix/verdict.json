@@ -1,0 +1,22 @@
+{
+  "verdict": "Keep",
+  "experiment_path": "experiments/2026-07-04-cost-router-matrix",
+  "source_repo": "manuelruiferreira-byte/jules-playground",
+  "target_repo": "manuelruiferreira-byte/Jester-Intelligence",
+  "evidence": [
+    "matrix covers every field the MC task 'Design Cost Router Agent v0.1' names",
+    "router consumes/produces canon schemas (aced-agent-job -> aced-route-decision)",
+    "test.mjs: 12/12 including Red-never-cloud, premium-approval, canon-packet block, fail-closed unknown"
+  ],
+  "tests_run": ["node test.mjs (12 assertions)"],
+  "tests_passed": true,
+  "risk_class": "Green",
+  "privacy_class": "Green",
+  "dependency_review": "zero dependencies; node:fs, node:path, node:url only",
+  "doctrine_conflicts": [],
+  "promotion_recommendation": "Promote matrix JSON + router.mjs + tests to Jester-Intelligence apps/mission-control/scripts/ after independent review; Manuel confirms budget cap numbers before canon entry.",
+  "required_rewrites": [],
+  "reviewer": "Claude Fable 5 (twin mode, playground)",
+  "human_approval": false,
+  "ledger_entry_id": "playground-crm-20260704-001"
+}

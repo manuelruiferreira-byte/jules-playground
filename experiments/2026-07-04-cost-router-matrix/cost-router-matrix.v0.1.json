@@ -1,0 +1,50 @@
+{
+  "version": "0.1",
+  "doctrine": "Pick the cheapest safe path that can complete the task (Model Budget Governor v0.1). Lanes: 0 deterministic local, 1 local AI, 2 free/BYOK/flat-rate cloud (Green or sanitized Amber only), 3 premium handoff (explicit approval, always).",
+  "targets": {
+    "deterministic-script": { "lane": 0, "cost_class": "zero", "notes": "node/powershell/python locally; includes esoteric bridge Swiss Ephemeris" },
+    "local-llm-agora":      { "lane": 1, "cost_class": "zero-after-setup", "notes": "dormant until ACED-Mobile security gate passes" },
+    "jules-free":           { "lane": 2, "cost_class": "free-tier", "limits": { "daily_tasks": 15, "concurrent": 3 }, "notes": "jules-playground ONLY; never canon" },
+    "codex-free":           { "lane": 2, "cost_class": "flat-rate-plan", "limits": { "note": "plan usage window; back off when window exhausted" } },
+    "chatgpt-plus":         { "lane": 2, "cost_class": "flat-rate-plan", "notes": "coordination, docs, GPT Actions connector" },
+    "claude-code-session":  { "lane": 2, "cost_class": "flat-rate-plan", "notes": "implementation + independent review; builder and reviewer must differ per constitution" },
+    "premium-api":          { "lane": 3, "cost_class": "metered-usd", "notes": "any pay-per-token API call; ALWAYS requires_user_approval" }
+  },
+  "task_classes": {
+    "deterministic_calc":  { "route": ["deterministic-script"], "escalation": null, "privacy_ceiling": "Red" },
+    "file_ops_local":      { "route": ["deterministic-script"], "escalation": null, "privacy_ceiling": "Red" },
+    "esoteric_timing":     { "route": ["deterministic-script"], "escalation": null, "privacy_ceiling": "Amber", "notes": "bridge :8000; symbolic overlay only, never operational authority" },
+    "orchestration_mc":    { "route": ["deterministic-script"], "escalation": null, "privacy_ceiling": "Amber", "notes": "Mission Control REST with idempotency keys" },
+    "memory_ops":          { "route": ["local-llm-agora", "deterministic-script"], "escalation": null, "privacy_ceiling": "Red", "notes": "cloud lanes FORBIDDEN until ACED-Mem injection/privacy policies pass" },
+    "docs_drafting":       { "route": ["chatgpt-plus", "claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized" },
+    "code_small":          { "route": ["codex-free", "claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized", "notes": "<= 3 files, single repo, branch+PR" },
+    "code_large":          { "route": ["claude-code-session"], "escalation": "premium-api", "privacy_ceiling": "Amber-sanitized" },
+    "research_web":        { "route": ["jules-free", "chatgpt-plus"], "escalation": null, "privacy_ceiling": "Green" },
+    "curation_batch":      { "route": ["jules-free"], "escalation": null, "privacy_ceiling": "Green", "notes": "playground lane; output passes rights gate + Extraction Gate" },
+    "review_audit":        { "route": ["claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized", "notes": "reviewer must not be the builder" }
+  },
+  "privacy_gates": {
+    "Green": ["deterministic-script", "local-llm-agora", "jules-free", "codex-free", "chatgpt-plus", "claude-code-session", "premium-api"],
+    "Amber": ["deterministic-script", "local-llm-agora"],
+    "Amber-sanitized": ["deterministic-script", "local-llm-agora", "codex-free", "chatgpt-plus", "claude-code-session", "premium-api"],
+    "Red": ["deterministic-script", "local-llm-agora"]
+  },
+  "budget_caps": {
+    "daily_premium_usd": 0,
+    "monthly_premium_usd": 20,
+    "note": "daily cap 0 means every lane-3 call needs explicit approval that day; monthly cap holds even across approvals. Manuel edits these numbers, agents never do."
+  },
+  "stop_rules": [
+    "STOP if a cap is reached: raise a Mission Control blocker, do not queue premium retries.",
+    "STOP if privacy class resolves Red and the only capable target is cloud: return human_only.",
+    "STOP if the job requires canon repo mutation without a Promotion Packet.",
+    "STOP after 2 consecutive failures on a target: escalate to human review, never auto-escalate to a costlier lane.",
+    "STOP if a free-tier limit is exhausted: defer to next window, do not silently switch to premium."
+  ],
+  "usage_ledger_fields": ["ledger_entry_id", "job_id", "task_class", "selected_lane", "selected_target", "estimated_cost_class", "actual_cost_usd", "started_at", "finished_at", "outcome", "approval_ref"],
+  "mission_control_reporting": {
+    "premium_escalation": "artifact per approval with cost estimate before the call",
+    "daily_rollup": "one artifact per active day: jobs routed per lane, premium spend vs caps",
+    "cap_breach": "blocker entry, firebreak-eligible"
+  }
+}
