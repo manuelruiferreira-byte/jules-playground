@@ -34,9 +34,12 @@ expect("Red never cloud (fails closed to human)", red.selected_lane === "human_o
 const mem = route(job({ task_type: "memory_ops" }));
 expect("memory_ops stays local", ["local-llm-agora", "deterministic-script"].includes(mem.selected_target));
 
-// 6. Premium escalation always requires approval.
-const big = route(job({ task_type: "code_large", allowed_lanes: [3] }));
-expect("premium requires approval", big.selected_target === "premium-api" && big.requires_user_approval === true);
+// 6. No premium lane in v0.1: no target is lane 3, and code_large restricted
+// to lane 3 fails closed to human rather than inventing a paid path.
+const noPremiumTargets = Object.values(MATRIX.targets).every((t) => t.lane !== 3);
+expect("v0.1 has no premium (lane 3) target", noPremiumTargets && MATRIX.budget_caps.premium_lane_enabled === false);
+const forcedPremium = route(job({ task_type: "code_large", allowed_lanes: [3] }));
+expect("lane-3-only job fails closed to human", forcedPremium.selected_lane === "human_only");
 
 // 7. Free path never requires approval for Green docs.
 expect("free lane no approval", d1.requires_user_approval === false && d1.selected_lane === "lane_2");

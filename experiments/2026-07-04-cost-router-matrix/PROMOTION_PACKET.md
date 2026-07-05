@@ -14,7 +14,11 @@ Per `canon/docs/agents/promotion-packet-v0.1.md`.
 - **tests_run:** `node test.mjs` — 12/12 (schema completeness, determinism, cheapest-safe-path, Red-never-cloud, memory-stays-local, premium-approval, free-no-approval, canon-packet block, packet-unblock, blocked_lanes, fail-closed-unknown, matrix consistency)
 - **rollback_plan:** delete promoted files; experiment remains in playground
 - **Mission Control record:** MC task "Design Cost Router Agent v0.1" closed with evidence on packet creation; verdict POST to /api/extraction/verdict once PR #18 merges (ledger_entry_id playground-crm-20260704-001)
-- **human_approval:** PENDING — Manuel (also confirms budget cap numbers: daily premium 0 USD, monthly 20 USD defaults)
+- **human_approval:** PENDING — Manuel. Cap decision recorded 2026-07-04:
+  **no premium lane in v0.1** (flat-rate/free lanes only; lanes 0-2 or fail
+  closed to human). Promotion path decision: **wait for PR #18** (the
+  /api/extraction/verdict endpoint) to merge, route this verdict through it as
+  the first live gate use, then open the promotion PR.
 - **independent_review_verdict:** PENDING — self-verdict `Keep` is a recommendation, not a promotion
 
 ## Suggested promotion target

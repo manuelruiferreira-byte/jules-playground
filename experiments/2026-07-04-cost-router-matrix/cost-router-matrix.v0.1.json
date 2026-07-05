@@ -1,14 +1,13 @@
 {
   "version": "0.1",
-  "doctrine": "Pick the cheapest safe path that can complete the task (Model Budget Governor v0.1). Lanes: 0 deterministic local, 1 local AI, 2 free/BYOK/flat-rate cloud (Green or sanitized Amber only), 3 premium handoff (explicit approval, always).",
+  "doctrine": "Pick the cheapest safe path that can complete the task (Model Budget Governor v0.1). Lanes: 0 deterministic local, 1 local AI, 2 free/BYOK/flat-rate cloud (Green or sanitized Amber only). Lane 3 (premium metered handoff) is INTENTIONALLY ABSENT in v0.1 per Manuel 2026-07-04: no premium lane until caps are set in a later version. Work that cannot be done on lanes 0-2 fails closed to human, never to paid.",
   "targets": {
     "deterministic-script": { "lane": 0, "cost_class": "zero", "notes": "node/powershell/python locally; includes esoteric bridge Swiss Ephemeris" },
     "local-llm-agora":      { "lane": 1, "cost_class": "zero-after-setup", "notes": "dormant until ACED-Mobile security gate passes" },
     "jules-free":           { "lane": 2, "cost_class": "free-tier", "limits": { "daily_tasks": 15, "concurrent": 3 }, "notes": "jules-playground ONLY; never canon" },
     "codex-free":           { "lane": 2, "cost_class": "flat-rate-plan", "limits": { "note": "plan usage window; back off when window exhausted" } },
     "chatgpt-plus":         { "lane": 2, "cost_class": "flat-rate-plan", "notes": "coordination, docs, GPT Actions connector" },
-    "claude-code-session":  { "lane": 2, "cost_class": "flat-rate-plan", "notes": "implementation + independent review; builder and reviewer must differ per constitution" },
-    "premium-api":          { "lane": 3, "cost_class": "metered-usd", "notes": "any pay-per-token API call; ALWAYS requires_user_approval" }
+    "claude-code-session":  { "lane": 2, "cost_class": "flat-rate-plan", "notes": "implementation + independent review; builder and reviewer must differ per constitution" }
   },
   "task_classes": {
     "deterministic_calc":  { "route": ["deterministic-script"], "escalation": null, "privacy_ceiling": "Red" },
@@ -18,28 +17,27 @@
     "memory_ops":          { "route": ["local-llm-agora", "deterministic-script"], "escalation": null, "privacy_ceiling": "Red", "notes": "cloud lanes FORBIDDEN until ACED-Mem injection/privacy policies pass" },
     "docs_drafting":       { "route": ["chatgpt-plus", "claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized" },
     "code_small":          { "route": ["codex-free", "claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized", "notes": "<= 3 files, single repo, branch+PR" },
-    "code_large":          { "route": ["claude-code-session"], "escalation": "premium-api", "privacy_ceiling": "Amber-sanitized" },
+    "code_large":          { "route": ["claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized", "notes": "no premium escalation in v0.1; if claude-code-session cannot complete, fail closed to human" },
     "research_web":        { "route": ["jules-free", "chatgpt-plus"], "escalation": null, "privacy_ceiling": "Green" },
     "curation_batch":      { "route": ["jules-free"], "escalation": null, "privacy_ceiling": "Green", "notes": "playground lane; output passes rights gate + Extraction Gate" },
     "review_audit":        { "route": ["claude-code-session"], "escalation": null, "privacy_ceiling": "Amber-sanitized", "notes": "reviewer must not be the builder" }
   },
   "privacy_gates": {
-    "Green": ["deterministic-script", "local-llm-agora", "jules-free", "codex-free", "chatgpt-plus", "claude-code-session", "premium-api"],
+    "Green": ["deterministic-script", "local-llm-agora", "jules-free", "codex-free", "chatgpt-plus", "claude-code-session"],
     "Amber": ["deterministic-script", "local-llm-agora"],
-    "Amber-sanitized": ["deterministic-script", "local-llm-agora", "codex-free", "chatgpt-plus", "claude-code-session", "premium-api"],
+    "Amber-sanitized": ["deterministic-script", "local-llm-agora", "codex-free", "chatgpt-plus", "claude-code-session"],
     "Red": ["deterministic-script", "local-llm-agora"]
   },
   "budget_caps": {
-    "daily_premium_usd": 0,
-    "monthly_premium_usd": 20,
-    "note": "daily cap 0 means every lane-3 call needs explicit approval that day; monthly cap holds even across approvals. Manuel edits these numbers, agents never do."
+    "premium_lane_enabled": false,
+    "note": "v0.1 has NO premium metered lane (Manuel 2026-07-04). All lanes are free or flat-rate plan usage; spend is bounded by the plans themselves, not per-call. A future version may add lane 3 with daily_premium_usd / monthly_premium_usd caps that only Manuel sets."
   },
   "stop_rules": [
-    "STOP if a cap is reached: raise a Mission Control blocker, do not queue premium retries.",
     "STOP if privacy class resolves Red and the only capable target is cloud: return human_only.",
     "STOP if the job requires canon repo mutation without a Promotion Packet.",
     "STOP after 2 consecutive failures on a target: escalate to human review, never auto-escalate to a costlier lane.",
-    "STOP if a free-tier limit is exhausted: defer to next window, do not silently switch to premium."
+    "STOP if a free-tier limit is exhausted: defer to next window, never switch to a paid lane (none exists in v0.1).",
+    "STOP if lanes 0-2 cannot complete the job: return human_only; do not invent a premium path."
   ],
   "usage_ledger_fields": ["ledger_entry_id", "job_id", "task_class", "selected_lane", "selected_target", "estimated_cost_class", "actual_cost_usd", "started_at", "finished_at", "outcome", "approval_ref"],
   "mission_control_reporting": {

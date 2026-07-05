@@ -8,8 +8,9 @@ and Mission Control reporting — as executable data + a deterministic router.
 Built against synced canon: `aced-agent-job` in, `aced-route-decision` out,
 Budget Governor v0.1 doctrine throughout.
 
-- `cost-router-matrix.v0.1.json` — the matrix. Budget numbers are Manuel's
-  to edit (defaults: daily premium 0 USD = per-call approval; monthly 20).
+- `cost-router-matrix.v0.1.json` — the matrix. v0.1 has NO premium metered
+  lane (Manuel 2026-07-04): only free/flat-rate lanes; work that can't run on
+  lanes 0-2 fails closed to human. A future version may add lane 3 with caps.
 - `router.mjs` — cheapest-safe-path routing; Red never leaves local;
   premium always requires approval; canon edits without a Promotion Packet
   are blocked outright; unknown work fails closed to human.
