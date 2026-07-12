@@ -57,14 +57,20 @@ Low technical infrastructure risk because the candidate is a static frontend wit
 
 Jules reported manual tests in `TEST_REPORT.md`, including responsive layouts, keyboard navigation, focus styling, reduced motion, JSON loading, puzzle unlocking, and refresh reset behavior.
 
-Independent senior audit remains pending.
+An independent senior audit was subsequently run in a live Chromium browser at
+360px, covering canon discipline, keyboard/touch and screen-reader operation,
+focus transfer, reduced motion, console/network cleanliness, and static-hosting
+compatibility. Five accessibility/technical blockers were found and fixed on
+this branch; see the "Independent senior audit" section of `TEST_REPORT.md`.
 
 ## Known limitations
 
 - Requires an HTTP server because the local JSON is loaded with the Fetch API.
 - Refreshing resets the experience.
 - Native range controls may render differently between browsers.
-- Screen-reader feedback, dynamic focus transfer, and final puzzle clarity require senior review.
+- Screen-reader feedback, dynamic focus transfer, and puzzle clarity were the
+  main audit concerns; they have been addressed and verified (see below). No
+  automated or cross-browser test suite is included.
 
 ## Canon and continuity risks
 
@@ -74,7 +80,7 @@ The artifact remains experimental and non-canonical regardless of automated reco
 
 ## Accessibility risks
 
-The candidate uses semantic sections, labels, native range inputs, live regions, visible styling for focus, and `prefers-reduced-motion`. A focused audit is still required for screen-reader puzzle feedback, focus movement after view changes, touch target comfort, and announcement of the unlocked revelation.
+The candidate uses semantic sections, labels, native range inputs, live regions, visible styling for focus, and `prefers-reduced-motion`. The senior audit added progressbar semantics and spoken strength feedback to the puzzle, moved focus into each newly shown view, clarified the instruction, and removed a noisy container-level live region. Touch-target comfort of native range thumbs on physical Android hardware remains unverified in this environment.
 
 ## Security and dependency review
 

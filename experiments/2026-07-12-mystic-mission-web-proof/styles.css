@@ -317,6 +317,12 @@ input[type=range]:focus::-webkit-slider-thumb {
   }
 }
 
+/* Section containers receive focus programmatically after view changes;
+   suppress their focus ring so only real controls show a visible ring. */
+.section:focus {
+  outline: none;
+}
+
 /* Accessible focus states */
 button:focus-visible,
 input[type="range"]:focus-visible,

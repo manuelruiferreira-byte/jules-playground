@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const freqSlider = document.getElementById('freq-slider');
   const phaseSlider = document.getElementById('phase-slider');
   const meterFill = document.getElementById('meter-fill');
+  const signalMeter = document.getElementById('signal-meter');
+  const signalStatus = document.getElementById('signal-status');
 
   // Navigation
   btnEnter.addEventListener('click', () => {
@@ -31,6 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       void transmissionView.offsetWidth;
       transmissionView.classList.add('active');
       initPuzzle();
+      // Move focus into the newly shown view so keyboard and screen-reader
+      // users are not stranded on the now-hidden landing button.
+      transmissionView.focus();
     }, 1000);
   });
 
@@ -83,6 +88,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const TARGET_PHASE = 42;
   const TOLERANCE = 5;
 
+  let locked = false;
+  let lastAnnouncedBucket = null;
+
   function initPuzzle() {
     freqSlider.addEventListener('input', checkSignal);
     phaseSlider.addEventListener('input', checkSignal);
@@ -103,6 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // If totally off (dist 200), strength 0.
     // If exact (dist 0), strength 100.
     let strength = Math.max(0, 100 - (totalDist / 2));
+    const rounded = Math.round(strength);
 
     meterFill.style.width = `${strength}%`;
 
@@ -112,17 +121,37 @@ document.addEventListener('DOMContentLoaded', async () => {
       meterFill.style.backgroundColor = 'var(--accent-damaged)';
     }
 
+    // Expose progress to assistive tech and give non-visual, directional
+    // feedback so a screen-reader user can hill-climb both controls to solve.
+    signalMeter.setAttribute('aria-valuenow', String(rounded));
+    signalMeter.setAttribute('aria-valuetext', `${rounded} percent`);
+
+    if (!locked) {
+      // Announce on coarse buckets only, to avoid flooding the live region
+      // on every arrow-key step while still signalling warmer / colder.
+      const bucket = Math.round(rounded / 10) * 10;
+      if (bucket !== lastAnnouncedBucket) {
+        lastAnnouncedBucket = bucket;
+        signalStatus.textContent = `Signal strength ${bucket} percent.`;
+      }
+    }
+
     if (fDist <= TOLERANCE && pDist <= TOLERANCE) {
       signalLocked();
     }
   }
 
   function signalLocked() {
+    if (locked) return;
+    locked = true;
     // Disable sliders
     freqSlider.disabled = true;
     phaseSlider.disabled = true;
     meterFill.style.width = '100%';
     meterFill.style.backgroundColor = 'var(--accent-sunlight)';
+    signalMeter.setAttribute('aria-valuenow', '100');
+    signalMeter.setAttribute('aria-valuetext', '100 percent. Signal locked.');
+    signalStatus.textContent = 'Signal locked. The hidden revelation is now available.';
 
     // Smooth transition
     setTimeout(() => {
@@ -132,6 +161,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         revelationView.classList.remove('hidden');
         void revelationView.offsetWidth;
         revelationView.classList.add('active');
+        // Move focus into the revelation so the unlocked text is announced
+        // and keyboard users land on the new view rather than nowhere.
+        revelationView.focus();
       }, 1000);
     }, 500);
   }

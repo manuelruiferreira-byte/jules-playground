@@ -79,9 +79,50 @@ A read-only source review confirmed:
 - The experience must be served over HTTP because `app.js` fetches the local JSON file.
 - Refresh intentionally resets all progress.
 - Native range controls may vary between browsers.
-- The meter has visual feedback, but screen-reader puzzle feedback and dynamic focus behavior require senior audit.
-- No automated browser test suite or cross-browser matrix is included.
+- The meter now exposes progress semantics and spoken strength feedback, and
+  focus is moved on view changes (verified in the senior audit below).
+- No automated browser test suite or cross-browser matrix is included; the
+  senior audit was run in Chromium only.
+
+## Independent senior audit (2026-07-12)
+
+An independent senior audit was run against a live browser at 360px width
+(Chromium via Playwright), driving the full landing → transmission → puzzle →
+revelation path with both mouse-equivalent and keyboard/programmatic input,
+under normal and `prefers-reduced-motion: reduce`.
+
+Confirmed passing:
+
+- No horizontal overflow at 360px; all four gateways render.
+- Puzzle solves at the documented tolerance; sliders disable on lock; refresh
+  resets to the landing threshold.
+- No off-host or failed network requests; static-hosting compatible.
+- Canon: Kael only; none of the withheld lore items appear in visible content.
+- Reduced-motion path completes fully.
+
+Blockers found and fixed on this branch:
+
+1. **Screen-reader puzzle feedback.** The strength meter was a presentational
+   `<div>` with no ARIA. It is now `role="progressbar"` with a live
+   `aria-valuenow`/`aria-valuetext`, and a `role="status"` region announces
+   bucketed strength ("Signal strength N percent") as controls move and
+   "Signal locked" on success — enough directional feedback to solve without
+   sight.
+2. **Focus transfer after view changes.** Focus previously fell to `<body>`
+   after Enter and after solving. Focus is now moved into the newly shown
+   `transmission-view` and `revelation-view` (both `tabindex="-1"` with
+   descriptive `aria-label`), so the revelation is announced and keyboard users
+   are not stranded.
+3. **Puzzle instruction clarity.** The instruction named only "frequency"
+   though both Frequency and Phase must align; it now names both and points to
+   the strength meter.
+4. **Live-region noise.** `aria-live="polite"` on the whole `#app` container
+   was removed; announcements now come from the dedicated status region.
+5. **Console error.** A `favicon.ico` 404 was eliminated with an inline icon
+   link; normal use now logs zero console errors.
 
 ## Current recommendation
 
-Ready for focused senior audit. Not yet approved for promotion or merge.
+Independent senior audit complete; the accessibility blockers above are fixed
+and verified. Remaining items are non-blocking limitations (see above). Still
+not approved for promotion or merge — that decision is Manuel's alone.
