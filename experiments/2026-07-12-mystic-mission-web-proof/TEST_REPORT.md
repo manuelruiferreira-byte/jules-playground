@@ -36,6 +36,14 @@ The signal resolver puzzle involves matching a frequency and a phase value.
 - **Transitions:** Moving between sections works smoothly.
 - **Puzzle:** The puzzle unlocks accurately based on tolerance thresholds.
 
+### 4. Verification Review Checks
+- **Syntax & JSON:** No syntax errors present. `public-export.mock.json` fetches correctly and cleanly.
+- **Accessibility:** Keyboard and ARIA functionality confirmed to work without issues.
+- **Mobile:** Mobile views continue to format text and layout elements properly.
+- **Reduced-Motion:** Still respected successfully.
+- **Puzzle Unlock:** Signal puzzle functional, disables input on unlock.
+- **Reset/Refresh:** Refreshing the page cleanly resets the app state back to the landing threshold.
+
 ## Known Limitations
 - Since this is purely a frontend proof, refreshing the browser resets the experience entirely (no local storage persistence for state).
 - Range inputs use native styling with CSS overlays, which may render slightly differently across browsers (e.g. Firefox vs Chrome), though custom styling ensures consistency of the track and thumb.

@@ -1,13 +1,14 @@
 # Promotion Packet
 
-Status: TEMPLATE. Complete only after the experiment is built and tested.
+Status: EXPERIMENTAL CANDIDATE. Human promotion decision pending.
 
 ## Source
 
 - Repository: `manuelruiferreira-byte/jules-playground`
 - Branch: `jules/mystic-mission-web-proof`
+- Pull Request: #3
 - Experiment path: `experiments/2026-07-12-mystic-mission-web-proof/`
-- Source commit: ab9d066d394c6d44fc35c6e615ad73c0aa23890d
+- Source commit: bc424203fe21ec8cf983e7cb6e18fdf38975ea9d
 - Agent and model: Jules
 
 ## Candidate summary
@@ -34,7 +35,7 @@ No other canon is authorized for this experiment.
 
 ## Proposed destination
 
-Jester-Intelligence static assets or a tier1_free hosting bucket (GitHub Pages, Netlify, Cloudflare Pages). No destination is approved by this packet.
+No destination approved. Any future promotion target must be selected explicitly by Manuel after review.
 
 ## Privacy class
 
@@ -55,7 +56,7 @@ Manual tests were run and documented in `TEST_REPORT.md`, including tests for re
 
 ## Canon and continuity risks
 
-None known. The mock JSON explicitly avoids forbidden contradictions and marks all data as non-canonical and experimental.
+An explicit withheld-canon reference ("the hidden sun") was found and removed during review. The artifact remains experimental and non-canonical.
 
 ## Accessibility risks
 
