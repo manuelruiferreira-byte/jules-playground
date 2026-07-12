@@ -6,17 +6,25 @@ Status: EXPERIMENTAL CANDIDATE. Human promotion decision pending.
 
 - Repository: `manuelruiferreira-byte/jules-playground`
 - Branch: `jules/mystic-mission-web-proof`
-- Pull Request: #3
+- Pull Request: #2
 - Experiment path: `experiments/2026-07-12-mystic-mission-web-proof/`
-- Source commit: bc424203fe21ec8cf983e7cb6e18fdf38975ea9d
+- Jules implementation baseline commit: `109c780bc9ad7f0094ba4a9d11fd83873132b36e`
+- Current review head: use the latest head SHA shown on PR #2
 - Agent and model: Jules
+- Consolidation note: Jules originally opened duplicate PR #3 on an automatically suffixed branch. The completed tree was transferred to the intended branch and PR #3 was closed without merge.
 
 ## Candidate summary
 
-A zero-cost, static, mobile-first public doorway proof for Mystic Mission. It successfully implements the threshold arrival, a damaged transmission, an accessible signal-resolver puzzle using sliders, a hidden revelation view, and four future gateways. It is fully self-contained and ready for free hosting.
+A zero-cost, static, mobile-first public doorway proof for Mystic Mission. It implements the threshold arrival, a damaged transmission, a signal-resolver puzzle using native range controls, a hidden revelation view, and four future gateways.
+
+This remains an experimental, non-canonical candidate. Readiness for promotion has not been decided.
 
 ## Files created or changed
 
+- `CANON_EXTRACT.md`
+- `EVALUATION_RUBRIC.md`
+- `INPUT_PACKET.md`
+- `TASK.json`
 - `public-export.mock.json`
 - `index.html`
 - `styles.css`
@@ -43,32 +51,38 @@ Public experiment with no personal or secret data.
 
 ## Risk class
 
-Low. Purely static frontend experience with no backend or external dependencies.
+Low technical infrastructure risk because the candidate is a static frontend with no backend or third-party runtime dependencies. Experience, accessibility, and canon risks remain subject to senior audit.
 
 ## Tests run
 
-Manual tests were run and documented in `TEST_REPORT.md`, including tests for responsiveness, keyboard navigation, focus states, and the logical unlocking mechanism of the signal puzzle.
+Jules reported manual tests in `TEST_REPORT.md`, including responsive layouts, keyboard navigation, focus styling, reduced motion, JSON loading, puzzle unlocking, and refresh reset behavior.
+
+Independent senior audit remains pending.
 
 ## Known limitations
 
-- Requires HTTP server due to Fetch API CORS policy.
-- No persistence between refreshes.
+- Requires an HTTP server because the local JSON is loaded with the Fetch API.
+- Refreshing resets the experience.
+- Native range controls may render differently between browsers.
+- Screen-reader feedback, dynamic focus transfer, and final puzzle clarity require senior review.
 
 ## Canon and continuity risks
 
-An explicit withheld-canon reference ("the hidden sun") was found and removed during review. The artifact remains experimental and non-canonical.
+An explicit withheld-canon reference, `the hidden sun`, was found and removed during Jules review. The current public mock uses Kael and does not expose the named withheld concepts from `CANON_EXTRACT.md`.
+
+The artifact remains experimental and non-canonical regardless of automated recommendations.
 
 ## Accessibility risks
 
-Minimal. Has ARIA labels and live regions, customized focus states, and respects `prefers-reduced-motion`.
+The candidate uses semantic sections, labels, native range inputs, live regions, visible styling for focus, and `prefers-reduced-motion`. A focused audit is still required for screen-reader puzzle feedback, focus movement after view changes, touch target comfort, and announcement of the unlocked revelation.
 
 ## Security and dependency review
 
-Zero dependencies. No secrets, no API keys, no external resources loaded.
+No secrets, API keys, live AI calls, analytics, accounts, payments, databases, external fonts, remote images, or external runtime libraries were found in the implementation files.
 
 ## Rollback
 
-Delete or revert the experiment folder and its branch. No other repository should be affected.
+Revert or delete the experiment folder from the experimental branch. No other repository should be affected.
 
 ## Human decision
 
