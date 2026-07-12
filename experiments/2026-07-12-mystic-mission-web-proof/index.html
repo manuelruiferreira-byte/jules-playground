@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYSTIC MISSION - Experimental Proof</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="An experimental transmedia story doorway. Reality contains a hidden layer.">
+</head>
+<body>
+
+  <main class="experience-container" id="app" aria-live="polite">
+
+    <!-- 1. Landing / Threshold -->
+    <section id="landing" class="section active" aria-labelledby="site-title">
+      <div class="content-wrapper">
+        <h1 class="title" id="site-title"></h1>
+        <p class="subtitle" id="site-subtitle"></p>
+        <button id="btn-enter" class="action-btn" aria-label="Enter the signal" tabindex="0">ENTER THE SIGNAL</button>
+      </div>
+    </section>
+
+    <!-- 2. Story Introduction & 3. Damaged Transmission -->
+    <section id="transmission-view" class="section hidden">
+      <div class="content-wrapper">
+        <div id="intro-container" class="intro-text">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="transmission-box" role="region" aria-label="Damaged Transmission">
+          <div class="transmission-header">
+            <span class="status-indicator warning"></span>
+            <span class="timestamp" id="trans-timestamp"></span>
+            <span class="status-text">SIGNAL DAMAGED</span>
+          </div>
+          <div class="transmission-body" id="trans-lines">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 4. Signal Resolver -->
+        <div class="resolver-container" role="region" aria-labelledby="resolver-title">
+          <h2 id="resolver-title" class="sr-only">Signal Resolver</h2>
+          <p class="resolver-instruction" aria-live="polite">Align frequency to stabilize transmission.</p>
+
+          <div class="controls">
+            <div class="control-group">
+              <label for="freq-slider">Frequency</label>
+              <input type="range" id="freq-slider" min="0" max="100" value="10" aria-valuemin="0" aria-valuemax="100" aria-label="Frequency slider" tabindex="0">
+            </div>
+            <div class="control-group">
+              <label for="phase-slider">Phase</label>
+              <input type="range" id="phase-slider" min="0" max="100" value="80" aria-valuemin="0" aria-valuemax="100" aria-label="Phase slider" tabindex="0">
+            </div>
+            <div class="signal-meter">
+              <div class="meter-bar" id="meter-fill"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Hidden Revelation & 6. Gateways -->
+    <section id="revelation-view" class="section hidden">
+      <div class="content-wrapper">
+
+        <div class="revelation-box" role="region" aria-label="Hidden Revelation">
+           <div class="transmission-header">
+            <span class="status-indicator success"></span>
+            <span class="status-text">SIGNAL LOCKED</span>
+          </div>
+          <div id="revelation-text" class="revelation-content">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="gateways-container">
+          <h2>GATEWAYS</h2>
+          <div id="gateways-grid" class="gateways-grid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. Credits / Status -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>STATUS: EXPERIMENTAL NON-CANONICAL PROOF</p>
+      <p>No account, tracking profile, paid AI inference, or payment is required.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "export_version": "mystic-public-export.v0.1",
+  "status": "experimental_mock",
+  "experience": {
+    "title": "MYSTIC MISSION",
+    "subtitle": "Reality contains a hidden layer.",
+    "intro": [
+      "The war is about remembrance, not conquest.",
+      "History may have been edited.",
+      "A damaged signal has crossed from an erased timeline."
+    ],
+    "transmission": {
+      "timestamp": "04:19:82-ERR",
+      "lines": [
+        "KAEL // are you receiving this?",
+        "the geometry is... [SIGNAL LOSS]",
+        "they edited the... [INTERRUPTION]",
+        "remember the hidden sun.",
+        "KAEL // do not let them overwrite the memory."
+      ]
+    },
+    "revelation": [
+      "You are not fighting to win.",
+      "You are fighting to remember.",
+      "The signal did not survive the timeline.",
+      "It survived inside you."
+    ],
+    "gateways": [
+      {
+        "name": "Book",
+        "description": "A deeper dive into the written memory of erased timelines."
+      },
+      {
+        "name": "Film",
+        "description": "Cinematic echoes of the events that shattered our reality."
+      },
+      {
+        "name": "Game",
+        "description": "Interactive reconstruction of the hidden war."
+      },
+      {
+        "name": "Mystic Mission",
+        "description": "The central nexus and source of the transmission."
+      }
+    ]
+  }
+}
