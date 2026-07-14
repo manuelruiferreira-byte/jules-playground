@@ -1,0 +1,645 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jester-intelligence.local/schemas/command-center/kairoth-snapshot-v0.1.schema.json",
+  "title": "Kairoth Command Center Snapshot v0.1",
+  "description": "Compact, privacy-filtered snapshot for rendering, screenshot interpretation, connector retrieval, Markdown export, JSON export, and offline cached display.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "timezone",
+    "state_hash",
+    "system_health",
+    "source_synchronization_status",
+    "active_agents",
+    "running_processes",
+    "repositories_requiring_attention",
+    "open_pull_requests_requiring_attention",
+    "top_blockers",
+    "waiting_for_manuel",
+    "current_mission",
+    "current_phase",
+    "next_gate",
+    "recent_completed_milestones",
+    "stale_sources",
+    "contradictions",
+    "security_warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp generated in Europe/Brussels."
+    },
+    "timezone": {
+      "const": "Europe/Brussels"
+    },
+    "state_hash": {
+      "$ref": "#/$defs/sha256Hash"
+    },
+    "system_health": {
+      "$ref": "#/$defs/compactStatus"
+    },
+    "source_synchronization_status": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceSyncStatus"
+      }
+    },
+    "active_agents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/compactAgent"
+      }
+    },
+    "running_processes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/compactProcess"
+      }
+    },
+    "repositories_requiring_attention": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attentionItem"
+      }
+    },
+    "open_pull_requests_requiring_attention": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attentionItem"
+      }
+    },
+    "top_blockers": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/attentionItem"
+      }
+    },
+    "waiting_for_manuel": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/waitingItem"
+      }
+    },
+    "current_mission": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "current_phase": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "next_gate": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "recent_completed_milestones": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/$defs/milestone"
+      }
+    },
+    "stale_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/staleSource"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/compactContradiction"
+      }
+    },
+    "security_warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/securityWarning"
+      }
+    },
+    "rendering_notes": {
+      "type": "array",
+      "description": "Plain text notes that keep the snapshot understandable without animation, hover, or colour.",
+      "items": {
+        "type": "string",
+        "maxLength": 500
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@-]*$"
+    },
+    "sha256Hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "canonical",
+        "provisional",
+        "stale",
+        "conflicting",
+        "inaccessible",
+        "unknown"
+      ]
+    },
+    "verificationStatus": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "partially_verified",
+        "unverified",
+        "stale",
+        "conflicting",
+        "inaccessible",
+        "unknown"
+      ]
+    },
+    "compactStatus": {
+      "type": "object",
+      "required": [
+        "label",
+        "status",
+        "classification",
+        "observed_at",
+        "last_verified_at"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "healthy",
+            "degraded",
+            "offline",
+            "blocked",
+            "unknown"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "verification": {
+          "$ref": "#/$defs/verificationStatus"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_verified_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceRef": {
+      "type": "object",
+      "required": [
+        "id",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "sourceSyncStatus": {
+      "type": "object",
+      "required": [
+        "source",
+        "source_type",
+        "status",
+        "observed_at",
+        "last_verified_at",
+        "classification"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "mission_control",
+            "github",
+            "local_git",
+            "filesystem",
+            "aced_mem",
+            "obsidian",
+            "jester_intelligence",
+            "chatgpt_connector",
+            "local_process",
+            "manual",
+            "unknown"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "synced",
+            "stale",
+            "offline",
+            "inaccessible",
+            "conflicting",
+            "unknown"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_verified_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "safe_error_summary": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        }
+      },
+      "additionalProperties": false
+    },
+    "compactAgent": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "role",
+        "status",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "idle",
+            "assigned",
+            "running",
+            "reviewing",
+            "blocked",
+            "complete",
+            "unknown"
+          ]
+        },
+        "current_assignment": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "compactProcess": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "status",
+        "classification",
+        "observed_at"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "running",
+            "stopped",
+            "unresponsive",
+            "unknown"
+          ]
+        },
+        "safe_command_summary": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "attentionItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "reason",
+        "attention_level",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "attention_level": {
+          "type": "string",
+          "enum": [
+            "watch",
+            "needs_review",
+            "waiting_for_manuel",
+            "blocked",
+            "firebreak"
+          ]
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "waitingItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "approval_or_question",
+        "why_manual",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "approval_or_question": {
+          "type": "string",
+          "enum": [
+            "merge",
+            "canon",
+            "deployment",
+            "spending",
+            "publication",
+            "privacy",
+            "memory_promotion",
+            "question",
+            "irreversible_action",
+            "other"
+          ]
+        },
+        "why_manual": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "milestone": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "completed_at",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "staleSource": {
+      "type": "object",
+      "required": [
+        "source",
+        "stale_reason",
+        "last_verified_at"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "stale_reason": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "last_verified_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "recommended_refresh": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        }
+      },
+      "additionalProperties": false
+    },
+    "compactContradiction": {
+      "type": "object",
+      "required": [
+        "id",
+        "subject",
+        "summary",
+        "classification",
+        "proposed_check"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "subject": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 700
+        },
+        "classification": {
+          "const": "conflicting"
+        },
+        "proposed_check": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "securityWarning": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "severity",
+        "safe_summary",
+        "classification"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/stableId"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "safe_summary": {
+          "type": "string",
+          "maxLength": 700
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
