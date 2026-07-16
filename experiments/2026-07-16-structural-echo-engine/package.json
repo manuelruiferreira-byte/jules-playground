@@ -1,0 +1,9 @@
+{
+  "name": "structural-echo-engine",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "SEE v0.1 - automatic structural echo loop over node:sqlite. Free dependencies only (ajv for contract validation).",
+  "scripts": { "slice": "node run-slice.mjs" },
+  "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1" }
+}

@@ -1,0 +1,1056 @@
+{
+  "produced_at": "2026-07-16T13:11:54Z",
+  "note": "Raw rankings for every probe and method, produced before ground-truth scoring.",
+  "rankings": {
+    "traj:netlify-gate-drift": {
+      "structural": [
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.581
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.58
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.51
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.394
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.393
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.332
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.257
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.251
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.238
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.215
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.199
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.172
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        }
+      ],
+      "sequence": [
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.471
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.463
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.365
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.333
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.333
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.309
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.236
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.236
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.236
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.183
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.183
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        }
+      ],
+      "semantic": [
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.11
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.097
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.064
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.062
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.049
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.047
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.04
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.04
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.033
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.031
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.028
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.016
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.012
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.011
+        }
+      ],
+      "keyword": [
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.074
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.067
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.034
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0
+        }
+      ],
+      "recency": [
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.99
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.98
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.95
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.917
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.413
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.352
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.299
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.228
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.218
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.187
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.181
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.136
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.12
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.028
+        }
+      ],
+      "random_control": [
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.929
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.896
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.84
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.78
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.719
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.468
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.331
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.289
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.137
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.116
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.115
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.09
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.07
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.029
+        }
+      ]
+    },
+    "traj:kairoth-csp-blank-window": {
+      "structural": [
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.65
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.581
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.478
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.4
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.381
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.377
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.369
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.318
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.269
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.256
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.244
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.191
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        }
+      ],
+      "sequence": [
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.617
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.507
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.463
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.463
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.436
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.436
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.436
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.429
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.169
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.143
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0
+        }
+      ],
+      "semantic": [
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.097
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.059
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.041
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.035
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.034
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.031
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.029
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.022
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.022
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.02
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.017
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.014
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.009
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.002
+        }
+      ],
+      "keyword": [
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.04
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.037
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.036
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0
+        }
+      ],
+      "recency": [
+        {
+          "id": "traj:qf-001",
+          "score": 0.667
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.52
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.49
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.444
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.333
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.316
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.307
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.304
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.301
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.3
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.299
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.2
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.167
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.029
+        }
+      ],
+      "random_control": [
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.798
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.786
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.708
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.691
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.63
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.61
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.563
+        },
+        {
+          "id": "traj:mystic-web-proof-audit",
+          "score": 0.493
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.301
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.277
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.254
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.185
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.164
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.131
+        }
+      ]
+    },
+    "traj:mystic-web-proof-audit": {
+      "structural": [
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.637
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.551
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.418
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.381
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.348
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.332
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.3
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.207
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.173
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.102
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.082
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.064
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        }
+      ],
+      "sequence": [
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.707
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.667
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.617
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.471
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.463
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.333
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.183
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.183
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.154
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0
+        }
+      ],
+      "semantic": [
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.047
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.042
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.029
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.029
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.026
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.025
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.022
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.021
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.018
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.015
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.015
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.014
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.013
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.006
+        }
+      ],
+      "keyword": [
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.074
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.036
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.034
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.033
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.033
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0
+        }
+      ],
+      "recency": [
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.828
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.571
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.522
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.444
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.364
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.315
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.267
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.222
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.22
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.219
+        },
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.218
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.218
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.211
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.031
+        }
+      ],
+      "random_control": [
+        {
+          "id": "traj:kces-vertical-slice",
+          "score": 0.958
+        },
+        {
+          "id": "traj:convergenceverse-phase-a",
+          "score": 0.941
+        },
+        {
+          "id": "traj:qf-001",
+          "score": 0.868
+        },
+        {
+          "id": "traj:aced-routing-corrections",
+          "score": 0.837
+        },
+        {
+          "id": "traj:v03-contracts-hardening",
+          "score": 0.675
+        },
+        {
+          "id": "traj:sipr-exp-001",
+          "score": 0.655
+        },
+        {
+          "id": "traj:story-router-v02",
+          "score": 0.595
+        },
+        {
+          "id": "traj:ace-mind-annual-freeze",
+          "score": 0.463
+        },
+        {
+          "id": "traj:squash-merge-ancestry",
+          "score": 0.423
+        },
+        {
+          "id": "traj:kairoth-csp-blank-window",
+          "score": 0.331
+        },
+        {
+          "id": "traj:mission-control-access",
+          "score": 0.312
+        },
+        {
+          "id": "traj:sipr-reconstruction",
+          "score": 0.211
+        },
+        {
+          "id": "traj:netlify-gate-drift",
+          "score": 0.198
+        },
+        {
+          "id": "traj:weatherhack-pivot",
+          "score": 0.03
+        }
+      ]
+    }
+  }
+}

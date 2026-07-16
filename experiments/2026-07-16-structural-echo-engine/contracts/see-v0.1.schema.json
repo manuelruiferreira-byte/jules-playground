@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jester-intelligence.local/schemas/command-center/see-v0.1.schema.json",
+  "title": "SIPR Structural Echo Engine v0.1 — record contracts",
+  "description": "Versioned contracts for the Echo Engine's derived, rebuildable projection. The engine is NOT a canonical ledger: every record carries provenance back to canonical evidence (git, Mission Control, session artifacts). Prototype stage: contracts live with the experiment and promote to Jester-Intelligence only after validation.",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "see-0.1" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/anyRecord" } }
+  },
+  "$defs": {
+    "anyRecord": {
+      "oneOf": [
+        { "$ref": "#/$defs/trajectory" }, { "$ref": "#/$defs/event" },
+        { "$ref": "#/$defs/anchorDefinition" }, { "$ref": "#/$defs/relation" },
+        { "$ref": "#/$defs/fingerprint" }, { "$ref": "#/$defs/echo" },
+        { "$ref": "#/$defs/hypothesis" }, { "$ref": "#/$defs/experiment" },
+        { "$ref": "#/$defs/audit" }, { "$ref": "#/$defs/utilityOutcome" },
+        { "$ref": "#/$defs/lesson" }, { "$ref": "#/$defs/exception" }
+      ]
+    },
+    "stableId": { "type": "string", "minLength": 1, "maxLength": 160, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@-]*$" },
+    "sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "provenance": {
+      "type": "object",
+      "required": ["source"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string", "maxLength": 500 },
+        "commit_sha": { "type": ["string", "null"], "pattern": "^[a-f0-9]{7,40}$" },
+        "uri": { "type": ["string", "null"] },
+        "digest": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/sha256" }] },
+        "verified": { "type": "boolean" }
+      }
+    },
+    "eventKind": {
+      "type": "string",
+      "enum": [
+        "question_created", "hypothesis_created", "evidence_found",
+        "contradiction_detected", "pivot_taken", "experiment_created",
+        "control_added", "test_failed", "result_stabilized",
+        "decision_made", "decision_superseded", "rollback_triggered",
+        "outcome_measured"
+      ]
+    },
+    "trajectory": {
+      "type": "object",
+      "required": ["record_type", "id", "title", "objective", "status", "started_at", "domains", "provenance"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "trajectory" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "title": { "type": "string", "maxLength": 240 },
+        "objective": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["active", "completed", "abandoned", "superseded", "unknown"] },
+        "started_at": { "type": "string", "format": "date-time" },
+        "ended_at": { "type": ["string", "null"], "format": "date-time" },
+        "outcome": { "type": ["string", "null"], "maxLength": 1000 },
+        "domains": { "type": "array", "minItems": 1, "items": { "type": "string", "maxLength": 80 } },
+        "repositories": { "type": "array", "items": { "type": "string", "maxLength": 160 } },
+        "agents": { "type": "array", "items": { "type": "string", "maxLength": 80 } },
+        "dependencies": { "type": "array", "items": { "$ref": "#/$defs/stableId" } },
+        "pivots": { "type": "array", "items": { "$ref": "#/$defs/stableId" } },
+        "weakened_assumptions": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["record_type", "id", "trajectory_id", "kind", "at", "summary", "provenance"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "event" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "trajectory_id": { "$ref": "#/$defs/stableId" },
+        "kind": { "$ref": "#/$defs/eventKind" },
+        "at": { "type": "string", "format": "date-time" },
+        "summary": { "type": "string", "maxLength": 700 },
+        "payload": {
+          "type": "object",
+          "description": "Small factual flags recorded at capture time (not retrospective tags): e.g. directional, environment_specific, mechanism, assumption, correction, durability_risk, accepted_falsification, sources.",
+          "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "anchorDefinition": {
+      "type": "object",
+      "required": ["record_type", "id", "key", "version", "rule", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "anchor_definition" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "key": { "type": "string", "maxLength": 80 },
+        "version": { "type": "string", "maxLength": 20 },
+        "rule": { "type": "string", "maxLength": 500, "description": "Deterministic, sequence-structural detection rule (human-readable form of the code)." },
+        "description": { "type": "string", "maxLength": 500 }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "required": ["record_type", "id", "src", "dst", "relation_type"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "relation" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "src": { "$ref": "#/$defs/stableId" },
+        "dst": { "$ref": "#/$defs/stableId" },
+        "relation_type": { "type": "string", "enum": ["exhibits_anchor", "depends_on", "supersedes", "echoes", "derived_from", "evidence_for"] },
+        "evidence_event_id": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/stableId" }] },
+        "note": { "type": ["string", "null"], "maxLength": 500 }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "required": ["record_type", "id", "trajectory_id", "anchors", "sequence_signature", "extractor_version"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "fingerprint" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "trajectory_id": { "$ref": "#/$defs/stableId" },
+        "anchors": { "type": "array", "items": { "type": "string", "maxLength": 80 } },
+        "sequence_signature": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 1 }, "description": "Event-kind bigram multiset." },
+        "extractor_version": { "type": "string", "maxLength": 20 }
+      }
+    },
+    "echo": {
+      "type": "object",
+      "required": ["record_type", "id", "probe_trajectory", "matched_trajectory", "method", "score", "explanation", "created_at"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "echo" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "probe_trajectory": { "$ref": "#/$defs/stableId" },
+        "matched_trajectory": { "$ref": "#/$defs/stableId" },
+        "method": { "type": "string", "enum": ["structural", "sequence", "semantic", "keyword", "recency", "random_control"] },
+        "score": { "type": "number" },
+        "explanation": { "type": "string", "maxLength": 1500, "description": "Mandatory human-readable WHY: shared anchors and motifs. Never only a score." },
+        "shared_anchors": { "type": "array", "items": { "type": "string" } },
+        "suppressed": { "type": "boolean" },
+        "suppression_reason": { "type": ["string", "null"], "maxLength": 300 },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "hypothesis": {
+      "type": "object",
+      "required": ["record_type", "id", "source_trajectories", "matching_features", "predicted_implication", "confidence", "risk_class", "disconfirming_result", "resource_budget_ms", "rollback_path"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "hypothesis" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "source_trajectories": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/stableId" } },
+        "matching_features": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "predicted_implication": { "type": "string", "maxLength": 1000 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "expected_information_gain": { "type": ["string", "null"], "maxLength": 500 },
+        "risk_class": { "type": "string", "enum": ["R0", "R1", "R2", "R3"] },
+        "disconfirming_result": { "type": "string", "maxLength": 500 },
+        "resource_budget_ms": { "type": "integer", "minimum": 0 },
+        "permissions": { "type": "array", "items": { "type": "string" } },
+        "possible_harm": { "type": ["string", "null"], "maxLength": 500 },
+        "rollback_path": { "type": "string", "maxLength": 500 }
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "required": ["record_type", "id", "hypothesis_id", "preregistration_digest", "baseline", "intervention", "comparators", "negative_controls", "success_threshold", "failure_threshold", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "experiment" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "hypothesis_id": { "$ref": "#/$defs/stableId" },
+        "preregistration_digest": { "$ref": "#/$defs/sha256" },
+        "baseline": { "type": "string", "maxLength": 500 },
+        "intervention": { "type": "string", "maxLength": 500 },
+        "comparators": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "negative_controls": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "measurement_window": { "type": ["string", "null"], "maxLength": 300 },
+        "success_threshold": { "type": "string", "maxLength": 500 },
+        "failure_threshold": { "type": "string", "maxLength": 500 },
+        "stopping_condition": { "type": ["string", "null"], "maxLength": 300 },
+        "resource_account_ms": { "type": ["integer", "null"], "minimum": 0 },
+        "protocol_deviations": { "type": "array", "items": { "type": "string", "maxLength": 500 } },
+        "status": { "type": "string", "enum": ["designed", "running", "completed", "aborted"] },
+        "result_summary": { "type": ["string", "null"], "maxLength": 1500 },
+        "classification": { "type": ["string", "null"], "enum": ["supported", "provisional", "unsupported", "invalid", null] }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "required": ["record_type", "id", "subject_ref", "verdict", "auditor", "auditor_is_builder", "evaluator_version", "checks", "issued_at"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "audit" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "subject_ref": { "$ref": "#/$defs/stableId" },
+        "verdict": { "type": "string", "enum": ["pass", "pass_narrowed", "rerun_requested", "reject", "quarantine", "sovereign_exception"] },
+        "auditor": { "type": "string", "maxLength": 240 },
+        "auditor_is_builder": { "type": "boolean" },
+        "evaluator_version": { "type": "string", "maxLength": 40 },
+        "checks": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["check", "result"],
+            "additionalProperties": false,
+            "properties": {
+              "check": { "type": "string", "maxLength": 240 },
+              "result": { "type": "string", "enum": ["pass", "fail", "skip"] },
+              "detail": { "type": ["string", "null"], "maxLength": 700 }
+            }
+          }
+        },
+        "issued_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "utilityOutcome": {
+      "type": "object",
+      "required": ["record_type", "id", "echo_cycle_ref", "signals", "measured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "utility_outcome" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "echo_cycle_ref": { "$ref": "#/$defs/stableId" },
+        "signals": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated_experiment": { "type": "boolean" },
+            "survived_audit": { "type": "boolean" },
+            "uncertainty_reduced": { "type": "boolean" },
+            "beat_simpler_retrieval": { "type": ["boolean", "null"] },
+            "caused_rollback": { "type": "boolean" },
+            "resource_cost_ms": { "type": "integer", "minimum": 0 },
+            "information_gain_note": { "type": ["string", "null"], "maxLength": 500 }
+          }
+        },
+        "manual_feedback": { "type": ["string", "null"], "maxLength": 500, "description": "Optional. Never required for learning." },
+        "measured_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "required": ["record_type", "id", "status", "statement", "links", "created_at"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "lesson" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "status": { "type": "string", "enum": ["retained", "weakened", "rejected", "superseded", "domain_specific", "transferable", "inconclusive", "quarantined"] },
+        "statement": { "type": "string", "maxLength": 1000 },
+        "links": {
+          "type": "object",
+          "required": ["source_trajectories", "experiment", "audit"],
+          "additionalProperties": false,
+          "properties": {
+            "source_events": { "type": "array", "items": { "$ref": "#/$defs/stableId" } },
+            "source_trajectories": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/stableId" } },
+            "experiment": { "$ref": "#/$defs/stableId" },
+            "code_revision": { "type": ["string", "null"], "pattern": "^[a-f0-9]{7,40}$" },
+            "evaluator_version": { "type": ["string", "null"] },
+            "audit": { "$ref": "#/$defs/stableId" },
+            "promotion": { "type": ["string", "null"] },
+            "measurement_window": { "type": ["string", "null"] },
+            "supersedes": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/stableId" }] }
+          }
+        },
+        "governed_memory_status": { "type": "string", "enum": ["engine_only", "staged_for_aced_mem", "promoted", "rejected"], "description": "Promotion into ACED-Mem is staged, never automatic in v0.1 (calibration)." },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "exception": {
+      "type": "object",
+      "required": ["record_type", "id", "severity", "summary", "requires_manuel", "raised_at"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "exception" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "severity": { "type": "string", "enum": ["info", "warning", "sovereign"] },
+        "summary": { "type": "string", "maxLength": 1000 },
+        "requires_manuel": { "type": "boolean" },
+        "raised_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

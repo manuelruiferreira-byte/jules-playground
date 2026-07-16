@@ -1,0 +1,158 @@
+{
+  "view": "kairoth-echo-engine-v0.1",
+  "generated_at": "2026-07-16T13:11:54Z",
+  "current_trajectory": {
+    "id": "traj:see-slice-itself",
+    "title": "SEE v0.1 vertical slice",
+    "status": "completed"
+  },
+  "detected_echoes": [
+    {
+      "probe": "traj:netlify-gate-drift",
+      "matched": "traj:kairoth-csp-blank-window",
+      "score": 0.581,
+      "why": "Both trajectories exhibit: conflicting_observers (Two observation channels asserted incompatible truths.); failed_assumption_reframed (A named assumption failed and the approach was reframed.); hidden_environment_dependency (It worked in one environment and failed in the real one.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: contradiction_detected → evidence_found, pivot_taken → control_added, control_added → result_stabilized.",
+      "shared_anchors": [
+        "conflicting_observers",
+        "failed_assumption_reframed",
+        "hidden_environment_dependency",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:netlify-gate-drift",
+      "matched": "traj:aced-routing-corrections",
+      "score": 0.58,
+      "why": "Both trajectories exhibit: boundary_calibration (An enforcement boundary had to be recalibrated (under- or over-blocking).); failed_assumption_reframed (A named assumption failed and the approach was reframed.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: pivot_taken → control_added, control_added → result_stabilized.",
+      "shared_anchors": [
+        "boundary_calibration",
+        "failed_assumption_reframed",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:netlify-gate-drift",
+      "matched": "traj:v03-contracts-hardening",
+      "score": 0.51,
+      "why": "Both trajectories exhibit: boundary_calibration (An enforcement boundary had to be recalibrated (under- or over-blocking).); conflicting_observers (Two observation channels asserted incompatible truths.); failed_assumption_reframed (A named assumption failed and the approach was reframed.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: pivot_taken → control_added, control_added → result_stabilized.",
+      "shared_anchors": [
+        "boundary_calibration",
+        "conflicting_observers",
+        "failed_assumption_reframed",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:kairoth-csp-blank-window",
+      "matched": "traj:ace-mind-annual-freeze",
+      "score": 0.65,
+      "why": "Both trajectories exhibit: failed_assumption_reframed (A named assumption failed and the approach was reframed.); hidden_environment_dependency (It worked in one environment and failed in the real one.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.); strong_signal_weak_mechanism (A clear symptom existed while its mechanism was initially unknown.). Shared event-order motifs: test_failed → evidence_found, pivot_taken → control_added, control_added → result_stabilized, result_stabilized → decision_made.",
+      "shared_anchors": [
+        "failed_assumption_reframed",
+        "hidden_environment_dependency",
+        "recovery_after_reframing",
+        "resolution_through_control",
+        "strong_signal_weak_mechanism"
+      ]
+    },
+    {
+      "probe": "traj:kairoth-csp-blank-window",
+      "matched": "traj:netlify-gate-drift",
+      "score": 0.581,
+      "why": "Both trajectories exhibit: conflicting_observers (Two observation channels asserted incompatible truths.); failed_assumption_reframed (A named assumption failed and the approach was reframed.); hidden_environment_dependency (It worked in one environment and failed in the real one.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: contradiction_detected → evidence_found, pivot_taken → control_added, control_added → result_stabilized.",
+      "shared_anchors": [
+        "conflicting_observers",
+        "failed_assumption_reframed",
+        "hidden_environment_dependency",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:kairoth-csp-blank-window",
+      "matched": "traj:squash-merge-ancestry",
+      "score": 0.478,
+      "why": "Both trajectories exhibit: conflicting_observers (Two observation channels asserted incompatible truths.); recovery_after_reframing (The trajectory recovered after reframing the approach.); strong_signal_weak_mechanism (A clear symptom existed while its mechanism was initially unknown.). Shared event-order motifs: contradiction_detected → evidence_found, evidence_found → pivot_taken.",
+      "shared_anchors": [
+        "conflicting_observers",
+        "recovery_after_reframing",
+        "strong_signal_weak_mechanism"
+      ]
+    },
+    {
+      "probe": "traj:mystic-web-proof-audit",
+      "matched": "traj:ace-mind-annual-freeze",
+      "score": 0.637,
+      "why": "Both trajectories exhibit: failed_assumption_reframed (A named assumption failed and the approach was reframed.); recovery_after_reframing (The trajectory recovered after reframing the approach.); repeated_failure_under_assumption (The same assumption produced repeated failures before being questioned.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: test_failed → pivot_taken, pivot_taken → control_added, control_added → result_stabilized, result_stabilized → decision_made.",
+      "shared_anchors": [
+        "failed_assumption_reframed",
+        "recovery_after_reframing",
+        "repeated_failure_under_assumption",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:mystic-web-proof-audit",
+      "matched": "traj:aced-routing-corrections",
+      "score": 0.551,
+      "why": "Both trajectories exhibit: failed_assumption_reframed (A named assumption failed and the approach was reframed.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: test_failed → pivot_taken, pivot_taken → control_added, control_added → result_stabilized.",
+      "shared_anchors": [
+        "failed_assumption_reframed",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    },
+    {
+      "probe": "traj:mystic-web-proof-audit",
+      "matched": "traj:v03-contracts-hardening",
+      "score": 0.418,
+      "why": "Both trajectories exhibit: failed_assumption_reframed (A named assumption failed and the approach was reframed.); recovery_after_reframing (The trajectory recovered after reframing the approach.); resolution_through_control (A verifying control was added and the trajectory stabilized after it.). Shared event-order motifs: test_failed → pivot_taken, pivot_taken → control_added, control_added → result_stabilized, result_stabilized → decision_made.",
+      "shared_anchors": [
+        "failed_assumption_reframed",
+        "recovery_after_reframing",
+        "resolution_through_control"
+      ]
+    }
+  ],
+  "hypothesis": {
+    "id": "hyp:see-structural-beats-simple-retrieval",
+    "implication": "Structural anchor retrieval ranks the preregistered cross-domain matches above TF-IDF semantic, keyword, recency and random retrieval on this corpus.",
+    "risk_class": "R1"
+  },
+  "experiment_state": {
+    "id": "exp:see-exp-001b",
+    "status": "completed",
+    "classification": "provisional",
+    "summary": "MRR — structural 0.511, sequence 0.426, semantic 0.257, keyword 0.228, recency 0.244, random 0.25. Structural ranks (per probe): 3, 1, 5. Beats 4/4 baselines; hits@1=1."
+  },
+  "audit_state": {
+    "id": "audit:see-exp-001b-deterministic",
+    "verdict": "pass",
+    "auditor_is_builder": true,
+    "checks_passed": 12,
+    "checks_total": 12
+  },
+  "promotion_state": {
+    "governed_memory": "engine_only",
+    "note": "Independent (non-builder) review required before any promotion; autonomy in calibration."
+  },
+  "measured_result": {
+    "generated_experiment": true,
+    "survived_audit": true,
+    "uncertainty_reduced": true,
+    "beat_simpler_retrieval": null,
+    "caused_rollback": false,
+    "resource_cost_ms": 37,
+    "information_gain_note": "Structural vs best baseline MRR gap: 0.254."
+  },
+  "lesson": {
+    "id": "lesson:structural-retrieval-v0-1b",
+    "status": "domain_specific",
+    "statement": "Structural anchor retrieval outranked most baselines at locating preregistered cross-domain matches on a 15-trajectory corpus (claim ceiling: provisional / domain_specific at n=14 curated trajectories; transferable requires live-capture replication in a later epoch)."
+  },
+  "exceptions_for_manuel": [],
+  "routine_summary": "Structural echo evaluation classified provisional. No intervention required."
+}

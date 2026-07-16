@@ -1,0 +1,306 @@
+{
+  "schema_version": "see-0.1",
+  "generated_at": "2026-07-16T13:30:00Z",
+  "curation_note": "Seed corpus imported by the Event Collector. Every trajectory is drawn from verifiable evidence (git commits, committed audit packets, the SIPR baseline document, or this session's own recorded work). Summaries are written factually; payload flags are capture-time facts, not retrospective tags. Known confound (declared in PREREGISTRATION.md): one author curated all seeds.",
+  "trajectories": [
+    {
+      "id": "traj:qf-001",
+      "title": "QF-001 funding-rate phase circuit sign readout",
+      "objective": "Prove the X-basis quantum circuit cannot distinguish funding sign and correct it with a Y-basis readout.",
+      "domains": ["quantum-circuits", "market-data-encoding"],
+      "repositories": ["quantum-funding-signal-experiment", "jules-playground"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-14T10:00:00Z", "ended_at": "2026-07-14T12:00:00Z",
+      "status": "completed",
+      "outcome": "Corrected circuit separates signs cleanly (P0=1.0 vs 0.0); original circuit proven sign-blind; 9/9 tests.",
+      "provenance": { "source": "quantum-funding-signal-experiment commit f6c521d; imported to jules-playground", "commit_sha": "f6c521d", "verified": true },
+      "events": [
+        { "kind": "question_created", "summary": "Can the phase-encoding circuit read back the sign of the funding rate, not just its magnitude?", "payload": { "directional": true } },
+        { "kind": "hypothesis_created", "summary": "The original H-RZ-H readout collapses opposite phases to identical statistics because cosine is even." },
+        { "kind": "experiment_created", "summary": "Seeded simulator runs at theta plus and minus half pi for both circuit variants." },
+        { "kind": "test_failed", "summary": "Original X-basis circuit returns 0.5/0.5 for both signs: sign information unreadable.", "payload": { "directional": true, "assumption": "x_basis_readout_sufficient" } },
+        { "kind": "control_added", "summary": "Neutral zero-phase case and tolerance band added so a biased harness would be exposed by the symmetric case.", "payload": { "control": "symmetric" } },
+        { "kind": "pivot_taken", "summary": "Insert Sdg before the final H so probability follows sine of theta, an odd function." },
+        { "kind": "result_stabilized", "summary": "Y-basis readout separates signs completely across 1024 and 8192 shots; neutral case sits inside the tolerance band." },
+        { "kind": "decision_made", "summary": "Adopt Y-basis readout; scope statement fixed: validates phase encoding only, no market prediction claimed." }
+      ]
+    },
+    {
+      "id": "traj:sipr-reconstruction",
+      "title": "SIPR baseline reconstruction",
+      "objective": "Restore SIPR's original physical mechanism question after certification work displaced it, without denying established results.",
+      "domains": ["open-quantum-systems", "research-methodology"],
+      "repositories": [],
+      "agents": ["manuel"],
+      "started_at": "2026-05-01T00:00:00Z", "ended_at": "2026-06-11T00:00:00Z",
+      "status": "completed",
+      "outcome": "Mechanism-plural baseline with comparator battery, discriminating predictions, and explicit non-claims.",
+      "provenance": { "source": "SIPR_RECONSTRUCTED_BASELINE_v0.1_20260611.docx supplied in-session", "digest": "sha256:a6d3face1523026b21a95988842a93012ae8476025548c3898114731471a9983", "verified": true },
+      "events": [
+        { "kind": "question_created", "summary": "Can a fixed open-system architecture autonomously restore phase compatibility toward an independently predicted manifold?", "payload": { "directional": true } },
+        { "kind": "contradiction_detected", "summary": "The certification protocol had replaced the physical hypothesis: morphology was being confused with mechanism.", "payload": { "sources": 2 } },
+        { "kind": "evidence_found", "summary": "Literature shows coherence revival and autonomous correction already occur; revival amplitude alone proves nothing about mechanism.", "payload": { "mechanism": "unknown" } },
+        { "kind": "pivot_taken", "summary": "Reconstruct SIPR as a narrower conjunction: architecture-selected manifold, independently predicted onset, survival against matched comparators." },
+        { "kind": "control_added", "summary": "Mandatory comparator battery: Markovian basis engineering, generic backflow, autonomous error correction, synchronization, hidden drives.", "payload": { "control": "negative" } },
+        { "kind": "decision_made", "summary": "Baseline adopted as unvalidated hypothesis with explicit non-claims; cross-domain generality deferred." }
+      ]
+    },
+    {
+      "id": "traj:kairoth-csp-blank-window",
+      "title": "Kairoth packaged runtime blank window",
+      "objective": "Diagnose why the packaged desktop executable rendered a blank window while the dev frontend worked.",
+      "domains": ["desktop-runtime", "content-security-policy"],
+      "repositories": ["Kairoth-Command-Center"],
+      "agents": ["codex"],
+      "started_at": "2026-07-13T00:00:00Z", "ended_at": "2026-07-14T00:00:00Z",
+      "status": "completed",
+      "outcome": "Root cause: runtime schema compilation called new Function under strict CSP. Fixed by generating validators at build time; CSP not weakened.",
+      "provenance": { "source": "docs/evidence/KAIROTH_COMMAND_CENTER_V0_1_BUILD_AND_AUDIT_PACKET.md on Kairoth main", "commit_sha": "ccfafec", "verified": true },
+      "events": [
+        { "kind": "test_failed", "summary": "Release executable opens a completely blank window; ordinary Vite frontend renders fine.", "payload": { "environment_specific": true, "assumption": "dev_equals_packaged" } },
+        { "kind": "evidence_found", "summary": "HTML, JS and CSS all return 200 in the packaged webview, yet the root element has zero children: strong symptom, unclear cause.", "payload": { "mechanism": "unknown" } },
+        { "kind": "contradiction_detected", "summary": "Asset paths, dist config and storage all verified working, contradicting every first-guess explanation.", "payload": { "sources": 2 } },
+        { "kind": "evidence_found", "summary": "Schema module compiled AJV validators at startup; AJV calls new Function; production CSP rejects unsafe-eval, so React never mounts." },
+        { "kind": "pivot_taken", "summary": "Move validator compilation from runtime to build time: generate standalone validator code and ship it as static JavaScript." },
+        { "kind": "control_added", "summary": "Regression gate added: every production build verifies root mount and absence of runtime code generation.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "Packaged window renders with zero exceptions; CSP intact; regression gate green on every subsequent build." },
+        { "kind": "decision_made", "summary": "Standalone build-time validators adopted as the permanent pattern for strict-CSP runtimes." }
+      ]
+    },
+    {
+      "id": "traj:ace-mind-annual-freeze",
+      "title": "ACE Mind annual supplement map phone freeze",
+      "objective": "Stop the supplements app freezing phones at startup after the annual-map feature landed.",
+      "domains": ["mobile-web", "supplement-planning"],
+      "repositories": ["flamewalker-runtime"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-12T00:00:00Z", "ended_at": "2026-07-12T23:00:00Z",
+      "status": "completed",
+      "outcome": "Abandoned whole-year precompute; made the existing per-date freeze store permanent. Startup fell from 22s to 1.26s, verified by browser A/B.",
+      "provenance": { "source": "ACE Mind performance fix delivered in the 2026-07-12 session; Playwright A/B measurements", "verified": true },
+      "events": [
+        { "kind": "test_failed", "summary": "App freezes for ~22 seconds on phone-class hardware at startup; desktop development machine masked the cost.", "payload": { "environment_specific": true, "assumption": "precompute_is_cheap" } },
+        { "kind": "evidence_found", "summary": "Startup profile shows the annual-map precompute dominating; an obvious symptom whose exact recursion path was still unclear.", "payload": { "mechanism": "unknown" } },
+        { "kind": "test_failed", "summary": "Guidance callback re-enters the supplement model mid-computation, creating an infinite-recursion path under the same precompute assumption.", "payload": { "assumption": "precompute_is_cheap" } },
+        { "kind": "pivot_taken", "summary": "Abandon eager whole-year computation; reuse the app's existing per-date freeze store and make frozen entries permanent." },
+        { "kind": "control_added", "summary": "A/B startup measurement against the unmodified build to prove the fix rather than assert it.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "1.26 second startup on the same corpus; recursion path eliminated; behavior verified in a real browser run." },
+        { "kind": "decision_made", "summary": "Lazy per-date materialization adopted; eager annual precompute permanently rejected for phone-class targets." }
+      ]
+    },
+    {
+      "id": "traj:v03-contracts-hardening",
+      "title": "Kairoth v0.3 adapter-result schema hardening",
+      "objective": "Make the adapter-result contract actually enforce its raw-payload prohibition, then fix the enforcement that overshot.",
+      "domains": ["json-schema", "contract-design"],
+      "repositories": ["Kairoth-Command-Center"],
+      "agents": ["fable-5", "manuel"],
+      "started_at": "2026-07-14T20:00:00Z", "ended_at": "2026-07-14T22:10:00Z",
+      "status": "completed",
+      "outcome": "Closed record model with attributes container; denied-name matching moved from substring regex to an exact finite enum after legitimate names were rejected.",
+      "provenance": { "source": "Kairoth PR #3 commits f096e3a and f28059d", "commit_sha": "f28059d", "verified": true },
+      "events": [
+        { "kind": "contradiction_detected", "summary": "Schema description claimed raw payloads were structurally forbidden, but the record allowed arbitrary extra properties with only a small key blacklist.", "payload": { "sources": 2 } },
+        { "kind": "pivot_taken", "summary": "Close the record object entirely and force kind-specific data into one attributes container with recursive name checks.", "payload": { "correction": "too_weak" } },
+        { "kind": "result_stabilized", "summary": "Unknown top-level fields and nested raw containers now fail validation; fixtures still pass." },
+        { "kind": "test_failed", "summary": "Unanchored substring pattern rejects legitimate names like drawdown, withdrawal_count and payload_size.", "payload": { "assumption": "substring_match_is_safe" } },
+        { "kind": "pivot_taken", "summary": "Replace the pattern with a finite denied-name enum so only complete raw-container names are rejected.", "payload": { "correction": "too_strong" } },
+        { "kind": "control_added", "summary": "Positive tests prove legitimate substring-containing names pass; negative tests prove exact container names still fail at any depth.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "64 tests green; enforcement matches the documented claim in both directions." },
+        { "kind": "decision_made", "summary": "Exact-name denial adopted as the boundary-matching pattern for normalized-record contracts." }
+      ]
+    },
+    {
+      "id": "traj:netlify-gate-drift",
+      "title": "Jester foundation gate vs Netlify deploy target drift",
+      "objective": "Explain and fix the constitution gate failing on a doc-only pull request.",
+      "domains": ["ci-gates", "deploy-configuration"],
+      "repositories": ["Jester-Intelligence"],
+      "agents": ["fable-5", "manuel"],
+      "started_at": "2026-07-16T08:04:00Z", "ended_at": "2026-07-16T08:15:00Z",
+      "status": "completed",
+      "outcome": "Gate asserted the retired dist publish target while netlify.toml legitimately publishes the council app; assertion moved to current truth with a negative control proving the gate still rejects bad configs.",
+      "provenance": { "source": "Jester PR #27 failure and PR #28 fix, commit 9db2b48", "commit_sha": "9db2b48", "verified": true },
+      "events": [
+        { "kind": "test_failed", "summary": "Constitution gate fails on a branch that only adds one markdown file; all eight named validators pass.", "payload": { "environment_specific": true, "assumption": "gate_reflects_current_architecture" } },
+        { "kind": "contradiction_detected", "summary": "The gate requires publish dist while the live Netlify deploy succeeds publishing the council app: the validator and the working config assert different truths.", "payload": { "sources": 2 } },
+        { "kind": "evidence_found", "summary": "Branch tree is byte-identical to main except the added document, so the failure is pre-existing on main and deterministic." },
+        { "kind": "decision_made", "summary": "Fail closed on the affected PR; do not weaken the gate to turn a branch green; route the reconciliation to Manuel." },
+        { "kind": "pivot_taken", "summary": "On explicit instruction, pin the gate assertion to the current council publish path instead of the retired one.", "payload": { "correction": "too_strong" } },
+        { "kind": "control_added", "summary": "Negative control run with the old target restored proves the gate still fails on a wrong config.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "All nine grouped gates pass locally and the constitution gate is green in CI on the fix branch." }
+      ]
+    },
+    {
+      "id": "traj:sipr-exp-001",
+      "title": "SIPR-EXP-001 canonical serializer throughput experiment",
+      "objective": "Test whether a single-pass canonical JSON serializer beats the production two-pass pattern, under preregistered SIPR discipline.",
+      "domains": ["performance", "json-serialization"],
+      "repositories": ["jules-playground"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-16T07:30:00Z", "ended_at": "2026-07-16T07:45:00Z",
+      "status": "completed",
+      "outcome": "Hypothesis falsified: minus 14.5 percent mean gain across three replications; controls valid; classification unsupported; failure preserved.",
+      "provenance": { "source": "KCES vertical slice, jules-playground commit f0a6477", "commit_sha": "f0a6477", "verified": true },
+      "events": [
+        { "kind": "hypothesis_created", "summary": "Direct string construction during recursion should out-throughput sorted-rebuild plus JSON.stringify." },
+        { "kind": "experiment_created", "summary": "Preregistered thresholds, warm-up and plateau windows, three seeded replications, resource accounting." },
+        { "kind": "control_added", "summary": "Negative control relabels the baseline; reversed control pessimizes it; both must behave as declared or the harness is invalid.", "payload": { "control": "negative" } },
+        { "kind": "test_failed", "summary": "Intervention measures 14.5 percent slower than baseline in every replication; the native stringify path wins.", "payload": { "assumption": "hand_built_serialization_faster" } },
+        { "kind": "decision_made", "summary": "Classification unsupported accepted exactly as preregistered; no post-hoc threshold movement; failed candidate preserved as evidence.", "payload": { "accepted_falsification": true } },
+        { "kind": "outcome_measured", "summary": "Deterministic audit independently recomputed the classification from raw windows and confirmed it." }
+      ]
+    },
+    {
+      "id": "traj:mystic-web-proof-audit",
+      "title": "Mystic Mission web proof accessibility audit",
+      "objective": "Senior-audit the static story doorway and fix genuine blockers only.",
+      "domains": ["accessibility", "static-web"],
+      "repositories": ["jules-playground"],
+      "agents": ["fable-5", "jules"],
+      "started_at": "2026-07-12T17:00:00Z", "ended_at": "2026-07-12T18:00:00Z",
+      "status": "completed",
+      "outcome": "Five blockers fixed: progressbar semantics and spoken strength feedback, focus transfer on view changes, instruction clarity, live-region noise, console 404. Verified at 360px in a real browser.",
+      "provenance": { "source": "jules-playground PR #2 commit 47df06d", "commit_sha": "47df06d", "verified": true },
+      "events": [
+        { "kind": "question_created", "summary": "Can a non-visual user actually solve the signal puzzle and reach the revelation?" },
+        { "kind": "test_failed", "summary": "The strength meter is a bare div: a screen reader user receives no signal feedback at all, so the puzzle is unsolvable without sight.", "payload": { "assumption": "visual_feedback_sufficient" } },
+        { "kind": "test_failed", "summary": "After each view change focus falls to the document body, stranding keyboard users; the revelation is never announced.", "payload": { "assumption": "visual_feedback_sufficient" } },
+        { "kind": "pivot_taken", "summary": "Expose progress semantics and a spoken status channel; move focus into each newly shown view." },
+        { "kind": "control_added", "summary": "Reduced-motion pass and a full keyboard-only Playwright run at 360px verify the fixes rather than assume them.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "Strength announced in buckets, valuenow tracks alignment, focus lands correctly, zero console errors." },
+        { "kind": "decision_made", "summary": "Fixes committed to the existing branch; promotion left to Manuel; rubric scored 37 of 40." }
+      ]
+    },
+    {
+      "id": "traj:weatherhack-pivot",
+      "title": "WeatherHack commercial pivot",
+      "objective": "Convert the AI-assistant weather app into a self-contained product with ads and a one-time purchase.",
+      "domains": ["product-strategy", "mobile-web"],
+      "repositories": ["weatherhack"],
+      "agents": ["fable-5", "manuel"],
+      "started_at": "2026-07-08T00:00:00Z", "ended_at": "2026-07-09T00:00:00Z",
+      "status": "completed",
+      "outcome": "BYOK AI tab removed; Extreme scenarios, ads for free users and a 2.99 euro remove-ads purchase shipped; smoke suite green.",
+      "provenance": { "source": "weatherhack PR #4 merged; smoke test wh-smoke.mjs", "verified": true },
+      "events": [
+        { "kind": "contradiction_detected", "summary": "A bring-your-own-key AI assistant conflicts with a mainstream store product: setup friction versus casual users.", "payload": { "sources": 2 } },
+        { "kind": "decision_made", "summary": "Remove the AI tab entirely rather than hiding it behind settings." },
+        { "kind": "pivot_taken", "summary": "Replace assistant value with deterministic Extreme scenario trials and share cards." },
+        { "kind": "experiment_created", "summary": "Full browser smoke suite drives onboarding, play, extreme trials, ads and the purchase flow." },
+        { "kind": "result_stabilized", "summary": "Smoke suite green: ad banner for free users disappears after purchase; 12 scenarios by 9 options verified." },
+        { "kind": "outcome_measured", "summary": "Manuel merged the pivot; superseded branch closed." }
+      ]
+    },
+    {
+      "id": "traj:convergenceverse-phase-a",
+      "title": "ConvergenceVerse Phase A daily card",
+      "objective": "Ship the one-card daily reading shell that consumes frozen calculation engines untouched.",
+      "domains": ["frontend-shell", "symbolic-content"],
+      "repositories": ["convergenceverse"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-09T00:00:00Z", "ended_at": "2026-07-10T00:00:00Z",
+      "status": "completed",
+      "outcome": "Deterministic local card with four condition tiles and a selected poem; engines consumed as-is per build plan; merged by Manuel.",
+      "provenance": { "source": "convergenceverse PRs #1 and #2 merged", "verified": true },
+      "events": [
+        { "kind": "decision_made", "summary": "Engines are frozen inputs: the shell must never edit them, only consume their outputs." },
+        { "kind": "experiment_created", "summary": "Single App component computes the day reading from the frozen engines at mount." },
+        { "kind": "result_stabilized", "summary": "Card renders date, numerology, moon, tzolkin, pillar and poem deterministically with no network." },
+        { "kind": "outcome_measured", "summary": "Phase A merged; visual contract matched the design prototype." }
+      ]
+    },
+    {
+      "id": "traj:story-router-v02",
+      "title": "Jester Council story router v0.2 with Netlify parity",
+      "objective": "Route story tasks zero-cost-first with fail-closed privacy, mirrored identically into Netlify functions.",
+      "domains": ["routing", "serverless"],
+      "repositories": ["Jester-Intelligence"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-11T00:00:00Z", "ended_at": "2026-07-12T00:00:00Z",
+      "status": "completed",
+      "outcome": "Four endpoints mirrored with parity tests; private tasks fail closed everywhere; PR left draft for Manuel.",
+      "provenance": { "source": "Jester-Intelligence branch fable/mystic-story-router-v0.2 commit 63bfd13, PR #24", "commit_sha": "63bfd13", "verified": true },
+      "events": [
+        { "kind": "question_created", "summary": "Can the same router logic serve both the local server and Netlify functions without divergence?" },
+        { "kind": "control_added", "summary": "Parity tests compare server and function responses for identical inputs, including privacy denials.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "All endpoints byte-equivalent across surfaces; fail-closed behavior preserved for private classes." },
+        { "kind": "decision_made", "summary": "Single shared router module adopted; duplication rejected." }
+      ]
+    },
+    {
+      "id": "traj:mission-control-access",
+      "title": "Mission Control live state unreachable from cloud sessions",
+      "objective": "Reconcile the requirement to read current Mission Control state with the reality that it is runtime data on Manuel's machine.",
+      "domains": ["architecture-boundaries", "evidence-discipline"],
+      "repositories": ["Jester-Intelligence", "jules-playground"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-16T06:30:00Z", "ended_at": "2026-07-16T07:00:00Z",
+      "status": "completed",
+      "outcome": "Live state marked UNVERIFIED rather than reconstructed; outbox pattern adopted for events from isolated experiments; import plan requires real artifacts with digests.",
+      "provenance": { "source": "KCES orientation, 2026-07-16 session; apps/mission-control tree on jester main", "verified": true },
+      "events": [
+        { "kind": "test_failed", "summary": "Only the example state file is committed; the live ledger is gitignored runtime data with no network path from the cloud container.", "payload": { "environment_specific": true, "assumption": "ledger_reachable_from_anywhere" } },
+        { "kind": "decision_made", "summary": "Mark every unreachable artifact UNVERIFIED and refuse to reconstruct evidence from memory." },
+        { "kind": "pivot_taken", "summary": "Adopt a file outbox inside experiment folders; a governed courier relays events to the ledger later." },
+        { "kind": "result_stabilized", "summary": "KCES slice emits schema-valid outbox events; no second ledger created; provenance preserved." }
+      ]
+    },
+    {
+      "id": "traj:kces-vertical-slice",
+      "title": "KCES v0.1 governed evolution loop",
+      "objective": "Prove the full evolution loop end to end in isolation with calibration-locked autonomy.",
+      "domains": ["governance", "automation"],
+      "repositories": ["jules-playground", "Kairoth-Command-Center", "Jester-Intelligence"],
+      "agents": ["fable-5", "manuel"],
+      "started_at": "2026-07-16T06:00:00Z", "ended_at": "2026-07-16T08:00:00Z",
+      "status": "completed",
+      "outcome": "Loop executed: research cards, preregistered experiment, 13/13 deterministic audit, dry-run promotions all routing to Manuel; three draft PRs staged.",
+      "provenance": { "source": "jules-playground PR #4, Kairoth PR #4, Jester PR #27", "commit_sha": "f0a6477", "verified": true },
+      "events": [
+        { "kind": "contradiction_detected", "summary": "The packet's automatic merge target conflicts with standing canon that Manuel retains merge authority.", "payload": { "sources": 2 } },
+        { "kind": "decision_made", "summary": "Design the full risk-class policy but lock autonomy at calibration; unlocking is itself a sovereign decision." },
+        { "kind": "experiment_created", "summary": "Vertical slice with evaluator epoch, deterministic audit, dry-run autopilot and event outbox." },
+        { "kind": "control_added", "summary": "Self-approval structurally barred: builder-authored verdicts can never authorize promotion.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "All constitutional invariants hold in execution; the falsified serializer experiment is preserved as honest evidence." },
+        { "kind": "outcome_measured", "summary": "Three draft PRs opened; nothing merged; exceptions surfaced in a brief." }
+      ]
+    },
+    {
+      "id": "traj:squash-merge-ancestry",
+      "title": "Squash-merge detection confusion on Kairoth main",
+      "objective": "Determine whether PR #3 had merged when branch ancestry checks said no.",
+      "domains": ["git-forensics", "evidence-discipline"],
+      "repositories": ["Kairoth-Command-Center"],
+      "agents": ["fable-5"],
+      "started_at": "2026-07-16T05:50:00Z", "ended_at": "2026-07-16T06:05:00Z",
+      "status": "completed",
+      "outcome": "Squash merges create new commits, so ancestor checks fail even for merged work; merge state read from main's tree content and commit subject instead.",
+      "provenance": { "source": "Kairoth main commit ccfafec, squash of PR #3", "commit_sha": "ccfafec", "verified": true },
+      "events": [
+        { "kind": "contradiction_detected", "summary": "Main visibly contains the v0.3 docs while merge-base ancestry insists the branch was never merged.", "payload": { "sources": 2 } },
+        { "kind": "evidence_found", "summary": "Main's head is a squash commit titled after PR #3: content merged, history rewritten, ancestry broken by design.", "payload": { "mechanism": "unknown" } },
+        { "kind": "pivot_taken", "summary": "Judge merge state by tree content and commit metadata rather than by commit-graph ancestry alone." },
+        { "kind": "result_stabilized", "summary": "Merge confirmed; false not-merged conclusion retracted before it contaminated planning." }
+      ]
+    },
+    {
+      "id": "traj:aced-routing-corrections",
+      "title": "ACED story routing zero-cost-first corrections",
+      "objective": "Keep story-task routing on free lanes unless tier policy explicitly justifies escalation.",
+      "domains": ["routing", "cost-governance"],
+      "repositories": ["Jester-Intelligence"],
+      "agents": ["fable-5", "manuel"],
+      "started_at": "2026-07-11T12:00:00Z", "ended_at": "2026-07-11T20:00:00Z",
+      "status": "completed",
+      "outcome": "Tiered zero-cost-first routing with explicit budgets adopted; silent premium escalation rejected.",
+      "provenance": { "source": "Jester Council Story Router v0.2 config and validation scripts", "commit_sha": "63bfd13", "verified": true },
+      "events": [
+        { "kind": "test_failed", "summary": "Early routing draft could escalate a public zero-cost task to premium lanes without any recorded justification.", "payload": { "assumption": "router_defaults_are_safe" } },
+        { "kind": "pivot_taken", "summary": "Introduce explicit tier gates: free first, budget checks recorded, premium only with declared cause.", "payload": { "correction": "too_weak" } },
+        { "kind": "control_added", "summary": "Validation script asserts every routed packet records its lane decision and budget state.", "payload": { "control": "negative" } },
+        { "kind": "result_stabilized", "summary": "Routing decisions reproducible and auditable; cost discipline holds across server and Netlify parity surfaces." }
+      ]
+    }
+  ]
+}
