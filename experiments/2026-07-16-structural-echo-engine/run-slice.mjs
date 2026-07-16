@@ -34,6 +34,34 @@ const evidence = {
   records: [...loop.records, audit],
 };
 writeFileSync(`${ROOT}/evidence/see-exp-001-records.json`, JSON.stringify(evidence, null, 2) + "\n");
+
+// Chronology + source binding: prove the stage order with machine stamps and
+// bind the evidence to the exact source revision that produced it. The
+// combined digest is commit-independent (recomputable from any checkout), so
+// it survives the evidence-then-commit chicken-and-egg.
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+const SOURCE_FILES = [
+  "contracts/see-v0.1.schema.json", "contracts/prereg-epoch-b.json", "contracts/prereg.json",
+  "seeds/trajectories.json", "engine/db.mjs", "engine/analyze.mjs", "engine/matching.mjs",
+  "engine/loop.mjs", "engine/audit.mjs", "run-slice.mjs",
+].sort();
+const fileDigests = Object.fromEntries(SOURCE_FILES.map((f) => [f, "sha256:" + createHash("sha256").update(readFileSync(`${ROOT}/${f}`)).digest("hex")]));
+const combined = "sha256:" + createHash("sha256").update(SOURCE_FILES.map((f) => `${f}=${fileDigests[f]}`).join("\n")).digest("hex");
+writeFileSync(`${ROOT}/evidence/chronology.json`, JSON.stringify({
+  note: "Machine-stamped stage chronology (see-audit-0.2 check #12 verifies monotonicity) and source binding. Recompute the combined digest from any checkout to prove which revision generated this evidence: sha256 over 'path=sha256:<file digest>' lines, sorted by path, joined by newlines.",
+  epoch: "epoch:see-2026-07-16-b",
+  preregistration: { file: "contracts/prereg-epoch-b.json", digest: loop.preregDigest, preregistered_at: loop.prereg.preregistered_at },
+  stages: {
+    prereg_loaded_at: loop.preregLoadedAt,
+    rankings_generated_at: loop.rankingsProducedAt,
+    ground_truth_scored_at: loop.scoredAt,
+    audit_issued_at: audit.issued_at,
+  },
+  source_binding: { files: fileDigests, combined },
+}, null, 2) + "\n");
+console.log(`CHRONOLOGY: ${loop.prereg.preregistered_at} (prereg) -> ${loop.preregLoadedAt} (loaded) -> ${loop.rankingsProducedAt} (ranked) -> ${loop.scoredAt} (scored) -> ${audit.issued_at} (audited)`);
+console.log(`SOURCE BINDING: ${combined}`);
 writeFileSync(`${ROOT}/evidence/rankings.json`, JSON.stringify({
   produced_at: loop.rankingsProducedAt,
   note: "Raw rankings for every probe and method, produced before ground-truth scoring.",

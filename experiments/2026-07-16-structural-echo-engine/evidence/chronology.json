@@ -1,0 +1,30 @@
+{
+  "note": "Machine-stamped stage chronology (see-audit-0.2 check #12 verifies monotonicity) and source binding. Recompute the combined digest from any checkout to prove which revision generated this evidence: sha256 over 'path=sha256:<file digest>' lines, sorted by path, joined by newlines.",
+  "epoch": "epoch:see-2026-07-16-b",
+  "preregistration": {
+    "file": "contracts/prereg-epoch-b.json",
+    "digest": "sha256:3aa0455ba0a0415e1980d874baf6c6e2135150b668547a2d11ecd0e4ed79c904",
+    "preregistered_at": "2026-07-16T13:09:37Z"
+  },
+  "stages": {
+    "prereg_loaded_at": "2026-07-16T13:11:54Z",
+    "rankings_generated_at": "2026-07-16T13:11:54Z",
+    "ground_truth_scored_at": "2026-07-16T13:11:54Z",
+    "audit_issued_at": "2026-07-16T13:11:54Z"
+  },
+  "source_binding": {
+    "files": {
+      "contracts/prereg-epoch-b.json": "sha256:3aa0455ba0a0415e1980d874baf6c6e2135150b668547a2d11ecd0e4ed79c904",
+      "contracts/prereg.json": "sha256:73486c424427d17c837eef0269346b41f49affb10262b2143557f9568ea3db43",
+      "contracts/see-v0.1.schema.json": "sha256:4bb56dd3a18da1967b76a1dcfcf464a0b5243ce190504eb489d17abb0819e24b",
+      "engine/analyze.mjs": "sha256:ae8079137f079a482d69c189f17b1ba4d95d8cfe48fc4ec6b085533f6b219054",
+      "engine/audit.mjs": "sha256:5cfd228ac038aedc81bf7193a4480e9e4d8c901c232a068a418c7f18e7aa1465",
+      "engine/db.mjs": "sha256:1370a0bddffe545e8373ea49fabf43f5bac2bc3b18c3f140b79c5c644b696c7a",
+      "engine/loop.mjs": "sha256:9bf440fa45e0ab9715dff92640fdef4bb00eb76accfc149eb1e0093d3e9cfd84",
+      "engine/matching.mjs": "sha256:14e1fc62cedc985d3df23dc63d53eb6bf0ec1cc56ac438d96d6fecf57f21f144",
+      "run-slice.mjs": "sha256:2547323f8a914f4ece8190418ee449fc1ed0ac6fcb624f33012c96da52835dd1",
+      "seeds/trajectories.json": "sha256:2808f2fbd215fc038b8209f34cf92ca781db822ce9bfa2fe1f9ad10be7cafb29"
+    },
+    "combined": "sha256:c58e0649aa5429b11f13f46ff49266dead1792678a8f2a5a75d72e0ddaade28a"
+  }
+}

@@ -54,6 +54,43 @@ deviations, random control at chance, mandatory explanations, full schema
 validation, rebuildability. Verdict `pass`, `auditor_is_builder: true` — this
 verdict alone can never authorize promotion.
 
+## Chronology defect, root cause, and epoch-b repair (closure)
+
+**Defect:** the epoch-a machine preregistration carried
+`preregistered_at: 2026-07-16T13:40:00Z` while the run evidence carried
+`generated_at: 2026-07-16T12:56:45Z` — as recorded, results preceded
+preregistration.
+
+**Root cause (proven, not narrated):** the `preregistered_at` value was a
+**hand-authored estimate typed into the file, not a clock read**. Container
+disk evidence proves the true order: `PREREGISTRATION.md` mtime
+**08:29:31Z** and `contracts/prereg.json` mtime **08:31:58Z** precede the
+rankings (**12:56:45Z**, matching the runner's real-clock `generated_at`
+exactly) by ~4.4 hours. Preregistration genuinely preceded execution; only
+the embedded stamp was wrong.
+
+**Repair (auditable, non-destructive):**
+- Epoch-a evidence preserved verbatim under `evidence/epoch-a/` — nothing
+  rewritten. Epoch-a is reclassified **"preregistration timestamp defective —
+  superseded by the epoch-b clean rerun"**; its scientific result stands and
+  is reproduced below.
+- New frozen epoch `epoch:see-2026-07-16-b`: `contracts/prereg-epoch-b.json`
+  is **machine-stamped at creation** (13:09:37Z; file mtime identical),
+  byte-equivalent to epoch a in pairs, baselines, thresholds, and rules —
+  a chronology repair, not a second attempt.
+- Hand-written protocol timestamps are banned: every stage is now
+  machine-stamped and persisted in `evidence/chronology.json`, and the audit
+  evaluator (`see-audit-0.2`, epoch-boundary change adding only check #12,
+  nothing weakened) verifies **prereg stamp ≤ loaded ≤ rankings ≤ scored**;
+  the audit's own `issued_at` completes the chain.
+- **Epoch-b result: identical to epoch a** (structural MRR 0.511, ranks
+  3/1/5, classification `provisional`) — the determinism claim held.
+- **Source binding:** `evidence/chronology.json` records per-file sha256
+  digests of every source input and a combined digest
+  (`sha256:c58e0649aa5429b11f13f46ff49266dead1792678a8f2a5a75d72e0ddaade28a`),
+  recomputable from any checkout, proving which revision generated the
+  records independent of commit SHA.
+
 ## Errata and declared limitations
 
 1. **Corpus-count erratum:** PREREGISTRATION.md prose says "14 trajectories";

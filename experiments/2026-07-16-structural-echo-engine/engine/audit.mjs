@@ -1,6 +1,9 @@
 // SEE v0.1 — Independent Audit Governor (deterministic layer).
 // auditor_is_builder = true: this verdict can never authorize promotion alone.
-// Evaluator version see-audit-0.1, frozen for epoch:see-2026-07-16-a.
+// Evaluator version see-audit-0.2, frozen for epoch:see-2026-07-16-b.
+// Epoch-boundary change review: 0.1 -> 0.2 adds ONLY the chronology check
+// (#12) after the epoch-a hand-written preregistered_at defect; no existing
+// check was weakened or removed, and no scoring rule changed.
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import Ajv2020 from "ajv/dist/2020.js";
@@ -16,11 +19,25 @@ export function runAudit(db, root, loopResult) {
     catch (e) { checks.push({ check: name, result: "fail", detail: String(e.message ?? e).slice(0, 650) }); }
   };
 
-  // 1. Preregistration integrity.
+  // 1. Preregistration integrity (epoch-b file).
   check("preregistration digest matches the file scored against", () => {
-    const digest = "sha256:" + createHash("sha256").update(readFileSync(`${root}/contracts/prereg.json`)).digest("hex");
+    const digest = "sha256:" + createHash("sha256").update(readFileSync(`${root}/contracts/prereg-epoch-b.json`)).digest("hex");
     if (digest !== loopResult.preregDigest) throw new Error("prereg digest drift during run");
     if (loopResult.experiment.preregistration_digest !== digest) throw new Error("experiment recorded a different prereg digest");
+  });
+
+  // 12 (new in see-audit-0.2). Chronology: every stage machine-stamped and
+  // strictly ordered — preregistration loaded -> rankings -> ground truth
+  // scored; and the preregistration file's own stamp precedes loading.
+  check("chronology monotonic: prereg stamp <= loaded < rankings <= scored", () => {
+    const prereg = Date.parse(loopResult.prereg.preregistered_at);
+    const loaded = Date.parse(loopResult.preregLoadedAt);
+    const ranked = Date.parse(loopResult.rankingsProducedAt);
+    const scored = Date.parse(loopResult.scoredAt);
+    if (!(prereg <= loaded)) throw new Error(`preregistered_at ${loopResult.prereg.preregistered_at} is after prereg load ${loopResult.preregLoadedAt}`);
+    if (!(loaded <= ranked)) throw new Error("rankings precede prereg load");
+    if (!(ranked <= scored)) throw new Error("ground-truth scoring precedes rankings");
+    return `${loopResult.prereg.preregistered_at} <= ${loopResult.preregLoadedAt} <= ${loopResult.rankingsProducedAt} <= ${loopResult.scoredAt}`;
   });
 
   // 2. Matcher blindness: the matching module must not reference ground truth.
@@ -117,12 +134,12 @@ export function runAudit(db, root, loopResult) {
   const verdict = failed.length ? "reject"
     : loopResult.experiment.classification === "supported" ? "pass_narrowed" : "pass";
   return {
-    record_type: "audit", id: "audit:see-exp-001-deterministic",
-    subject_ref: "exp:see-exp-001",
+    record_type: "audit", id: "audit:see-exp-001b-deterministic",
+    subject_ref: "exp:see-exp-001b",
     verdict,
     auditor: "see-audit-governor-0.1 (authored by Fable 5)",
     auditor_is_builder: true,
-    evaluator_version: "see-audit-0.1",
+    evaluator_version: "see-audit-0.2",
     checks,
     issued_at: now(),
   };
