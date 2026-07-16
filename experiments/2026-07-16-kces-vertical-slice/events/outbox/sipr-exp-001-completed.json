@@ -1,0 +1,9 @@
+{
+  "record_type": "evolution_event",
+  "id": "event:sipr-exp-001-completed",
+  "event_type": "experiment_started",
+  "subject_ref": "experiment:sipr-exp-001",
+  "occurred_at": "2026-07-16T07:58:14.548Z",
+  "summary": "SIPR-EXP-001 ran 3 replications; classification: unsupported; mean gain -14.5%.",
+  "delivery": "outbox"
+}

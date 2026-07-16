@@ -1,0 +1,13 @@
+{
+  "name": "kces-vertical-slice",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "KCES v0.1 vertical slice - contracts, autoaudit, autopilot dry run, SIPR-EXP-001. Free dependencies only.",
+  "scripts": {
+    "autopilot": "node autopilot/dry-run.mjs",
+    "sipr": "node sipr-experiment/run-experiment.mjs",
+    "autoaudit": "node autoaudit/run-autoaudit.mjs"
+  },
+  "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1" }
+}

@@ -1,0 +1,6 @@
+{
+  "file": "kairoth-evolution-v0.1.schema.json",
+  "canonical_home": "Kairoth-Command-Center: schemas/command-center/kairoth-evolution-v0.1.schema.json",
+  "digest": "sha256:05bde47f81f284c50c0045dc42b049d4da9103ca251bdd854d7b029828e181fd",
+  "note": "Vendored copy for playground isolation (this repository may not reference other repositories). The deterministic audit fails if this digest no longer matches the file bytes."
+}

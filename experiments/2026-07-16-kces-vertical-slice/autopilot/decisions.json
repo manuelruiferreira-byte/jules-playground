@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-07-16T07:58:08.377Z",
+  "autonomy_mode": "calibration",
+  "decisions": [
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r0-doc-typo",
+      "subject_ref": "candidate:r0-doc-typo",
+      "risk_class": "R0",
+      "autonomy_mode": "calibration",
+      "decision": "route_to_manuel",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": true,
+      "verdict_refs": [
+        "verdict:r0-doc-typo-det",
+        "verdict:r0-doc-typo-ai"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "All gates pass, but autonomy mode is calibration: every promotion routes to Manuel while reliability evidence accumulates."
+    },
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r1-internal-refactor",
+      "subject_ref": "candidate:r1-internal-refactor",
+      "risk_class": "R1",
+      "autonomy_mode": "calibration",
+      "decision": "route_to_manuel",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": true,
+      "verdict_refs": [
+        "verdict:r1-refactor-det",
+        "verdict:r1-refactor-ai"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "All gates pass, but autonomy mode is calibration: every promotion routes to Manuel while reliability evidence accumulates."
+    },
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r2-schema-extension",
+      "subject_ref": "candidate:r2-schema-extension",
+      "risk_class": "R2",
+      "autonomy_mode": "calibration",
+      "decision": "route_to_manuel",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": true,
+      "verdict_refs": [
+        "verdict:r2-schema-det",
+        "verdict:r2-schema-ai"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "All gates pass, but autonomy mode is calibration: every promotion routes to Manuel while reliability evidence accumulates."
+    },
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r3-credential-rotation",
+      "subject_ref": "candidate:r3-credential-rotation",
+      "risk_class": "R3",
+      "autonomy_mode": "calibration",
+      "decision": "route_to_manuel",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": true,
+      "verdict_refs": [
+        "verdict:r3-cred-det"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "R3 sovereign class: Manuel approval is mandatory and never delegable."
+    },
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r1-failed-audit",
+      "subject_ref": "candidate:r1-failed-audit",
+      "risk_class": "R1",
+      "autonomy_mode": "calibration",
+      "decision": "reject",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": false,
+      "verdict_refs": [
+        "verdict:r1-failed-det"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "A verdict is BLOCKED or REWRITE; promotion is impossible regardless of autonomy."
+    },
+    {
+      "record_type": "promotion_decision",
+      "id": "decision:r1-self-approved-only",
+      "subject_ref": "candidate:r1-self-approved-only",
+      "risk_class": "R1",
+      "autonomy_mode": "calibration",
+      "decision": "hold_insufficient_evidence",
+      "decided_by": "kces-promotion-autopilot-v0.1",
+      "requires_manuel": false,
+      "verdict_refs": [
+        "verdict:r1-self-det"
+      ],
+      "decided_at": "2026-07-16T07:58:08.377Z",
+      "rollback_path": "Dry run: nothing to roll back. A real promotion would carry the exact revert command for its merge commit.",
+      "dry_run": true,
+      "rationale": "No passing independent (non-builder) verdict exists; a builder may never approve its own work."
+    }
+  ]
+}

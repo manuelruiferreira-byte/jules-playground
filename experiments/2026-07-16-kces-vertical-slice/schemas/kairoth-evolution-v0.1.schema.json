@@ -1,0 +1,364 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jester-intelligence.local/schemas/command-center/kairoth-evolution-v0.1.schema.json",
+  "title": "Kairoth Continuous Evolution System v0.1 — record contracts",
+  "description": "Record contracts for the KCES governed loop: research cards, experiment manifests, evaluator definitions, audit verdicts, promotion decisions, reliability records, evolution events, and exception briefs. Canonical home: Kairoth-Command-Center schemas/command-center/. Copies used inside isolated experiment folders must state provenance and digest. Contracts only: nothing here grants write, merge, deploy, spend, or trading authority.",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "evolution-0.1" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "records": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/researchCard" },
+          { "$ref": "#/$defs/experimentManifest" },
+          { "$ref": "#/$defs/evaluatorDefinition" },
+          { "$ref": "#/$defs/auditVerdict" },
+          { "$ref": "#/$defs/promotionDecision" },
+          { "$ref": "#/$defs/reliabilityRecord" },
+          { "$ref": "#/$defs/evolutionEvent" },
+          { "$ref": "#/$defs/exceptionBrief" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@-]*$"
+    },
+    "sha256Hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "riskClass": {
+      "type": "string",
+      "description": "R0 routine, R1 bounded, R2 consequential, R3 sovereign (Manuel only, never delegable).",
+      "enum": ["R0", "R1", "R2", "R3"]
+    },
+    "autonomyMode": {
+      "type": "string",
+      "description": "calibration = every promotion routes to Manuel regardless of class. Expansion beyond calibration is an R3 constitutional decision.",
+      "enum": ["calibration", "r0_delegated", "r1_delegated"]
+    },
+    "evolutionStatus": {
+      "type": "string",
+      "enum": ["hypothesis", "candidate", "testing", "provisional", "replicated", "rejected", "deprecated", "production_proven"]
+    },
+    "evidenceClass": {
+      "type": "string",
+      "enum": ["measured", "replicated_measurement", "cited_source", "expert_claim", "model_generated", "unverified"]
+    },
+    "experimentCategory": {
+      "type": "string",
+      "description": "No category may be silently promoted into another.",
+      "enum": ["physically_grounded", "quantum_inspired", "symbolic_heuristic_analogy", "classical_software"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source", "retrieved_at"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string", "maxLength": 500 },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "commit_sha": { "type": ["string", "null"], "pattern": "^[a-f0-9]{7,40}$" },
+        "uri": { "type": ["string", "null"] },
+        "digest": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/sha256Hash" }] }
+      }
+    },
+    "resourceAccount": {
+      "type": "object",
+      "description": "Real resource cost. Estimated fields must be labeled by cost_basis.",
+      "required": ["cost_basis"],
+      "additionalProperties": false,
+      "properties": {
+        "cost_basis": { "type": "string", "enum": ["measured", "estimated", "unknown"] },
+        "wall_time_ms": { "type": ["number", "null"], "minimum": 0 },
+        "cpu_time_ms": { "type": ["number", "null"], "minimum": 0 },
+        "peak_memory_mb": { "type": ["number", "null"], "minimum": 0 },
+        "tokens": { "type": ["integer", "null"], "minimum": 0 },
+        "monetary_eur": { "type": ["number", "null"], "minimum": 0 }
+      }
+    },
+    "researchCard": {
+      "type": "object",
+      "required": [
+        "record_type", "id", "title", "provenance", "claim", "evidence_class",
+        "confidence", "novelty", "relevance", "falsifiability", "limitations",
+        "possible_confounds", "expected_resource_cost", "smallest_meaningful_experiment",
+        "reverify_by", "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "research_card" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "title": { "type": "string", "maxLength": 240 },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "claim": { "type": "string", "maxLength": 2000 },
+        "evidence_class": { "$ref": "#/$defs/evidenceClass" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "novelty": { "type": "string", "enum": ["known", "incremental", "notable", "breakthrough_claim"] },
+        "relevance": { "type": "string", "maxLength": 1000 },
+        "falsifiability": { "type": "string", "maxLength": 1000 },
+        "limitations": { "type": "string", "maxLength": 2000 },
+        "possible_confounds": { "type": "string", "maxLength": 2000 },
+        "expected_resource_cost": { "$ref": "#/$defs/resourceAccount" },
+        "smallest_meaningful_experiment": { "type": "string", "maxLength": 2000 },
+        "reverify_by": { "type": "string", "format": "date" },
+        "status": {
+          "type": "string",
+          "enum": ["observation", "candidate", "testing", "replicated", "rejected", "adopted"]
+        },
+        "notes": { "type": ["string", "null"], "maxLength": 2000 }
+      }
+    },
+    "experimentManifest": {
+      "type": "object",
+      "required": [
+        "record_type", "id", "title", "category", "objective", "risk_class",
+        "evaluator_epoch", "system_boundary", "primary_metric", "baseline",
+        "intervention", "controls", "failure_condition", "rollback_condition",
+        "replication_requirement", "resource_budget", "status", "provenance", "lineage"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "experiment_manifest" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "title": { "type": "string", "maxLength": 240 },
+        "category": { "$ref": "#/$defs/experimentCategory" },
+        "objective": { "type": "string", "maxLength": 2000 },
+        "risk_class": { "$ref": "#/$defs/riskClass" },
+        "evaluator_epoch": { "$ref": "#/$defs/stableId" },
+        "system_boundary": { "type": "string", "maxLength": 2000 },
+        "primary_metric": { "type": "string", "maxLength": 500 },
+        "measurement_map": { "type": ["string", "null"], "maxLength": 2000 },
+        "baseline": { "type": "string", "maxLength": 2000 },
+        "intervention": { "type": "string", "maxLength": 2000 },
+        "expected_recovery_behavior": { "type": ["string", "null"], "maxLength": 1000 },
+        "plateau_window": { "type": ["string", "null"], "maxLength": 500 },
+        "controls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["kind", "description"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": { "type": "string", "enum": ["negative", "reversed", "removed_intervention", "static", "shuffled", "symmetric"] },
+              "description": { "type": "string", "maxLength": 1000 }
+            }
+          }
+        },
+        "confounds": { "type": ["string", "null"], "maxLength": 2000 },
+        "failure_condition": { "type": "string", "maxLength": 1000 },
+        "rollback_condition": { "type": "string", "maxLength": 1000 },
+        "replication_requirement": { "type": "string", "maxLength": 500 },
+        "resource_budget": { "$ref": "#/$defs/resourceAccount" },
+        "status": { "$ref": "#/$defs/evolutionStatus" },
+        "supersedes": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/stableId" }] },
+        "lineage": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/stableId" }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "preregistered_at": { "type": ["string", "null"], "format": "date-time" },
+        "holdout_sealed": { "type": ["boolean", "null"] }
+      }
+    },
+    "evaluatorDefinition": {
+      "type": "object",
+      "required": ["record_type", "id", "epoch", "name", "definition_digest", "frozen"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "evaluator_definition" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "epoch": { "$ref": "#/$defs/stableId" },
+        "name": { "type": "string", "maxLength": 240 },
+        "description": { "type": ["string", "null"], "maxLength": 2000 },
+        "definition_digest": { "$ref": "#/$defs/sha256Hash" },
+        "frozen": {
+          "type": "boolean",
+          "description": "Must be true while the epoch is active. Changing an evaluator mid-epoch invalidates verdicts issued under it."
+        },
+        "previous_epoch": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/stableId" }] },
+        "change_review": { "type": ["string", "null"], "maxLength": 2000 }
+      }
+    },
+    "auditVerdict": {
+      "type": "object",
+      "required": [
+        "record_type", "id", "subject_ref", "layer", "verdict", "auditor",
+        "auditor_is_builder", "commit_sha", "evaluator_epoch", "issued_at", "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "audit_verdict" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "subject_ref": { "$ref": "#/$defs/stableId" },
+        "layer": {
+          "type": "string",
+          "enum": ["deterministic", "independent_ai", "scientific", "security_privacy_recovery", "runtime"]
+        },
+        "verdict": { "type": "string", "enum": ["PASS", "REWRITE", "BLOCKED", "UNVERIFIED"] },
+        "auditor": { "type": "string", "maxLength": 240 },
+        "auditor_is_builder": {
+          "type": "boolean",
+          "description": "If true, this verdict can never authorize promotion on its own (no self-approval)."
+        },
+        "commit_sha": { "type": "string", "pattern": "^[a-f0-9]{7,40}$" },
+        "diff_digest": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/sha256Hash" }] },
+        "evaluator_epoch": { "$ref": "#/$defs/stableId" },
+        "issued_at": { "type": "string", "format": "date-time" },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["check", "result"],
+            "additionalProperties": false,
+            "properties": {
+              "check": { "type": "string", "maxLength": 240 },
+              "result": { "type": "string", "enum": ["pass", "fail", "skip", "unverified"] },
+              "detail": { "type": ["string", "null"], "maxLength": 1000 }
+            }
+          }
+        },
+        "resource_account": { "$ref": "#/$defs/resourceAccount" },
+        "notes": { "type": ["string", "null"], "maxLength": 2000 }
+      }
+    },
+    "promotionDecision": {
+      "type": "object",
+      "required": [
+        "record_type", "id", "subject_ref", "risk_class", "autonomy_mode",
+        "decision", "decided_by", "requires_manuel", "verdict_refs", "decided_at",
+        "rollback_path", "dry_run"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "promotion_decision" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "subject_ref": { "$ref": "#/$defs/stableId" },
+        "risk_class": { "$ref": "#/$defs/riskClass" },
+        "autonomy_mode": { "$ref": "#/$defs/autonomyMode" },
+        "decision": {
+          "type": "string",
+          "enum": ["promote", "reject", "route_to_manuel", "hold_insufficient_evidence"]
+        },
+        "decided_by": { "type": "string", "maxLength": 240 },
+        "requires_manuel": { "type": "boolean" },
+        "verdict_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/stableId" }
+        },
+        "decided_at": { "type": "string", "format": "date-time" },
+        "rollback_path": { "type": "string", "maxLength": 1000 },
+        "dry_run": {
+          "type": "boolean",
+          "description": "True when no repository, ledger, or runtime mutation occurred. KCES v0.1 emits dry_run=true only."
+        },
+        "rationale": { "type": ["string", "null"], "maxLength": 2000 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "risk_class": { "const": "R3" } } },
+          "then": {
+            "properties": {
+              "requires_manuel": { "const": true },
+              "decision": { "enum": ["route_to_manuel", "reject", "hold_insufficient_evidence"] }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "autonomy_mode": { "const": "calibration" } } },
+          "then": {
+            "properties": {
+              "decision": { "enum": ["route_to_manuel", "reject", "hold_insufficient_evidence"] }
+            }
+          }
+        }
+      ]
+    },
+    "reliabilityRecord": {
+      "type": "object",
+      "required": ["record_type", "id", "principal", "task_class", "window_start", "window_end", "attempts"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "reliability_record" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "principal": { "type": "string", "maxLength": 240 },
+        "task_class": { "type": "string", "maxLength": 240 },
+        "window_start": { "type": "string", "format": "date-time" },
+        "window_end": { "type": "string", "format": "date-time" },
+        "attempts": { "type": "integer", "minimum": 0 },
+        "valid_completions": { "type": "integer", "minimum": 0 },
+        "audit_pass_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "rewrite_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "rollback_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "escaped_defects": { "type": "integer", "minimum": 0 },
+        "false_positive_audits": { "type": "integer", "minimum": 0 },
+        "false_negative_audits": { "type": "integer", "minimum": 0 },
+        "average_cost": { "$ref": "#/$defs/resourceAccount" },
+        "conflict_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "scope_violations": { "type": "integer", "minimum": 0 },
+        "evidence_completeness": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+      }
+    },
+    "evolutionEvent": {
+      "type": "object",
+      "required": ["record_type", "id", "event_type", "subject_ref", "occurred_at", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "evolution_event" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "research_card_created", "experiment_started", "candidate_generated",
+            "audit_verdict_issued", "promotion_decided", "rollback_executed",
+            "budget_violation", "autonomy_contracted", "evaluator_epoch_changed",
+            "exception_raised"
+          ]
+        },
+        "subject_ref": { "$ref": "#/$defs/stableId" },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "summary": { "type": "string", "maxLength": 1000 },
+        "delivery": {
+          "type": "string",
+          "description": "outbox = written as a file for later governed relay to Mission Control; no direct ledger write occurs from an isolated experiment.",
+          "enum": ["outbox", "relayed", "acknowledged"],
+          "default": "outbox"
+        }
+      }
+    },
+    "exceptionBrief": {
+      "type": "object",
+      "required": [
+        "record_type", "id", "period_start", "period_end",
+        "auto_completed", "auto_merged", "experiments_rejected", "audit_failures",
+        "rollbacks", "budget_violations", "security_privacy_concerns", "decisions_for_manuel"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "record_type": { "const": "exception_brief" },
+        "id": { "$ref": "#/$defs/stableId" },
+        "period_start": { "type": "string", "format": "date-time" },
+        "period_end": { "type": "string", "format": "date-time" },
+        "auto_completed": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "auto_merged": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "experiments_rejected": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "audit_failures": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "rollbacks": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "budget_violations": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "security_privacy_concerns": { "type": "array", "items": { "type": "string", "maxLength": 300 } },
+        "decisions_for_manuel": { "type": "array", "items": { "type": "string", "maxLength": 500 } }
+      }
+    }
+  }
+}
