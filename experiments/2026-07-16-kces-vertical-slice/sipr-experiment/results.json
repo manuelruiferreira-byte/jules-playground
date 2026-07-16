@@ -1,0 +1,586 @@
+{
+  "experiment": "SIPR-EXP-001",
+  "category": "classical_software",
+  "preregistration": "PREREGISTRATION.md",
+  "ran_at": "2026-07-16T07:58:14.548Z",
+  "thresholds": {
+    "WARMUP_WINDOWS": 3,
+    "STEADY_WINDOWS": 5,
+    "OPS_PER_WINDOW": 300,
+    "PLATEAU_CV_MAX": 0.15,
+    "NEG_CTRL_MAX": 0.1,
+    "SEEDS": [
+      11,
+      23,
+      47
+    ]
+  },
+  "replications": [
+    {
+      "seed": 11,
+      "derived": {
+        "baseline_ops": 6026.095829305659,
+        "intervention_gain": -0.14766695992898882,
+        "negative_control_gain": 0.014093046101214979,
+        "reversed_control_gain": -0.41313840983060246,
+        "baseline_plateau_cv": 0.03230462767165964,
+        "intervention_plateau_cv": 0.046858806093335655
+      },
+      "windows": {
+        "baseline": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 5809.122572505642
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 5876.64119162299
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 6176.087925093443
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 5998.391591278714
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 6208.872172029464
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 6146.420899158682
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 5661.56147941508
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 6115.233004646355
+          }
+        ],
+        "intervention": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 4822.310167228554
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 5239.84014645003
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 5295.009980829066
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 5495.824895104862
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5346.473015513076
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 4879.909493945254
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 4954.111469126402
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 5004.884016067076
+          }
+        ],
+        "negative_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 5520.650526958966
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 5094.1724857257495
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 5769.888758468037
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 6143.832274361932
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5953.114933654706
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 5678.804758490095
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 6307.185410521439
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 6472.172001163848
+          }
+        ],
+        "reversed_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 3804.558413909022
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 3697.885560130381
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 3767.057140556006
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 3804.2233066907443
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 3712.068276715236
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 3611.456754274025
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 2892.008024512506
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 3662.6645423049563
+          }
+        ]
+      }
+    },
+    {
+      "seed": 23,
+      "derived": {
+        "baseline_ops": 6087.463592026745,
+        "intervention_gain": -0.13650732905276242,
+        "negative_control_gain": 0.02985493211829815,
+        "reversed_control_gain": -0.39834637744490464,
+        "baseline_plateau_cv": 0.01600065374585375,
+        "intervention_plateau_cv": 0.011435144807306931
+      },
+      "windows": {
+        "baseline": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 5719.281424906345
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 6069.345059200091
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 6012.464199032406
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 6069.954280699652
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5906.479403968495
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 6129.567158367622
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 6179.3267821209
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 6151.990334977056
+          }
+        ],
+        "intervention": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 4998.374944999134
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 4896.193676187232
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 5117.406525665612
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 5154.621727483146
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5279.997195265478
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 5233.868523722338
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 5279.298377022244
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 5334.615158372986
+          }
+        ],
+        "negative_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 6261.740763932392
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 6215.5998918899795
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 6114.031081777561
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 6292.920338760451
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 6252.277522343275
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 6283.308209525429
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 6282.037211898716
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 6235.478739168702
+          }
+        ],
+        "reversed_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 3732.332351655278
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 3787.028666885495
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 3769.266322110498
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 3772.137591032213
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 3620.3506280620563
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 3515.4005773764243
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 3675.3071913633044
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 3729.526623741721
+          }
+        ]
+      }
+    },
+    {
+      "seed": 47,
+      "derived": {
+        "baseline_ops": 5278.605352480665,
+        "intervention_gain": -0.15061050130685127,
+        "negative_control_gain": -0.007822003645475695,
+        "reversed_control_gain": -0.37977138131327637,
+        "baseline_plateau_cv": 0.04135726017219587,
+        "intervention_plateau_cv": 0.02271891807618846
+      },
+      "windows": {
+        "baseline": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 5465.11936749772
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 5462.740260193604
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 5462.15572715217
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 5495.374991658501
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5440.459807351871
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 5279.0121574593795
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 5305.047105104746
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 4873.132700828827
+          }
+        ],
+        "intervention": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 4349.259073272063
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 4272.616153633746
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 4550.827486822043
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 4566.617426860548
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 4611.346352967654
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 4416.068164308459
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 4495.164484136938
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 4328.763342439018
+          }
+        ],
+        "negative_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 5021.1360537904075
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 5355.373671197895
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 5168.149178970623
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 5149.768396890953
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 5280.781437363198
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 5440.213262162758
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 4815.555786167183
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 5500.2615282685765
+          }
+        ],
+        "reversed_control": [
+          {
+            "window": 0,
+            "phase": "recovery",
+            "ops_per_sec": 3371.9454052365973
+          },
+          {
+            "window": 1,
+            "phase": "recovery",
+            "ops_per_sec": 3314.922987709168
+          },
+          {
+            "window": 2,
+            "phase": "recovery",
+            "ops_per_sec": 3292.0081334108404
+          },
+          {
+            "window": 3,
+            "phase": "plateau",
+            "ops_per_sec": 3171.082031960019
+          },
+          {
+            "window": 4,
+            "phase": "plateau",
+            "ops_per_sec": 3285.711112656113
+          },
+          {
+            "window": 5,
+            "phase": "plateau",
+            "ops_per_sec": 3304.546547148714
+          },
+          {
+            "window": 6,
+            "phase": "plateau",
+            "ops_per_sec": 3319.4974834059863
+          },
+          {
+            "window": 7,
+            "phase": "plateau",
+            "ops_per_sec": 3288.87335663631
+          }
+        ]
+      }
+    }
+  ],
+  "interpretation": {
+    "stages": [
+      "baseline measured",
+      "candidate intervention applied",
+      "immediate disturbance recorded (warm-up windows)",
+      "recovery trajectory measured",
+      "plateau stability measured",
+      "resource-adjusted gain calculated",
+      "hidden-drive and leakage checks: corpus deterministic, outputs asserted byte-identical",
+      "negative and reversed controls compared",
+      "claim classified: unsupported"
+    ],
+    "controls_valid": true,
+    "plateaus_stable": true,
+    "replications_passing": 0,
+    "mean_intervention_gain": -0.14492826342953416
+  },
+  "claim_classification": "unsupported",
+  "resource_account": {
+    "cost_basis": "measured",
+    "wall_time_ms": 6116,
+    "peak_memory_mb": 78
+  }
+}

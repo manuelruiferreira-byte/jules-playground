@@ -1,0 +1,9 @@
+{
+  "record_type": "evolution_event",
+  "id": "event:autopilot-dry-run-2026-07-16",
+  "event_type": "promotion_decided",
+  "subject_ref": "experiment:kces-vertical-slice",
+  "occurred_at": "2026-07-16T07:58:08.377Z",
+  "summary": "Autopilot dry run over 6 fixture candidates: candidate:r0-doc-typo→route_to_manuel; candidate:r1-internal-refactor→route_to_manuel; candidate:r2-schema-extension→route_to_manuel; candidate:r3-credential-rotation→route_to_manuel; candidate:r1-failed-audit→reject; candidate:r1-self-approved-only→hold_insufficient_evidence.",
+  "delivery": "outbox"
+}

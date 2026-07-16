@@ -1,0 +1,57 @@
+{
+  "comment": "Deterministic candidate fixtures for the Promotion Autopilot dry run. No candidate corresponds to a real pending change; every referenced verdict is fixture data.",
+  "autonomy_mode": "calibration",
+  "candidates": [
+    {
+      "id": "candidate:r0-doc-typo",
+      "title": "Fix typo in SNAPSHOT_OPERATION.md",
+      "risk_class": "R0",
+      "verdicts": [
+        { "id": "verdict:r0-doc-typo-det", "layer": "deterministic", "verdict": "PASS", "auditor": "lab-autoaudit", "auditor_is_builder": false },
+        { "id": "verdict:r0-doc-typo-ai", "layer": "independent_ai", "verdict": "PASS", "auditor": "codex", "auditor_is_builder": false }
+      ]
+    },
+    {
+      "id": "candidate:r1-internal-refactor",
+      "title": "Internal serializer refactor, no interface change",
+      "risk_class": "R1",
+      "verdicts": [
+        { "id": "verdict:r1-refactor-det", "layer": "deterministic", "verdict": "PASS", "auditor": "lab-autoaudit", "auditor_is_builder": false },
+        { "id": "verdict:r1-refactor-ai", "layer": "independent_ai", "verdict": "PASS", "auditor": "chatgpt", "auditor_is_builder": false }
+      ]
+    },
+    {
+      "id": "candidate:r2-schema-extension",
+      "title": "Add optional collection to state schema",
+      "risk_class": "R2",
+      "verdicts": [
+        { "id": "verdict:r2-schema-det", "layer": "deterministic", "verdict": "PASS", "auditor": "lab-autoaudit", "auditor_is_builder": false },
+        { "id": "verdict:r2-schema-ai", "layer": "independent_ai", "verdict": "PASS", "auditor": "codex", "auditor_is_builder": false }
+      ]
+    },
+    {
+      "id": "candidate:r3-credential-rotation",
+      "title": "Rotate GitHub read token",
+      "risk_class": "R3",
+      "verdicts": [
+        { "id": "verdict:r3-cred-det", "layer": "deterministic", "verdict": "PASS", "auditor": "lab-autoaudit", "auditor_is_builder": false }
+      ]
+    },
+    {
+      "id": "candidate:r1-failed-audit",
+      "title": "Adapter tweak with failing deterministic checks",
+      "risk_class": "R1",
+      "verdicts": [
+        { "id": "verdict:r1-failed-det", "layer": "deterministic", "verdict": "BLOCKED", "auditor": "lab-autoaudit", "auditor_is_builder": false }
+      ]
+    },
+    {
+      "id": "candidate:r1-self-approved-only",
+      "title": "Change carrying only the builder's own verdict",
+      "risk_class": "R1",
+      "verdicts": [
+        { "id": "verdict:r1-self-det", "layer": "deterministic", "verdict": "PASS", "auditor": "fable-5", "auditor_is_builder": true }
+      ]
+    }
+  ]
+}
