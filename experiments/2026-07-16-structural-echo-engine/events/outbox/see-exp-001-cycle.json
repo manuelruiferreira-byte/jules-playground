@@ -1,0 +1,82 @@
+{
+  "schema_version": "see-0.1",
+  "generated_at": "2026-07-16T12:56:45Z",
+  "records": [
+    {
+      "record_type": "experiment",
+      "id": "exp:see-exp-001",
+      "hypothesis_id": "hyp:see-structural-beats-simple-retrieval",
+      "preregistration_digest": "sha256:73486c424427d17c837eef0269346b41f49affb10262b2143557f9568ea3db43",
+      "baseline": "Simpler retrieval methods: TF-IDF semantic, keyword Jaccard, recency, seeded random control.",
+      "intervention": "Structural retrieval: IDF-weighted anchor fingerprints plus event-kind bigram signature.",
+      "comparators": [
+        "structural",
+        "sequence",
+        "semantic",
+        "keyword",
+        "recency",
+        "random_control"
+      ],
+      "negative_controls": [
+        "random_control (seeded)",
+        "recency (time proximity only)"
+      ],
+      "measurement_window": "Single evaluation over 14 committed trajectories, 3 preregistered probes.",
+      "success_threshold": "MRR(structural) > MRR(m) for every baseline m AND hits_at_1(structural) >= 2",
+      "failure_threshold": "Anything below the provisional threshold.",
+      "stopping_condition": "One pass; no re-runs with modified thresholds.",
+      "resource_account_ms": 41,
+      "protocol_deviations": [],
+      "status": "completed",
+      "result_summary": "MRR — structural 0.511, sequence 0.426, semantic 0.257, keyword 0.228, recency 0.244, random 0.25. Structural ranks (per probe): 3, 1, 5. Beats 4/4 baselines; hits@1=1.",
+      "classification": "provisional"
+    },
+    {
+      "record_type": "utility_outcome",
+      "id": "utility:see-exp-001",
+      "echo_cycle_ref": "exp:see-exp-001",
+      "signals": {
+        "generated_experiment": true,
+        "survived_audit": false,
+        "uncertainty_reduced": true,
+        "beat_simpler_retrieval": null,
+        "caused_rollback": false,
+        "resource_cost_ms": 41,
+        "information_gain_note": "Structural vs best baseline MRR gap: 0.254."
+      },
+      "manual_feedback": null,
+      "measured_at": "2026-07-16T12:56:45Z"
+    },
+    {
+      "record_type": "lesson",
+      "id": "lesson:structural-retrieval-v0-1",
+      "status": "domain_specific",
+      "statement": "Structural anchor retrieval outranked most baselines at locating preregistered cross-domain matches on a 15-trajectory corpus (claim ceiling: provisional / domain_specific at n=14 curated trajectories; transferable requires live-capture replication in a later epoch).",
+      "links": {
+        "source_events": [],
+        "source_trajectories": [
+          "traj:netlify-gate-drift",
+          "traj:kairoth-csp-blank-window",
+          "traj:mystic-web-proof-audit"
+        ],
+        "experiment": "exp:see-exp-001",
+        "code_revision": null,
+        "evaluator_version": "see-audit-0.1",
+        "audit": "audit:see-exp-001-deterministic",
+        "promotion": null,
+        "measurement_window": "Single evaluation over 14 committed trajectories, 3 preregistered probes.",
+        "supersedes": null
+      },
+      "governed_memory_status": "engine_only",
+      "created_at": "2026-07-16T12:56:45Z"
+    },
+    {
+      "record_type": "exception",
+      "id": "exception:see-exp-001-outcome",
+      "severity": "info",
+      "summary": "Structural echo evaluation classified provisional. No intervention required.",
+      "requires_manuel": false,
+      "raised_at": "2026-07-16T12:56:45Z"
+    }
+  ]
+}

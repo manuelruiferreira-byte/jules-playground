@@ -1,0 +1,21 @@
+{
+  "experiment": "SEE-EXP-001",
+  "preregistered_at": "2026-07-16T13:40:00Z",
+  "evaluation_epoch": "epoch:see-2026-07-16-a",
+  "human_form": "PREREGISTRATION.md",
+  "pairs": [
+    { "probe": "traj:netlify-gate-drift", "expected": "traj:v03-contracts-hardening" },
+    { "probe": "traj:kairoth-csp-blank-window", "expected": "traj:ace-mind-annual-freeze" },
+    { "probe": "traj:mystic-web-proof-audit", "expected": "traj:qf-001" }
+  ],
+  "baselines_for_success": ["semantic", "keyword", "recency", "random_control"],
+  "ablation_reported_only": ["sequence"],
+  "thresholds": {
+    "supported": "MRR(structural) > MRR(m) for every baseline m AND hits_at_1(structural) >= 2",
+    "provisional": "MRR(structural) > MRR(m) for at least 3 of 4 baselines AND hits_at_3(structural) >= 2",
+    "invalid_if_random_mrr_gte": 0.6
+  },
+  "echo_threshold": 0.35,
+  "suppression_rule": "structural matches with fewer than 2 shared anchors are suppressed as weak or topical",
+  "claim_ceiling": "provisional / domain_specific at n=14 curated trajectories; transferable requires live-capture replication in a later epoch"
+}
