@@ -1,0 +1,58 @@
+name: Build Prompt Generator Android APK
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out isolated build branch
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android platform
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.1"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+
+      - name: Restore isolated Android project
+        shell: bash
+        run: |
+          cat prompt-generator-mobile/android-project.b64.part* | tr -d '\n' | base64 --decode > "${RUNNER_TEMP}/project.zip"
+          echo "245089a8474ed2387d8c5dab7a1c64a05c4c137fa846723b560262a4f0418e50  ${RUNNER_TEMP}/project.zip" | sha256sum --check
+          unzip -q "${RUNNER_TEMP}/project.zip" -d "${RUNNER_TEMP}"
+
+      - name: Build debug APK
+        working-directory: ${{ runner.temp }}/prompt-generator-android-project
+        run: gradle :app:assembleDebug --stacktrace --no-daemon
+
+      - name: Verify APK
+        run: |
+          test -s "${RUNNER_TEMP}/prompt-generator-android-project/app/build/outputs/apk/debug/app-debug.apk"
+          sha256sum "${RUNNER_TEMP}/prompt-generator-android-project/app/build/outputs/apk/debug/app-debug.apk"
+
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Prompt-Generator-Android-v2.1
+          path: ${{ runner.temp }}/prompt-generator-android-project/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
