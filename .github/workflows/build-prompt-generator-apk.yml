@@ -36,8 +36,18 @@ jobs:
       - name: Restore and validate isolated Android project
         shell: bash
         run: |
-          cat prompt-generator-mobile/android-project.b64.part* | tr -d '\r\n' | base64 --decode > "${RUNNER_TEMP}/project.zip"
-          sha256sum "${RUNNER_TEMP}/project.zip"
+          cat \
+            prompt-generator-mobile/android-project.b64.part00 \
+            prompt-generator-mobile/android-project.b64.part01 \
+            prompt-generator-mobile/android-project.b64.part02 \
+            prompt-generator-mobile/android-project.b64.part03 \
+            prompt-generator-mobile/android-project.b64.part04 \
+            prompt-generator-mobile/android-project.b64.part05 \
+            prompt-generator-mobile/android-project.b64.part06a \
+            prompt-generator-mobile/android-project.b64.part06b \
+            prompt-generator-mobile/android-project.b64.part07 \
+            | tr -d '\r\n' | base64 --decode > "${RUNNER_TEMP}/project.zip"
+          echo "245089a8474ed2387d8c5dab7a1c64a05c4c137fa846723b560262a4f0418e50  ${RUNNER_TEMP}/project.zip" | sha256sum --check
           unzip -tq "${RUNNER_TEMP}/project.zip"
           unzip -q "${RUNNER_TEMP}/project.zip" -d "${RUNNER_TEMP}"
 
