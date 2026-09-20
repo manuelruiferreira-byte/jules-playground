@@ -1,5 +1,5 @@
 {
-  "produced_at": "2026-07-16T13:11:54Z",
+  "produced_at": "2026-09-20T11:48:02Z",
   "note": "Raw rankings for every probe and method, produced before ground-truth scoring.",
   "rankings": {
     "traj:netlify-gate-drift": {

@@ -1,6 +1,6 @@
 {
   "view": "kairoth-echo-engine-v0.1",
-  "generated_at": "2026-07-16T13:11:54Z",
+  "generated_at": "2026-09-20T11:48:02Z",
   "current_trajectory": {
     "id": "traj:see-slice-itself",
     "title": "SEE v0.1 vertical slice",
@@ -145,7 +145,7 @@
     "uncertainty_reduced": true,
     "beat_simpler_retrieval": null,
     "caused_rollback": false,
-    "resource_cost_ms": 37,
+    "resource_cost_ms": 58,
     "information_gain_note": "Structural vs best baseline MRR gap: 0.254."
   },
   "lesson": {

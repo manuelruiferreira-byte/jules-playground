@@ -51,8 +51,19 @@ function syntheticAt(t, i, n) {
 /** Reconstructor: derive pivots, weakened assumptions, and activity state. */
 export function reconstruct(db) {
   const upd = db.prepare("UPDATE trajectories SET pivots=?, weakened_assumptions=? WHERE id=?");
+
+  const eventsByTrajectory = new Map();
+  for (const e of db.prepare("SELECT * FROM events ORDER BY trajectory_id, seq").all()) {
+    let arr = eventsByTrajectory.get(e.trajectory_id);
+    if (!arr) {
+      arr = [];
+      eventsByTrajectory.set(e.trajectory_id, arr);
+    }
+    arr.push(e);
+  }
+
   for (const t of db.prepare("SELECT id FROM trajectories").all()) {
-    const evs = db.prepare("SELECT * FROM events WHERE trajectory_id=? ORDER BY seq").all(t.id);
+    const evs = eventsByTrajectory.get(t.id) || [];
     const pivots = evs.filter((e) => e.kind === "pivot_taken").map((e) => e.id);
     const weakened = [...new Set(evs
       .filter((e) => ["test_failed", "contradiction_detected"].includes(e.kind))
