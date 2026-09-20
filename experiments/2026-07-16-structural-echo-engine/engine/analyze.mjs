@@ -70,9 +70,13 @@ export function extractGeometry(db) {
   const insTA = db.prepare("INSERT OR REPLACE INTO trajectory_anchors(trajectory_id,anchor_key,evidence_event_id,note) VALUES(?,?,?,?)");
   const insFP = db.prepare("INSERT OR REPLACE INTO fingerprints(trajectory_id,anchors,bigrams,extractor_version) VALUES(?,?,?,?)");
 
+  const evsByTraj = {};
+  for (const e of db.prepare("SELECT * FROM events ORDER BY trajectory_id, seq").all()) {
+    (evsByTraj[e.trajectory_id] ??= []).push({ ...e, payload: p(e.payload) });
+  }
+
   for (const t of db.prepare("SELECT id FROM trajectories").all()) {
-    const evs = db.prepare("SELECT * FROM events WHERE trajectory_id=? ORDER BY seq").all(t.id)
-      .map((e) => ({ ...e, payload: p(e.payload) }));
+    const evs = evsByTraj[t.id] || [];
     const found = detectAnchors(evs);
     for (const f of found) insTA.run(t.id, f.key, f.evidence, f.note);
     const bigrams = {};
