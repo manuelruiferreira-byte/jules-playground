@@ -1,15 +1,15 @@
 {
   "record_type": "audit_verdict",
-  "id": "verdict:kces-slice-deterministic-2026-07-16",
+  "id": "verdict:kces-slice-deterministic-2026-09-20",
   "subject_ref": "experiment:kces-vertical-slice",
   "layer": "deterministic",
   "verdict": "PASS",
   "auditor": "kces-autoaudit-v0.1 (authored by Fable 5)",
   "auditor_is_builder": true,
-  "commit_sha": "2914377fe909e15c4b77423199d587eb0c86715c",
+  "commit_sha": "6fcadec69546c92c17912e297947b079d1e1addc",
   "diff_digest": null,
   "evaluator_epoch": "epoch:2026-07-16-a",
-  "issued_at": "2026-07-16T07:58:54.722Z",
+  "issued_at": "2026-09-20T11:38:01.162Z",
   "evidence": [
     {
       "check": "schema compiles",
@@ -68,19 +68,19 @@
     },
     {
       "check": "QF-001 pytest (optional toolchain)",
-      "result": "pass",
-      "detail": "9 tests passed"
+      "result": "skip",
+      "detail": "qiskit/pytest not installed in this environment"
     },
     {
       "check": "resource budget respected",
       "result": "pass",
-      "detail": "11952ms of 120000ms budget"
+      "detail": "461ms of 120000ms budget"
     }
   ],
   "resource_account": {
     "cost_basis": "measured",
-    "wall_time_ms": 11952,
-    "peak_memory_mb": 72
+    "wall_time_ms": 461,
+    "peak_memory_mb": 76
   },
   "notes": "Builder-authored deterministic layer. This verdict cannot authorize promotion on its own; an independent (non-builder) verdict is required by Governor policy."
 }

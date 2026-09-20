@@ -150,7 +150,8 @@ check("QF-001 provenance recorded", () => {
 check("QF-001 pytest (optional toolchain)", () => {
   try { execFileSync("python3", ["-c", "import qiskit, pytest"], { stdio: "pipe" }); }
   catch { skip("qiskit/pytest not installed in this environment"); }
-  const out = execFileSync("python3", ["-m", "pytest", "-q", "tests/"], { cwd: join(ROOT, "../2026-07-16-qf-001-phase-signal"), stdio: "pipe" }).toString();
+  const targetDir = join(ROOT, "../2026-07-16-qf-001-phase-signal");
+  const out = execFileSync("python3", ["-I", "-m", "pytest", "-q", "--", join(targetDir, "tests")], { cwd: targetDir, stdio: "pipe" }).toString();
   const m = out.match(/(\d+) passed/);
   if (!m) throw new Error(`pytest did not report passes: ${out.slice(-200)}`);
   return `${m[1]} tests passed`;
