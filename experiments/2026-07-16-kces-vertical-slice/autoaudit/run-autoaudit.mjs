@@ -11,7 +11,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const EVALUATOR_EPOCH = "epoch:2026-10-04-epoch-binding";
+const EVALUATOR_EPOCH = "epoch:2026-10-04-event-binding";
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const sha256 = (s) => "sha256:" + createHash("sha256").update(s).digest("hex");
 const evidence = [];
@@ -139,6 +139,17 @@ check("event outbox validates and is outbox-only", () => {
     if (ev.delivery !== "outbox") throw new Error(`${f}: delivery=${ev.delivery}, isolated experiments may only write outbox`);
   }
   return `${files.length} events`;
+});
+
+// Newly generated maintenance events must identify the active manifest and epoch.
+check("active autopilot event binds to manifest and epoch", () => {
+  const manifest = JSON.parse(read("MANIFEST.json"));
+  const event = JSON.parse(read("events/outbox/autopilot-dry-run-active.json"));
+  const expectedId = `event:autopilot-dry-run:${manifest.id}:${manifest.evaluator_epoch}`;
+  if (event.subject_ref !== manifest.id || event.id !== expectedId || event.event_type !== "promotion_decided") {
+    throw new Error(`active event binding mismatch: subject=${event.subject_ref}, id=${event.id}`);
+  }
+  return manifest.id;
 });
 
 // 8. Secret scan over the experiment tree (excluding dependency dirs).
