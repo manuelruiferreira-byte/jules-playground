@@ -1,0 +1,49 @@
+{
+  "record_type": "experiment_manifest",
+  "id": "experiment:kces-vertical-slice-epoch-binding",
+  "title": "KCES v0.1 vertical slice: epoch-bound maintenance validation",
+  "category": "classical_software",
+  "objective": "Demonstrate the complete governed loop end to end in isolation: research cards -> preregistered experiment -> deterministic AutoAudit -> promotion decisions under calibration policy -> evidence and rollback, with Mission Control events written to an outbox.",
+  "risk_class": "R2",
+  "evaluator_epoch": "epoch:2026-10-04-epoch-binding",
+  "system_boundary": "This experiment folder plus the sibling QF-001 import folder inside jules-playground. No network calls, no other repositories, no ledger writes, no runtime mutation anywhere.",
+  "primary_metric": "Loop completeness: every stage emits a schema-valid record and the deterministic audit passes with zero failed checks.",
+  "measurement_map": "autoaudit/run-autoaudit.mjs evidence array; sipr-experiment/results.json for the embedded SIPR-EXP-001 metric (canonical-hash ops/sec).",
+  "baseline": "No governed loop exists; changes flow through ad-hoc agent sessions with manual review only.",
+  "intervention": "Introduce contracts, evaluator registry, deterministic audit, and dry-run promotion policy as executable artifacts.",
+  "expected_recovery_behavior": "Not applicable at slice level; defined inside SIPR-EXP-001 (JIT warm-up windows).",
+  "plateau_window": "Not applicable at slice level; defined inside SIPR-EXP-001 (5 steady windows).",
+  "controls": [
+    {
+      "kind": "negative",
+      "description": "SIPR-EXP-001 negative control: baseline relabeled as intervention, expected gain within ±10%."
+    },
+    {
+      "kind": "reversed",
+      "description": "SIPR-EXP-001 reversed control: pessimized variant, expected strictly negative gain."
+    }
+  ],
+  "confounds": "Single-container measurements; CPU contention; builder-authored audit (mitigated by auditor_is_builder flag blocking self-promotion).",
+  "failure_condition": "Any deterministic audit check fails, any record fails schema validation, or any promotion decision violates the R3/calibration invariants.",
+  "rollback_condition": "Close the draft pull request and delete the branch; the experiment folder is self-contained and deletable with no external state.",
+  "replication_requirement": "SIPR-EXP-001: 3 replications with agreeing sign. Slice level: audit re-run must reproduce the same verdict on the same commit.",
+  "resource_budget": {
+    "cost_basis": "measured",
+    "wall_time_ms": 120000,
+    "monetary_eur": 0
+  },
+  "status": "testing",
+  "supersedes": "experiment:kces-vertical-slice",
+  "lineage": [
+    "experiment:kces-vertical-slice"
+  ],
+  "provenance": {
+    "source": "Superseding maintenance manifest for reviewed epoch-binding audit. Historical manifest archived at manifests/2026-07-16-a.MANIFEST.json; original experiment outcomes and claim thresholds remain historical.",
+    "retrieved_at": "2026-10-04T07:28:03.206Z",
+    "commit_sha": null,
+    "uri": null,
+    "digest": null
+  },
+  "preregistered_at": null,
+  "holdout_sealed": null
+}
