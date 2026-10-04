@@ -39,7 +39,7 @@
   ],
   "provenance": {
     "source": "Superseding maintenance manifest for reviewed epoch-binding audit. Historical manifest archived at manifests/2026-07-16-a.MANIFEST.json; original experiment outcomes and claim thresholds remain historical.",
-    "retrieved_at": "2026-10-04T07:30:00Z",
+    "retrieved_at": "2026-10-04T07:28:03.206Z",
     "commit_sha": null,
     "uri": null,
     "digest": null
