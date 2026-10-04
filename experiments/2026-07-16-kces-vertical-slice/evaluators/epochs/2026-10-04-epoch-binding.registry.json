@@ -1,0 +1,39 @@
+{
+  "epoch": "epoch:2026-10-04-epoch-binding",
+  "epoch_rule": "Evaluator definitions are frozen for the duration of the epoch. Changes require a new epoch, independent review, comparison against the previous evaluator, and protection against acceptance-easing. Verdicts store the epoch and digests below.",
+  "evaluators": [
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:kces-autoaudit-deterministic",
+      "epoch": "epoch:2026-10-04-epoch-binding",
+      "name": "autoaudit/run-autoaudit.mjs",
+      "description": "Layer-1 deterministic engineering checks: schema compilation, record validation, drift, evaluator freeze, promotion invariants, SIPR recomputation, outbox validation, secret scan, QF-001 tests (optional toolchain), resource budget.",
+      "definition_digest": "sha256:6187865cc2e03fbeff5a403ee4e90038de4848af7b2c914de210a0a56aa83268",
+      "frozen": true,
+      "previous_epoch": "epoch:2026-10-04-import-isolation",
+      "change_review": "evaluators/epoch-binding-review-2026-10-04.md"
+    },
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:sipr-exp-001-harness",
+      "epoch": "epoch:2026-10-04-epoch-binding",
+      "name": "sipr-experiment/run-experiment.mjs",
+      "description": "SIPR-EXP-001 measurement harness with preregistered thresholds (PREREGISTRATION.md). Output correctness asserted byte-identical across variants before measurement.",
+      "definition_digest": "sha256:1dc2151c5b00beeedb8beae76d963e5ce6902b3ec3ae0fd037ed5d12bf5cdb21",
+      "frozen": true,
+      "previous_epoch": "epoch:2026-10-04-import-isolation",
+      "change_review": "evaluators/epoch-binding-review-2026-10-04.md"
+    },
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:kces-promotion-policy",
+      "epoch": "epoch:2026-10-04-epoch-binding",
+      "name": "autopilot/dry-run.mjs",
+      "description": "Executable Governor promotion policy: R3 never delegable, BLOCKED/REWRITE rejects, builder-only evidence holds, calibration routes everything to Manuel.",
+      "definition_digest": "sha256:61ee8dd057f722b410c64a3ce90c60b72aad6df0d5ffb44030bf2b1f909831a5",
+      "frozen": true,
+      "previous_epoch": "epoch:2026-10-04-import-isolation",
+      "change_review": "evaluators/epoch-binding-review-2026-10-04.md"
+    }
+  ]
+}
