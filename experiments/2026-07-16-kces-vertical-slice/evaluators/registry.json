@@ -8,7 +8,7 @@
       "epoch": "epoch:2026-10-04-import-isolation",
       "name": "autoaudit/run-autoaudit.mjs",
       "description": "Layer-1 deterministic engineering checks: schema compilation, record validation, drift, evaluator freeze, promotion invariants, SIPR recomputation, outbox validation, secret scan, QF-001 tests (optional toolchain), resource budget.",
-      "definition_digest": "sha256:218126a911f1a3350ed4455625bec48d01d2284a7c97e0d6263d47d1f6f73d2f",
+      "definition_digest": "sha256:fcc72db387cc3fabefe9244f5b6c4d4aae97d56db738f142b8e65c06e83fefd7",
       "frozen": true,
       "previous_epoch": "epoch:2026-07-16-a",
       "change_review": "evaluators/import-isolation-review-2026-10-04.md"
