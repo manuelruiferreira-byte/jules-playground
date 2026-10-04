@@ -85,19 +85,21 @@ export function rankAll(corpus, probeId) {
   const rnd = mulberry32(strSeed(probeId));
   const randomScores = Object.fromEntries(candidates.map((id) => [id, rnd()]));
 
+  const rowById = new Map(corpus.rows.map(r => [r.id, r]));
+
   const methods = {
     structural: (id) => structuralScore(corpus, probeId, id).score,
     sequence: (id) => cosine(corpus.fp[probeId].bigrams, corpus.fp[id].bigrams),
     semantic: (id) => cosine(tfidf[probeId], tfidf[id]),
     keyword: (id) => {
-      const row = corpus.rows.find((r) => r.id === id);
+      const row = rowById.get(id);
       const other = new Set(terms(`${row.title} ${row.objective}`));
       const inter = [...probeTokens].filter((w) => other.has(w)).length;
       const uni = new Set([...probeTokens, ...other]).size || 1;
       return inter / uni;
     },
     recency: (id) => {
-      const row = corpus.rows.find((r) => r.id === id);
+      const row = rowById.get(id);
       const days = Math.abs(probeEnd - Date.parse(row.ended_at ?? row.started_at)) / 86400e3;
       return 1 / (1 + days);
     },
