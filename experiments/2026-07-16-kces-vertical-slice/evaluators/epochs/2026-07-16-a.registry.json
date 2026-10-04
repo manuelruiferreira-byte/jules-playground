@@ -1,0 +1,39 @@
+{
+  "epoch": "epoch:2026-07-16-a",
+  "epoch_rule": "Evaluator definitions are frozen for the duration of the epoch. Changes require a new epoch, independent review, comparison against the previous evaluator, and protection against acceptance-easing. Verdicts store the epoch and digests below.",
+  "evaluators": [
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:kces-autoaudit-deterministic",
+      "epoch": "epoch:2026-07-16-a",
+      "name": "autoaudit/run-autoaudit.mjs",
+      "description": "Layer-1 deterministic engineering checks: schema compilation, record validation, drift, evaluator freeze, promotion invariants, SIPR recomputation, outbox validation, secret scan, QF-001 tests (optional toolchain), resource budget.",
+      "definition_digest": "sha256:c9d92f3ca1f9d86f2037b213528bf6c993131cc825cf7f4a3d326cadc8231432",
+      "frozen": true,
+      "previous_epoch": null,
+      "change_review": null
+    },
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:sipr-exp-001-harness",
+      "epoch": "epoch:2026-07-16-a",
+      "name": "sipr-experiment/run-experiment.mjs",
+      "description": "SIPR-EXP-001 measurement harness with preregistered thresholds (PREREGISTRATION.md). Output correctness asserted byte-identical across variants before measurement.",
+      "definition_digest": "sha256:1dc2151c5b00beeedb8beae76d963e5ce6902b3ec3ae0fd037ed5d12bf5cdb21",
+      "frozen": true,
+      "previous_epoch": null,
+      "change_review": null
+    },
+    {
+      "record_type": "evaluator_definition",
+      "id": "evaluator:kces-promotion-policy",
+      "epoch": "epoch:2026-07-16-a",
+      "name": "autopilot/dry-run.mjs",
+      "description": "Executable Governor promotion policy: R3 never delegable, BLOCKED/REWRITE rejects, builder-only evidence holds, calibration routes everything to Manuel.",
+      "definition_digest": "sha256:61ee8dd057f722b410c64a3ce90c60b72aad6df0d5ffb44030bf2b1f909831a5",
+      "frozen": true,
+      "previous_epoch": null,
+      "change_review": null
+    }
+  ]
+}

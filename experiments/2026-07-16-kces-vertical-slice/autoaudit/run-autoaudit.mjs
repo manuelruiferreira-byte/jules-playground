@@ -148,9 +148,10 @@ check("QF-001 provenance recorded", () => {
   if (!readme.includes("f6c521d")) throw new Error("QF-001 README lacks origin commit f6c521d");
 });
 check("QF-001 pytest (optional toolchain)", () => {
-  try { execFileSync("python3", ["-c", "import qiskit, pytest"], { stdio: "pipe" }); }
-  catch { skip("qiskit/pytest not installed in this environment"); }
-  const out = execFileSync("python3", ["-m", "pytest", "-q", "tests/"], { cwd: join(ROOT, "../2026-07-16-qf-001-phase-signal"), stdio: "pipe" }).toString();
+  try { execFileSync("python3", ["-I", "-c", "import qiskit, qiskit_aer, pytest"], { stdio: "pipe" }); }
+  catch { skip("qiskit/qiskit-aer/pytest not installed for isolated Python"); }
+  const targetDir = join(ROOT, "../2026-07-16-qf-001-phase-signal");
+  const out = execFileSync("python3", ["-I", "-m", "pytest", "-q", "--", join(targetDir, "tests")], { cwd: targetDir, stdio: "pipe" }).toString();
   const m = out.match(/(\d+) passed/);
   if (!m) throw new Error(`pytest did not report passes: ${out.slice(-200)}`);
   return `${m[1]} tests passed`;
@@ -180,7 +181,7 @@ const verdict = {
   auditor_is_builder: true,
   commit_sha: commit,
   diff_digest: null,
-  evaluator_epoch: "epoch:2026-07-16-a",
+  evaluator_epoch: "epoch:2026-10-04-import-isolation",
   issued_at: new Date().toISOString(),
   evidence,
   resource_account: { cost_basis: "measured", wall_time_ms: wallMs, peak_memory_mb: Math.round(process.memoryUsage().rss / 1048576) },
