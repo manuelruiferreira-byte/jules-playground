@@ -88,6 +88,12 @@ def test_none_funding_raises_type_error():
         get_quantum_signal(None, 1024)
 
 
+@pytest.mark.parametrize("funding_rate", [True, False])
+def test_boolean_funding_raises_type_error(funding_rate):
+    with pytest.raises(TypeError):
+        get_quantum_signal(funding_rate, 1024)
+
+
 def test_nan_funding_raises_value_error():
     with pytest.raises(ValueError):
         get_quantum_signal(math.nan, 1024)
