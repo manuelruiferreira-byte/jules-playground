@@ -55,5 +55,9 @@ expect("invalid verdict enum caught", gate(badVerdict).admissible === false);
 const emptyRewrite = { ...base, verdict: "Rewrite", required_rewrites: [] };
 expect("Rewrite requires required_rewrites", gate(emptyRewrite).admissible === false);
 
+// 9. Array item type validation fails on bad items.
+const badArrayItem = { ...base, evidence: ["gate.mjs reviewed", 123] };
+expect("array item type validation catches non-string", gate(badArrayItem).admissible === false);
+
 console.log(failures === 0 ? "\nALL TESTS PASSED" : `\n${failures} TEST(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);
