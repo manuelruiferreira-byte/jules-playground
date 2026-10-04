@@ -60,14 +60,15 @@ export function decide(candidate, autonomyMode = AUTONOMY_MODE) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
+  const manifest = JSON.parse(readFileSync(new URL("../MANIFEST.json", import.meta.url), "utf8"));
   const fixture = JSON.parse(readFileSync(new URL("fixtures/candidates.json", import.meta.url), "utf8"));
   const decisions = fixture.candidates.map((c) => decide(c, fixture.autonomy_mode));
   writeFileSync(new URL("decisions.json", import.meta.url), JSON.stringify({ generated_at: new Date().toISOString(), autonomy_mode: fixture.autonomy_mode, decisions }, null, 2) + "\n");
 
   mkdirSync(new URL("../events/outbox/", import.meta.url), { recursive: true });
-  writeFileSync(new URL("../events/outbox/autopilot-dry-run.json", import.meta.url), JSON.stringify({
-    record_type: "evolution_event", id: "event:autopilot-dry-run-2026-07-16",
-    event_type: "promotion_decided", subject_ref: "experiment:kces-vertical-slice",
+  writeFileSync(new URL("../events/outbox/autopilot-dry-run-active.json", import.meta.url), JSON.stringify({
+    record_type: "evolution_event", id: `event:autopilot-dry-run:${manifest.id}:${manifest.evaluator_epoch}`,
+    event_type: "promotion_decided", subject_ref: manifest.id,
     occurred_at: new Date().toISOString(),
     summary: `Autopilot dry run over ${decisions.length} fixture candidates: ${decisions.map((d) => `${d.subject_ref}→${d.decision}`).join("; ")}.`,
     delivery: "outbox",
