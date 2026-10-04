@@ -17,7 +17,8 @@ Previous epoch: epoch:2026-07-16-a. Its registry is archived verbatim in evaluat
 - Original normal preflight succeeds with user-site dependencies; proposed PR #7 isolated invocation fails because pytest is not visible. Reproduced on Python 3.12.
 - Corrected autoaudit source passes node --check on Node 24.19.0.
 - Exact PR #12 full quantum tests pass 12/12 using the normal dependency-equipped interpreter. This does not substitute for a full autoaudit run.
-- The corrected source SHA256 is 218126a911f1a3350ed4455625bec48d01d2284a7c97e0d6263d47d1f6f73d2f.
-- Full new-epoch autoaudit and an isolated dependency-equipped run remain required before declaring this evaluator operational. No fresh PASS verdict is claimed here.
+- The corrected source SHA256 is fcc72db387cc3fabefe9244f5b6c4d4aae97d56db738f142b8e65c06e83fefd7.
+- Full new-epoch autoaudit passes all 13 checks with an isolated dependency-equipped Python virtual environment, including 12/12 quantum tests, in 1489ms against the 120000ms budget. With only user-site dependencies available, the same audit passes 12 checks and reports one correct optional-toolchain skip.
+- SHA provenance and all evaluator-definition digest checks pass against exact remote source bytes. Temporary verdicts are test outputs and are not committed over the historical verdict.
 
 Rollback: revert replacement commits; archived prior registry preserves the frozen previous definition. No production runtime changed.
