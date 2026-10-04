@@ -88,6 +88,21 @@ def test_none_funding_raises_type_error():
         get_quantum_signal(None, 1024)
 
 
+def test_nan_funding_raises_value_error():
+    with pytest.raises(ValueError):
+        get_quantum_signal(math.nan, 1024)
+
+
+def test_inf_funding_raises_value_error():
+    with pytest.raises(ValueError):
+        get_quantum_signal(math.inf, 1024)
+
+
+def test_neg_inf_funding_raises_value_error():
+    with pytest.raises(ValueError):
+        get_quantum_signal(-math.inf, 1024)
+
+
 # --------------------------------------------------------------------------- #
 # 3. Regression: the ORIGINAL circuit is sign-blind
 #    H -> RZ(theta) -> H -> measure, run with +pi/2 and -pi/2, both ~ 50/50.
