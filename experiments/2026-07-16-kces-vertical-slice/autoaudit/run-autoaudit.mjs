@@ -11,6 +11,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const EVALUATOR_EPOCH = "epoch:2026-10-04-epoch-binding";
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const sha256 = (s) => "sha256:" + createHash("sha256").update(s).digest("hex");
 const evidence = [];
@@ -69,6 +70,17 @@ check("evaluator registry entries validate and are frozen", () => {
     if (!ev.frozen) throw new Error(`${ev.id} is not frozen during active epoch`);
   }
   return `epoch ${reg.epoch}, ${reg.evaluators.length} evaluators`;
+});
+
+// An audit must bind the active experiment, registry and emitted verdict to one epoch.
+check("manifest, registry and verdict epochs agree", () => {
+  const manifest = JSON.parse(read("MANIFEST.json"));
+  const registry = JSON.parse(read("evaluators/registry.json"));
+  if (manifest.evaluator_epoch !== EVALUATOR_EPOCH || registry.epoch !== EVALUATOR_EPOCH
+      || registry.evaluators.some((ev) => ev.epoch !== EVALUATOR_EPOCH)) {
+    throw new Error(`epoch mismatch: manifest=${manifest.evaluator_epoch}, registry=${registry.epoch}, verdict=${EVALUATOR_EPOCH}`);
+  }
+  return EVALUATOR_EPOCH;
 });
 
 // 4. Evaluator freeze integrity: registry digests match current file bytes.
@@ -174,21 +186,21 @@ try { commit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, stdio: "p
 const verdict = {
   record_type: "audit_verdict",
   id: `verdict:kces-slice-deterministic-${new Date().toISOString().slice(0, 10)}`,
-  subject_ref: "experiment:kces-vertical-slice",
+  subject_ref: JSON.parse(read("MANIFEST.json")).id,
   layer: "deterministic",
   verdict: verdictValue,
   auditor: "kces-autoaudit-v0.1 (authored by Fable 5)",
   auditor_is_builder: true,
   commit_sha: commit,
   diff_digest: null,
-  evaluator_epoch: "epoch:2026-10-04-import-isolation",
+  evaluator_epoch: EVALUATOR_EPOCH,
   issued_at: new Date().toISOString(),
   evidence,
   resource_account: { cost_basis: "measured", wall_time_ms: wallMs, peak_memory_mb: Math.round(process.memoryUsage().rss / 1048576) },
   notes: "Builder-authored deterministic layer. This verdict cannot authorize promotion on its own; an independent (non-builder) verdict is required by Governor policy.",
 };
 mustValidate("auditVerdict", verdict, "verdict.json");
-writeFileSync(join(ROOT, "autoaudit/verdict.json"), JSON.stringify(verdict, null, 2) + "\n");
+writeFileSync(join(ROOT, "autoaudit/verdict-active.json"), JSON.stringify(verdict, null, 2) + "\n");
 for (const e of evidence) console.log(`${e.result.toUpperCase().padEnd(5)} ${e.check}${e.detail ? " — " + e.detail : ""}`);
 console.log(`VERDICT: ${verdictValue} (${evidence.length} checks, ${failed.length} failed, ${wallMs}ms)`);
 process.exit(failed.length === 0 ? 0 : 1);
