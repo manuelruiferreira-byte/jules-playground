@@ -1,11 +1,11 @@
 {
   "record_type": "experiment_manifest",
-  "id": "experiment:kces-vertical-slice-epoch-binding",
-  "title": "KCES v0.1 vertical slice: epoch-bound maintenance validation",
+  "id": "experiment:kces-vertical-slice-event-binding",
+  "title": "KCES v0.1 vertical slice: event-bound maintenance validation",
   "category": "classical_software",
   "objective": "Demonstrate the complete governed loop end to end in isolation: research cards -> preregistered experiment -> deterministic AutoAudit -> promotion decisions under calibration policy -> evidence and rollback, with Mission Control events written to an outbox.",
   "risk_class": "R2",
-  "evaluator_epoch": "epoch:2026-10-04-epoch-binding",
+  "evaluator_epoch": "epoch:2026-10-04-event-binding",
   "system_boundary": "This experiment folder plus the sibling QF-001 import folder inside jules-playground. No network calls, no other repositories, no ledger writes, no runtime mutation anywhere.",
   "primary_metric": "Loop completeness: every stage emits a schema-valid record and the deterministic audit passes with zero failed checks.",
   "measurement_map": "autoaudit/run-autoaudit.mjs evidence array; sipr-experiment/results.json for the embedded SIPR-EXP-001 metric (canonical-hash ops/sec).",
@@ -33,13 +33,14 @@
     "monetary_eur": 0
   },
   "status": "testing",
-  "supersedes": "experiment:kces-vertical-slice",
+  "supersedes": "experiment:kces-vertical-slice-epoch-binding",
   "lineage": [
-    "experiment:kces-vertical-slice"
+    "experiment:kces-vertical-slice",
+    "experiment:kces-vertical-slice-epoch-binding"
   ],
   "provenance": {
-    "source": "Superseding maintenance manifest for reviewed epoch-binding audit. Historical manifest archived at manifests/2026-07-16-a.MANIFEST.json; original experiment outcomes and claim thresholds remain historical.",
-    "retrieved_at": "2026-10-04T07:28:03.206Z",
+    "source": "Superseding event-binding maintenance manifest; prior maintenance manifest archived in manifests/2026-10-04-epoch-binding.MANIFEST.json. Original experiment outcomes and thresholds remain historical.",
+    "retrieved_at": "2026-10-04T18:49:41.403Z",
     "commit_sha": null,
     "uri": null,
     "digest": null
