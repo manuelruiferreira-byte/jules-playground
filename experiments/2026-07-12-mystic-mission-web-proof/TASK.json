@@ -1,0 +1,45 @@
+{
+  "schema_version": "mystic-story-task.v0.2",
+  "project_id": "mystic-mission",
+  "task_id": "mm-web-proof-2026-07-12",
+  "task_type": "website_story_surface",
+  "privacy_class": "public",
+  "max_cost_lane": "tier1_free",
+  "canon_sources": [
+    {
+      "id": "approved-brief-extract",
+      "excerpt": "Mystic Mission is a transmedia story universe whose first public doorway should make visitors feel that reality contains a hidden layer reacting to their presence. The war is about remembrance rather than conquest. Kael is the current canonical protagonist name. This experiment must not reveal the full cosmology or claim canon status."
+    }
+  ],
+  "required_beats": [
+    "cinematic threshold",
+    "damaged transmission",
+    "small frequency or signal puzzle",
+    "hidden revelation after success",
+    "four future gateways",
+    "experimental non-canonical status"
+  ],
+  "forbidden_contradictions": [
+    "use Juno as the current protagonist name",
+    "claim the experiment is canonical",
+    "require a paid service",
+    "require a database or account",
+    "reveal the complete Erebus Kairoth SIPR ending",
+    "self-promote into another repository"
+  ],
+  "freedom_zone": "Visual language, microcopy, transmission formatting, puzzle presentation, CSS effects, and non-canonical atmospheric details may vary within the constraints of INPUT_PACKET.md.",
+  "characters": ["Kael"],
+  "story_time": "public threshold before full narrative disclosure",
+  "medium": "website",
+  "desired_variants": 1,
+  "output_contract": {
+    "format": "repository_experiment",
+    "sections": [
+      "working static experience",
+      "mock public export",
+      "test report",
+      "promotion packet"
+    ]
+  },
+  "human_approval_required": true
+}
