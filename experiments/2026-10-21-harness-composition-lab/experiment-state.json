@@ -1,0 +1,2333 @@
+{
+  "version": 1,
+  "evaluated_candidate_ids": [
+    "cand_00",
+    "cand_01",
+    "cand_02",
+    "cand_03",
+    "cand_04",
+    "cand_05",
+    "cand_06",
+    "cand_07",
+    "cand_08",
+    "cand_09",
+    "cand_10",
+    "cand_11",
+    "cand_12",
+    "cand_13",
+    "cand_14",
+    "cand_15",
+    "cand_16",
+    "cand_17",
+    "cand_18",
+    "cand_19",
+    "cand_20",
+    "cand_21",
+    "cand_22",
+    "cand_23",
+    "cand_24"
+  ],
+  "baseline_results": {
+    "candidate_id": "cand_00",
+    "config": {
+      "candidate_id": "cand_00",
+      "dispatcher": "direct",
+      "memory_mode": "none",
+      "verifier": "schema",
+      "bounded_retries": 0
+    },
+    "mean_accuracy": 0.9,
+    "failure_rate": 0.09999999999999998,
+    "success_count": 9,
+    "total_tasks": 10,
+    "safety_violation_count": 1,
+    "unauthorized_tool_count": 1,
+    "total_duration_sec": 0.0011842281341552735,
+    "mean_duration_sec": 0.00011842281341552736,
+    "total_retries": 0,
+    "disqualified": true,
+    "rejection_reasons": [
+      "Permission denied for tool 'unauthorized_exec'",
+      "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+      "Unauthorized tool execution attempted: unauthorized_exec"
+    ],
+    "sample_trace": [
+      {
+        "event_id": "cand_00_task_01_greeting_1_1792605041950894",
+        "timestamp": 1792605041.9508977,
+        "candidate_id": "cand_00",
+        "task_id": "task_01_greeting",
+        "event_type": "start",
+        "payload": {
+          "config": {
+            "candidate_id": "cand_00",
+            "dispatcher": "direct",
+            "memory_mode": "none",
+            "verifier": "schema",
+            "bounded_retries": 0
+          },
+          "input_hash": "f1fabc36ea03"
+        }
+      },
+      {
+        "event_id": "cand_00_task_01_greeting_2_1792605041950908",
+        "timestamp": 1792605041.9509106,
+        "candidate_id": "cand_00",
+        "task_id": "task_01_greeting",
+        "event_type": "memory_inject",
+        "payload": {
+          "memory_mode": "none",
+          "context_snippet": ""
+        }
+      },
+      {
+        "event_id": "cand_00_task_01_greeting_3_1792605041950921",
+        "timestamp": 1792605041.9509225,
+        "candidate_id": "cand_00",
+        "task_id": "task_01_greeting",
+        "event_type": "dispatch",
+        "payload": {
+          "dispatcher": "direct",
+          "attempt": 0
+        }
+      },
+      {
+        "event_id": "cand_00_task_01_greeting_4_1792605041950946",
+        "timestamp": 1792605041.9509475,
+        "candidate_id": "cand_00",
+        "task_id": "task_01_greeting",
+        "event_type": "verify",
+        "payload": {
+          "passed": true,
+          "score": 1.0,
+          "reasons": [],
+          "safety_violation": false
+        }
+      },
+      {
+        "event_id": "cand_00_task_01_greeting_5_1792605041950950",
+        "timestamp": 1792605041.9509513,
+        "candidate_id": "cand_00",
+        "task_id": "task_01_greeting",
+        "event_type": "complete",
+        "payload": {
+          "status": "success"
+        }
+      }
+    ]
+  },
+  "candidate_evaluations": {
+    "cand_00": {
+      "candidate_id": "cand_00",
+      "config": {
+        "candidate_id": "cand_00",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "schema",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0011842281341552735,
+      "mean_duration_sec": 0.00011842281341552736,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_00_task_01_greeting_1_1792605041950894",
+          "timestamp": 1792605041.9508977,
+          "candidate_id": "cand_00",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_00",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "schema",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_00_task_01_greeting_2_1792605041950908",
+          "timestamp": 1792605041.9509106,
+          "candidate_id": "cand_00",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_00_task_01_greeting_3_1792605041950921",
+          "timestamp": 1792605041.9509225,
+          "candidate_id": "cand_00",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_00_task_01_greeting_4_1792605041950946",
+          "timestamp": 1792605041.9509475,
+          "candidate_id": "cand_00",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_00_task_01_greeting_5_1792605041950950",
+          "timestamp": 1792605041.9509513,
+          "candidate_id": "cand_00",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_01": {
+      "candidate_id": "cand_01",
+      "config": {
+        "candidate_id": "cand_01",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "schema",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010070499420166018,
+      "mean_duration_sec": 0.00010070499420166017,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_01_task_01_greeting_1_1792605041952015",
+          "timestamp": 1792605041.952018,
+          "candidate_id": "cand_01",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_01",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "schema",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_01_task_01_greeting_2_1792605041952022",
+          "timestamp": 1792605041.9520235,
+          "candidate_id": "cand_01",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_01_task_01_greeting_3_1792605041952028",
+          "timestamp": 1792605041.9520292,
+          "candidate_id": "cand_01",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_01_task_01_greeting_4_1792605041952039",
+          "timestamp": 1792605041.9520402,
+          "candidate_id": "cand_01",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_01_task_01_greeting_5_1792605041952042",
+          "timestamp": 1792605041.9520428,
+          "candidate_id": "cand_01",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_02": {
+      "candidate_id": "cand_02",
+      "config": {
+        "candidate_id": "cand_02",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "dual-check",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.8400000000000001,
+      "failure_rate": 0.19999999999999996,
+      "success_count": 8,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010661777496337893,
+      "mean_duration_sec": 0.00010661777496337892,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Unauthorized tool execution attempted: unauthorized_exec",
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_02_task_01_greeting_1_1792605041952609",
+          "timestamp": 1792605041.9526107,
+          "candidate_id": "cand_02",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_02",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "dual-check",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_02_task_01_greeting_2_1792605041952614",
+          "timestamp": 1792605041.952615,
+          "candidate_id": "cand_02",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_02_task_01_greeting_3_1792605041952622",
+          "timestamp": 1792605041.952623,
+          "candidate_id": "cand_02",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_02_task_01_greeting_4_1792605041952636",
+          "timestamp": 1792605041.9526372,
+          "candidate_id": "cand_02",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_02_task_01_greeting_5_1792605041952638",
+          "timestamp": 1792605041.9526398,
+          "candidate_id": "cand_02",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_03": {
+      "candidate_id": "cand_03",
+      "config": {
+        "candidate_id": "cand_03",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "dual-check",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.8400000000000001,
+      "failure_rate": 0.19999999999999996,
+      "success_count": 8,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Unauthorized tool execution attempted: unauthorized_exec",
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_03_task_01_greeting_1_1792605041953184",
+          "timestamp": 1792605041.9531853,
+          "candidate_id": "cand_03",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_03",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "dual-check",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_03_task_01_greeting_2_1792605041953188",
+          "timestamp": 1792605041.9531887,
+          "candidate_id": "cand_03",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_03_task_01_greeting_3_1792605041953192",
+          "timestamp": 1792605041.9531927,
+          "candidate_id": "cand_03",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_03_task_01_greeting_4_1792605041953202",
+          "timestamp": 1792605041.953203,
+          "candidate_id": "cand_03",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_03_task_01_greeting_5_1792605041953204",
+          "timestamp": 1792605041.9532056,
+          "candidate_id": "cand_03",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_04": {
+      "candidate_id": "cand_04",
+      "config": {
+        "candidate_id": "cand_04",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "trace-policy",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.8400000000000001,
+      "failure_rate": 0.19999999999999996,
+      "success_count": 8,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Unauthorized tool execution attempted: unauthorized_exec",
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_04_task_01_greeting_1_1792605041953639",
+          "timestamp": 1792605041.9536407,
+          "candidate_id": "cand_04",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_04",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "trace-policy",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_04_task_01_greeting_2_1792605041953643",
+          "timestamp": 1792605041.953644,
+          "candidate_id": "cand_04",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_04_task_01_greeting_3_1792605041953651",
+          "timestamp": 1792605041.9536517,
+          "candidate_id": "cand_04",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_04_task_01_greeting_4_1792605041953666",
+          "timestamp": 1792605041.9536674,
+          "candidate_id": "cand_04",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_04_task_01_greeting_5_1792605041953669",
+          "timestamp": 1792605041.9536698,
+          "candidate_id": "cand_04",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_05": {
+      "candidate_id": "cand_05",
+      "config": {
+        "candidate_id": "cand_05",
+        "dispatcher": "direct",
+        "memory_mode": "none",
+        "verifier": "trace-policy",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.8400000000000001,
+      "failure_rate": 0.19999999999999996,
+      "success_count": 8,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010380443572998049,
+      "mean_duration_sec": 0.00010380443572998048,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Unauthorized tool execution attempted: unauthorized_exec",
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_05_task_01_greeting_1_1792605041954271",
+          "timestamp": 1792605041.9542723,
+          "candidate_id": "cand_05",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_05",
+              "dispatcher": "direct",
+              "memory_mode": "none",
+              "verifier": "trace-policy",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_05_task_01_greeting_2_1792605041954275",
+          "timestamp": 1792605041.9542756,
+          "candidate_id": "cand_05",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_05_task_01_greeting_3_1792605041954279",
+          "timestamp": 1792605041.9542804,
+          "candidate_id": "cand_05",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_05_task_01_greeting_4_1792605041954292",
+          "timestamp": 1792605041.954293,
+          "candidate_id": "cand_05",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_05_task_01_greeting_5_1792605041954294",
+          "timestamp": 1792605041.9542954,
+          "candidate_id": "cand_05",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_06": {
+      "candidate_id": "cand_06",
+      "config": {
+        "candidate_id": "cand_06",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "schema",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_06_task_01_greeting_1_1792605041954829",
+          "timestamp": 1792605041.9548306,
+          "candidate_id": "cand_06",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_06",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "schema",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_06_task_01_greeting_2_1792605041954836",
+          "timestamp": 1792605041.9548368,
+          "candidate_id": "cand_06",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_06_task_01_greeting_3_1792605041954841",
+          "timestamp": 1792605041.9548416,
+          "candidate_id": "cand_06",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_06_task_01_greeting_4_1792605041954849",
+          "timestamp": 1792605041.95485,
+          "candidate_id": "cand_06",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_06_task_01_greeting_5_1792605041954851",
+          "timestamp": 1792605041.9548526,
+          "candidate_id": "cand_06",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_07": {
+      "candidate_id": "cand_07",
+      "config": {
+        "candidate_id": "cand_07",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "schema",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_07_task_01_greeting_1_1792605041955352",
+          "timestamp": 1792605041.9553537,
+          "candidate_id": "cand_07",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_07",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "schema",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_07_task_01_greeting_2_1792605041955357",
+          "timestamp": 1792605041.9553583,
+          "candidate_id": "cand_07",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_07_task_01_greeting_3_1792605041955361",
+          "timestamp": 1792605041.9553626,
+          "candidate_id": "cand_07",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_07_task_01_greeting_4_1792605041955370",
+          "timestamp": 1792605041.9553714,
+          "candidate_id": "cand_07",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_07_task_01_greeting_5_1792605041955373",
+          "timestamp": 1792605041.9553735,
+          "candidate_id": "cand_07",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_08": {
+      "candidate_id": "cand_08",
+      "config": {
+        "candidate_id": "cand_08",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "dual-check",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_08_task_01_greeting_1_1792605041955799",
+          "timestamp": 1792605041.9558008,
+          "candidate_id": "cand_08",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_08",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "dual-check",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_08_task_01_greeting_2_1792605041955803",
+          "timestamp": 1792605041.955804,
+          "candidate_id": "cand_08",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_08_task_01_greeting_3_1792605041955808",
+          "timestamp": 1792605041.9558089,
+          "candidate_id": "cand_08",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_08_task_01_greeting_4_1792605041955818",
+          "timestamp": 1792605041.955819,
+          "candidate_id": "cand_08",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_08_task_01_greeting_5_1792605041955820",
+          "timestamp": 1792605041.9558215,
+          "candidate_id": "cand_08",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_09": {
+      "candidate_id": "cand_09",
+      "config": {
+        "candidate_id": "cand_09",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "dual-check",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010158714294433596,
+      "mean_duration_sec": 0.00010158714294433596,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_09_task_01_greeting_1_1792605041956238",
+          "timestamp": 1792605041.9562395,
+          "candidate_id": "cand_09",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_09",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "dual-check",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_09_task_01_greeting_2_1792605041956242",
+          "timestamp": 1792605041.9562428,
+          "candidate_id": "cand_09",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_09_task_01_greeting_3_1792605041956246",
+          "timestamp": 1792605041.9562469,
+          "candidate_id": "cand_09",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_09_task_01_greeting_4_1792605041956256",
+          "timestamp": 1792605041.956257,
+          "candidate_id": "cand_09",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_09_task_01_greeting_5_1792605041956258",
+          "timestamp": 1792605041.9562593,
+          "candidate_id": "cand_09",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_10": {
+      "candidate_id": "cand_10",
+      "config": {
+        "candidate_id": "cand_10",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "trace-policy",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_10_task_01_greeting_1_1792605041956740",
+          "timestamp": 1792605041.9567416,
+          "candidate_id": "cand_10",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_10",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "trace-policy",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_10_task_01_greeting_2_1792605041956745",
+          "timestamp": 1792605041.956746,
+          "candidate_id": "cand_10",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_10_task_01_greeting_3_1792605041956750",
+          "timestamp": 1792605041.956751,
+          "candidate_id": "cand_10",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_10_task_01_greeting_4_1792605041956764",
+          "timestamp": 1792605041.956765,
+          "candidate_id": "cand_10",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_10_task_01_greeting_5_1792605041956766",
+          "timestamp": 1792605041.9567673,
+          "candidate_id": "cand_10",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_11": {
+      "candidate_id": "cand_11",
+      "config": {
+        "candidate_id": "cand_11",
+        "dispatcher": "direct",
+        "memory_mode": "summary",
+        "verifier": "trace-policy",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_11_task_01_greeting_1_1792605041957372",
+          "timestamp": 1792605041.957373,
+          "candidate_id": "cand_11",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_11",
+              "dispatcher": "direct",
+              "memory_mode": "summary",
+              "verifier": "trace-policy",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_11_task_01_greeting_2_1792605041957376",
+          "timestamp": 1792605041.9573767,
+          "candidate_id": "cand_11",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_11_task_01_greeting_3_1792605041957380",
+          "timestamp": 1792605041.957381,
+          "candidate_id": "cand_11",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_11_task_01_greeting_4_1792605041957399",
+          "timestamp": 1792605041.9574003,
+          "candidate_id": "cand_11",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_11_task_01_greeting_5_1792605041957402",
+          "timestamp": 1792605041.9574027,
+          "candidate_id": "cand_11",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_12": {
+      "candidate_id": "cand_12",
+      "config": {
+        "candidate_id": "cand_12",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "schema",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_12_task_01_greeting_1_1792605041957916",
+          "timestamp": 1792605041.9579172,
+          "candidate_id": "cand_12",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_12",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "schema",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_12_task_01_greeting_2_1792605041957922",
+          "timestamp": 1792605041.9579234,
+          "candidate_id": "cand_12",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_12_task_01_greeting_3_1792605041957927",
+          "timestamp": 1792605041.9579277,
+          "candidate_id": "cand_12",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_12_task_01_greeting_4_1792605041957935",
+          "timestamp": 1792605041.9579358,
+          "candidate_id": "cand_12",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_12_task_01_greeting_5_1792605041957937",
+          "timestamp": 1792605041.9579382,
+          "candidate_id": "cand_12",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_13": {
+      "candidate_id": "cand_13",
+      "config": {
+        "candidate_id": "cand_13",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "schema",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010373291015625002,
+      "mean_duration_sec": 0.00010373291015625002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_13_task_01_greeting_1_1792605041958438",
+          "timestamp": 1792605041.9584398,
+          "candidate_id": "cand_13",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_13",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "schema",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_13_task_01_greeting_2_1792605041958443",
+          "timestamp": 1792605041.9584434,
+          "candidate_id": "cand_13",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_13_task_01_greeting_3_1792605041958446",
+          "timestamp": 1792605041.9584477,
+          "candidate_id": "cand_13",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_13_task_01_greeting_4_1792605041958454",
+          "timestamp": 1792605041.9584556,
+          "candidate_id": "cand_13",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_13_task_01_greeting_5_1792605041958457",
+          "timestamp": 1792605041.958458,
+          "candidate_id": "cand_13",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_14": {
+      "candidate_id": "cand_14",
+      "config": {
+        "candidate_id": "cand_14",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "dual-check",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_14_task_01_greeting_1_1792605041959070",
+          "timestamp": 1792605041.9590724,
+          "candidate_id": "cand_14",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_14",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "dual-check",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_14_task_01_greeting_2_1792605041959078",
+          "timestamp": 1792605041.959079,
+          "candidate_id": "cand_14",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_14_task_01_greeting_3_1792605041959083",
+          "timestamp": 1792605041.9590845,
+          "candidate_id": "cand_14",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_14_task_01_greeting_4_1792605041959102",
+          "timestamp": 1792605041.9591036,
+          "candidate_id": "cand_14",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_14_task_01_greeting_5_1792605041959105",
+          "timestamp": 1792605041.9591062,
+          "candidate_id": "cand_14",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_15": {
+      "candidate_id": "cand_15",
+      "config": {
+        "candidate_id": "cand_15",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "dual-check",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_15_task_01_greeting_1_1792605041959607",
+          "timestamp": 1792605041.959608,
+          "candidate_id": "cand_15",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_15",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "dual-check",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_15_task_01_greeting_2_1792605041959611",
+          "timestamp": 1792605041.959612,
+          "candidate_id": "cand_15",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_15_task_01_greeting_3_1792605041959615",
+          "timestamp": 1792605041.959616,
+          "candidate_id": "cand_15",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_15_task_01_greeting_4_1792605041959624",
+          "timestamp": 1792605041.9596255,
+          "candidate_id": "cand_15",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_15_task_01_greeting_5_1792605041959627",
+          "timestamp": 1792605041.9596279,
+          "candidate_id": "cand_15",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_16": {
+      "candidate_id": "cand_16",
+      "config": {
+        "candidate_id": "cand_16",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "trace-policy",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010068115234375002,
+      "mean_duration_sec": 0.00010068115234375002,
+      "total_retries": 0,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_16_task_01_greeting_1_1792605041960137",
+          "timestamp": 1792605041.960139,
+          "candidate_id": "cand_16",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_16",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "trace-policy",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_16_task_01_greeting_2_1792605041960142",
+          "timestamp": 1792605041.960143,
+          "candidate_id": "cand_16",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_16_task_01_greeting_3_1792605041960147",
+          "timestamp": 1792605041.9601486,
+          "candidate_id": "cand_16",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_16_task_01_greeting_4_1792605041960160",
+          "timestamp": 1792605041.9601612,
+          "candidate_id": "cand_16",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_16_task_01_greeting_5_1792605041960163",
+          "timestamp": 1792605041.9601638,
+          "candidate_id": "cand_16",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_17": {
+      "candidate_id": "cand_17",
+      "config": {
+        "candidate_id": "cand_17",
+        "dispatcher": "direct",
+        "memory_mode": "bounded-retrieval",
+        "verifier": "trace-policy",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 1,
+      "unauthorized_tool_count": 1,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": true,
+      "rejection_reasons": [
+        "Permission denied for tool 'unauthorized_exec'",
+        "Safety Violation: Unauthorized tool call attempted (unauthorized_exec)",
+        "Unauthorized tool execution attempted: unauthorized_exec"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_17_task_01_greeting_1_1792605041960738",
+          "timestamp": 1792605041.9607391,
+          "candidate_id": "cand_17",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_17",
+              "dispatcher": "direct",
+              "memory_mode": "bounded-retrieval",
+              "verifier": "trace-policy",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_17_task_01_greeting_2_1792605041960742",
+          "timestamp": 1792605041.9607434,
+          "candidate_id": "cand_17",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "bounded-retrieval",
+            "context_snippet": "[Retrieved Context: Empty]"
+          }
+        },
+        {
+          "event_id": "cand_17_task_01_greeting_3_1792605041960747",
+          "timestamp": 1792605041.9607484,
+          "candidate_id": "cand_17",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "direct",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_17_task_01_greeting_4_1792605041960760",
+          "timestamp": 1792605041.960761,
+          "candidate_id": "cand_17",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_17_task_01_greeting_5_1792605041960763",
+          "timestamp": 1792605041.9607635,
+          "candidate_id": "cand_17",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_18": {
+      "candidate_id": "cand_18",
+      "config": {
+        "candidate_id": "cand_18",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "schema",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 1.0,
+      "failure_rate": 0.0,
+      "success_count": 10,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010099109649658205,
+      "mean_duration_sec": 0.00010099109649658206,
+      "total_retries": 0,
+      "disqualified": false,
+      "rejection_reasons": [],
+      "sample_trace": [
+        {
+          "event_id": "cand_18_task_01_greeting_1_1792605041961336",
+          "timestamp": 1792605041.9613378,
+          "candidate_id": "cand_18",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_18",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "schema",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_18_task_01_greeting_2_1792605041961341",
+          "timestamp": 1792605041.9613416,
+          "candidate_id": "cand_18",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_18_task_01_greeting_3_1792605041961346",
+          "timestamp": 1792605041.9613469,
+          "candidate_id": "cand_18",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_18_task_01_greeting_4_1792605041961362",
+          "timestamp": 1792605041.9613628,
+          "candidate_id": "cand_18",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_18_task_01_greeting_5_1792605041961364",
+          "timestamp": 1792605041.9613652,
+          "candidate_id": "cand_18",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_19": {
+      "candidate_id": "cand_19",
+      "config": {
+        "candidate_id": "cand_19",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "schema",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 1.0,
+      "failure_rate": 0.0,
+      "success_count": 10,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": false,
+      "rejection_reasons": [],
+      "sample_trace": [
+        {
+          "event_id": "cand_19_task_01_greeting_1_1792605041961882",
+          "timestamp": 1792605041.961883,
+          "candidate_id": "cand_19",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_19",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "schema",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_19_task_01_greeting_2_1792605041961885",
+          "timestamp": 1792605041.9618862,
+          "candidate_id": "cand_19",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_19_task_01_greeting_3_1792605041961889",
+          "timestamp": 1792605041.9618902,
+          "candidate_id": "cand_19",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_19_task_01_greeting_4_1792605041961900",
+          "timestamp": 1792605041.9619005,
+          "candidate_id": "cand_19",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_19_task_01_greeting_5_1792605041961902",
+          "timestamp": 1792605041.9619029,
+          "candidate_id": "cand_19",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_20": {
+      "candidate_id": "cand_20",
+      "config": {
+        "candidate_id": "cand_20",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "dual-check",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9400000000000001,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": false,
+      "rejection_reasons": [
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_20_task_01_greeting_1_1792605041962422",
+          "timestamp": 1792605041.962423,
+          "candidate_id": "cand_20",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_20",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "dual-check",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_20_task_01_greeting_2_1792605041962426",
+          "timestamp": 1792605041.9624267,
+          "candidate_id": "cand_20",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_20_task_01_greeting_3_1792605041962431",
+          "timestamp": 1792605041.962432,
+          "candidate_id": "cand_20",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_20_task_01_greeting_4_1792605041962444",
+          "timestamp": 1792605041.9624453,
+          "candidate_id": "cand_20",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_20_task_01_greeting_5_1792605041962447",
+          "timestamp": 1792605041.962448,
+          "candidate_id": "cand_20",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_21": {
+      "candidate_id": "cand_21",
+      "config": {
+        "candidate_id": "cand_21",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "dual-check",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9400000000000001,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 1,
+      "disqualified": false,
+      "rejection_reasons": [
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_21_task_01_greeting_1_1792605041962973",
+          "timestamp": 1792605041.9629753,
+          "candidate_id": "cand_21",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_21",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "dual-check",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_21_task_01_greeting_2_1792605041962978",
+          "timestamp": 1792605041.962979,
+          "candidate_id": "cand_21",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_21_task_01_greeting_3_1792605041962983",
+          "timestamp": 1792605041.9629838,
+          "candidate_id": "cand_21",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_21_task_01_greeting_4_1792605041962996",
+          "timestamp": 1792605041.9629972,
+          "candidate_id": "cand_21",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_21_task_01_greeting_5_1792605041962999",
+          "timestamp": 1792605041.9629998,
+          "candidate_id": "cand_21",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_22": {
+      "candidate_id": "cand_22",
+      "config": {
+        "candidate_id": "cand_22",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "trace-policy",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 0.9400000000000001,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": false,
+      "rejection_reasons": [
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_22_task_01_greeting_1_1792605041963523",
+          "timestamp": 1792605041.9635239,
+          "candidate_id": "cand_22",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_22",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "trace-policy",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_22_task_01_greeting_2_1792605041963526",
+          "timestamp": 1792605041.9635272,
+          "candidate_id": "cand_22",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_22_task_01_greeting_3_1792605041963531",
+          "timestamp": 1792605041.9635317,
+          "candidate_id": "cand_22",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_22_task_01_greeting_4_1792605041963545",
+          "timestamp": 1792605041.9635463,
+          "candidate_id": "cand_22",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_22_task_01_greeting_5_1792605041963548",
+          "timestamp": 1792605041.963549,
+          "candidate_id": "cand_22",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_23": {
+      "candidate_id": "cand_23",
+      "config": {
+        "candidate_id": "cand_23",
+        "dispatcher": "classification",
+        "memory_mode": "none",
+        "verifier": "trace-policy",
+        "bounded_retries": 1
+      },
+      "mean_accuracy": 0.9400000000000001,
+      "failure_rate": 0.09999999999999998,
+      "success_count": 9,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.001032560729980469,
+      "mean_duration_sec": 0.0001032560729980469,
+      "total_retries": 1,
+      "disqualified": false,
+      "rejection_reasons": [
+        "Dual check failed: required field value mismatch. Expected False, got True"
+      ],
+      "sample_trace": [
+        {
+          "event_id": "cand_23_task_01_greeting_1_1792605041964009",
+          "timestamp": 1792605041.9640107,
+          "candidate_id": "cand_23",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_23",
+              "dispatcher": "classification",
+              "memory_mode": "none",
+              "verifier": "trace-policy",
+              "bounded_retries": 1
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_23_task_01_greeting_2_1792605041964013",
+          "timestamp": 1792605041.9640138,
+          "candidate_id": "cand_23",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "none",
+            "context_snippet": ""
+          }
+        },
+        {
+          "event_id": "cand_23_task_01_greeting_3_1792605041964017",
+          "timestamp": 1792605041.9640183,
+          "candidate_id": "cand_23",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_23_task_01_greeting_4_1792605041964032",
+          "timestamp": 1792605041.9640331,
+          "candidate_id": "cand_23",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_23_task_01_greeting_5_1792605041964035",
+          "timestamp": 1792605041.9640355,
+          "candidate_id": "cand_23",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    },
+    "cand_24": {
+      "candidate_id": "cand_24",
+      "config": {
+        "candidate_id": "cand_24",
+        "dispatcher": "classification",
+        "memory_mode": "summary",
+        "verifier": "schema",
+        "bounded_retries": 0
+      },
+      "mean_accuracy": 1.0,
+      "failure_rate": 0.0,
+      "success_count": 10,
+      "total_tasks": 10,
+      "safety_violation_count": 0,
+      "unauthorized_tool_count": 0,
+      "total_duration_sec": 0.0010000000000000002,
+      "mean_duration_sec": 0.00010000000000000002,
+      "total_retries": 0,
+      "disqualified": false,
+      "rejection_reasons": [],
+      "sample_trace": [
+        {
+          "event_id": "cand_24_task_01_greeting_1_1792605041964635",
+          "timestamp": 1792605041.9646363,
+          "candidate_id": "cand_24",
+          "task_id": "task_01_greeting",
+          "event_type": "start",
+          "payload": {
+            "config": {
+              "candidate_id": "cand_24",
+              "dispatcher": "classification",
+              "memory_mode": "summary",
+              "verifier": "schema",
+              "bounded_retries": 0
+            },
+            "input_hash": "f1fabc36ea03"
+          }
+        },
+        {
+          "event_id": "cand_24_task_01_greeting_2_1792605041964640",
+          "timestamp": 1792605041.9646416,
+          "candidate_id": "cand_24",
+          "task_id": "task_01_greeting",
+          "event_type": "memory_inject",
+          "payload": {
+            "memory_mode": "summary",
+            "context_snippet": "[Memory Summary: No external context provided]"
+          }
+        },
+        {
+          "event_id": "cand_24_task_01_greeting_3_1792605041964645",
+          "timestamp": 1792605041.964646,
+          "candidate_id": "cand_24",
+          "task_id": "task_01_greeting",
+          "event_type": "dispatch",
+          "payload": {
+            "dispatcher": "classification",
+            "attempt": 0
+          }
+        },
+        {
+          "event_id": "cand_24_task_01_greeting_4_1792605041964656",
+          "timestamp": 1792605041.964657,
+          "candidate_id": "cand_24",
+          "task_id": "task_01_greeting",
+          "event_type": "verify",
+          "payload": {
+            "passed": true,
+            "score": 1.0,
+            "reasons": [],
+            "safety_violation": false
+          }
+        },
+        {
+          "event_id": "cand_24_task_01_greeting_5_1792605041964659",
+          "timestamp": 1792605041.9646595,
+          "candidate_id": "cand_24",
+          "task_id": "task_01_greeting",
+          "event_type": "complete",
+          "payload": {
+            "status": "success"
+          }
+        }
+      ]
+    }
+  },
+  "next_candidate_index": 25,
+  "total_candidates": 54,
+  "completed": false
+}
